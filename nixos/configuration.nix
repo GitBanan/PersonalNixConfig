@@ -86,7 +86,7 @@
     hostName = "nixos";
 
     # Enable networking, choose 1
-    networking.networkmanager.enable = true; # Easier to use
+    networkmanager.enable = true; # Easier to use
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
