@@ -73,20 +73,26 @@
 
   # FIXME: Add the rest of your current configuration
 
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Using UEFI bootloader
+  boot.loader = {
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 20; # Maximum generations
+    efi.canTouchEfiVariables = true;
+    timeout = 2; # Time to confirm generation
+  };
 
-  # TODO: Set your hostname
-  networking.hostName = "nixos";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    # Set your hostname
+    hostName = "nixos";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Enable networking, choose 1
+    networking.networkmanager.enable = true; # Easier to use
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # Configure network proxy if necessary
+    # networking.proxy.default = "http://user:password@proxy:port/";
+    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -106,23 +112,26 @@
     LC_TIME = "en_IN";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  services.xserver.displayManager.sddm.wayland.enable = true; # Enable Plasma 6
+  services.desktopManager.plasma6.enable = true; # Enable Plasma 6
+
+  services.xserver = {
+    # Enable the X11 windowing system.
+    enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true; # Enable Plasma 6
+
+    # Configure keymap in X11
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+  };
 
   # Enable optional KDE features
   programs.kdeconnect.enable = true;
   programs.firefox.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -145,21 +154,22 @@
   };
 
   # Enable bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
-    # FIXME: Replace with your username
     jee = {
-      # TODO: You can set an initial password for your user.
+      # You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
       initialPassword = "password";
       isNormalUser = true;
       description = "Jee";
 
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
+      # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = [ "networkmanager" "wheel" ];
 
       openssh.authorizedKeys.keys = [
