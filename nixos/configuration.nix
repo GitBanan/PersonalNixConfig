@@ -179,8 +179,11 @@
       packages = with pkgs; [
         firefox
         kate
+
         kdePackages.kdeconnect-kde
         git
+
+        steam
       ];
     };
   };
