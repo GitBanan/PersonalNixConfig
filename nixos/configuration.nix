@@ -205,20 +205,20 @@
 
       packages = with pkgs; [
         protonup-qt
-        armcord
+        armcord # Better options?
         haruna
-        qbittorrent
-        sonarr
-        radarr
-        prowlarr
-        lidarr
-        jellyfin
-        jellyseerr
+        qbittorrent # Need module
         vivaldi
         vscodium
         freetube
         protonvpn-cli
         easyeffects
+
+        # Additional packages for jellyfin
+        jellyfin
+        jellyfin-web
+        jellyfin-ffmpeg
+        jellyfin-media-player
       ];
     };
   };
@@ -233,29 +233,127 @@
     # ];
   };
 
+  # Enable Hardware Transcoding VAAPI for jellyfin
+  nixpkgs.config.packageOverrides = pkgs: {
+    vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
+  };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
+    ];
+  };
+
   # Install Syncthing
   services = {
-      # Syncthing service
-      syncthing = {
-          enable = true;
-          user = "JeePC";
-          dataDir = "/home/jee/Sync";    # Default folder for new synced folders
-          configDir = "/home/jee/.config/syncthing";   # Folder for Syncthing's settings and keys
-          guiAddress = "127.0.0.1:8384";
-          openDefaultPorts = true;
-      };
+    # Syncthing service
+    syncthing = {
+      enable = true;
+      user = "jee";
+      dataDir = "/home/jee/Sync";    # Default folder for new synced folders
+      configDir = "/home/jee/.config/syncthing";   # Folder for Syncthing's settings and keys
+      guiAddress = "127.0.0.1:8384";
+      openDefaultPorts = true;
 
-      # This setups a SSH server. Very important if you're setting up a headless system.
-      # Feel free to remove if you don't need it.
-      openssh = {
-        enable = true;
-        settings = {
-          # Forbid root login through SSH.
-          PermitRootLogin = "no";
-          # Use keys only. Remove if you want to SSH using password (not recommended)
-          PasswordAuthentication = false;
+      overrideDevices = true;
+      overrideFolders = true;
+      settings = {
+        devices = {
+          "Pixel7" = { id = "BEA64PF-MADNI3F-4ONKTOA-FMHRRAA-7IBPNBB-FGUYJUL-VSS7ON7-B62WYQC"; };
+        };
+        folders = {
+          "Aegis" = {
+            path = "/home/jee/Sync/Aegis";
+            devices = [ "Pixel7" ];
+            versioning = {
+              type = "trashcan";
+              params.cleanoutDays = "7";
+            };
+          };
+          "DCIM" = {
+            path = "/home/jee/Sync/DCIM";
+            devices = [ "Pixel7" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
+          "FileShare" = {
+            path = "/home/jee/Sync/FileShare";
+            devices = [ "Pixel7" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
+          "SeedVault" = {
+            path = "/home/jee/Sync/SeedVault";
+            devices = [ "Pixel7" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
         };
       };
+    };
+
+    # Setup Arr stacks
+    sonarr = {
+      enable = true;
+      user = "jee";
+      openFirewall = true;
+      dataDir = "/home/jee/.config/sonarr";
+    };
+    radarr = {
+      enable = true;
+      user = "jee";
+      openFirewall = true;
+      dataDir = "/home/jee/.config/radarr";
+    };
+    prowlarr = {
+      enable = true;
+      openFirewall = true;
+    };
+
+    # Setup Media server
+    jellyfin = {
+      enable = true;
+      user = "jee";
+      openFirewall = true;
+      configDir = "/home/jee/.config/jellyfin";
+      dataDir = "/home/jee/.local/share/jellyfin";
+      cacheDir = "/home/jee/.cache/jellyfin";
+    };
+
+    # Setup jellyseerr
+    jellyseerr = {
+      enable = true;
+      port = 5055;
+      openFirewall = true;
+    };
+
+    # This setups a SSH server. Very important if you're setting up a headless system.
+    # Feel free to remove if you don't need it.
+    openssh = {
+      enable = true;
+      settings = {
+        # Forbid root login through SSH.
+        PermitRootLogin = "no";
+        # Use keys only. Remove if you want to SSH using password (not recommended)
+        PasswordAuthentication = false;
+      };
+    };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
