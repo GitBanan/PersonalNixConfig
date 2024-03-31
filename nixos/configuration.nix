@@ -182,6 +182,10 @@
     dates = "weekly";
   };
 
+  environment.systemPackages = with pkgs; [
+    kate
+  ];
+
   # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     jee = {
@@ -200,14 +204,10 @@
       ];
 
       packages = with pkgs; [
-        kate
-        # kdePackages.kdeconnect-kde
-
-        # steam
+        protonup-qt
         armcord
         haruna
         qbittorrent
-        syncthing
         sonarr
         radarr
         prowlarr
@@ -228,28 +228,34 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    # extraCompatPackages = with pkgs; [
+    #   proton-ge-bin # Glorious Egg Proton
+    # ];
   };
 
   # Install Syncthing
   services = {
+      # Syncthing service
       syncthing = {
           enable = true;
-          user = "Jee PC NixOS";
+          user = "JeePC";
           dataDir = "/home/jee/Sync";    # Default folder for new synced folders
           configDir = "/home/jee/.config/syncthing";   # Folder for Syncthing's settings and keys
+          guiAddress = "127.0.0.1:8384";
+          openDefaultPorts = true;
       };
-  };
 
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    settings = {
-      # Forbid root login through SSH.
-      PermitRootLogin = "no";
-      # Use keys only. Remove if you want to SSH using password (not recommended)
-      PasswordAuthentication = false;
-    };
+      # This setups a SSH server. Very important if you're setting up a headless system.
+      # Feel free to remove if you don't need it.
+      openssh = {
+        enable = true;
+        settings = {
+          # Forbid root login through SSH.
+          PermitRootLogin = "no";
+          # Use keys only. Remove if you want to SSH using password (not recommended)
+          PasswordAuthentication = false;
+        };
+      };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
