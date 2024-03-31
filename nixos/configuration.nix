@@ -24,13 +24,21 @@
     ./hardware-configuration.nix
   ];
 
+  # Using UEFI bootloader
+  boot.loader = {
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 20; # Maximum generations
+    efi.canTouchEfiVariables = true;
+    timeout = 2; # Time to confirm generation
+  };
+
   nixpkgs = {
     # You can add overlays here
-    overlays = [
+    # overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      # outputs.overlays.additions
+      # outputs.overlays.modifications
+      # outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -41,7 +49,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-    ];
+    # ];
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -49,13 +57,30 @@
     };
   };
 
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+  nix = {
+    # This will add each flake input as a registry
+    # To make nix3 commands consistent with your flake
+    registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
-  # This will additionally add your inputs to the system's legacy channels
-  # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = ["/etc/nix/path"];
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = ["/etc/nix/path"];
+
+    settings = {
+      # Enable flakes and new 'nix' command
+      experimental-features = "nix-command flakes";
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
+    };
+
+    # Garbage collect
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+
   environment.etc =
     lib.mapAttrs'
     (name: value: {
@@ -64,22 +89,7 @@
     })
     config.nix.registry;
 
-  nix.settings = {
-    # Enable flakes and new 'nix' command
-    experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
-    auto-optimise-store = true;
-  };
-
-  # FIXME: Add the rest of your current configuration
-
-  # Using UEFI bootloader
-  boot.loader = {
-    systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 20; # Maximum generations
-    efi.canTouchEfiVariables = true;
-    timeout = 2; # Time to confirm generation
-  };
+  # Add the rest of your current configuration
 
   networking = {
     # Set your hostname
@@ -99,7 +109,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_IN";
     LC_IDENTIFICATION = "en_IN";
@@ -112,15 +121,16 @@
     LC_TIME = "en_IN";
   };
 
-
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true; # Enable Plasma 6
 
   services.xserver = {
     # Enable the X11 windowing system.
     enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.wayland.enable = true; # Enable Plasma 6
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true; # Enable Plasma 6
+    };
 
     # Configure keymap in X11
     xkb = {
@@ -129,9 +139,15 @@
     };
   };
 
+  programs = {
   # Enable optional KDE features
-  programs.kdeconnect.enable = true;
-  programs.firefox.enable = true;
+    kdeconnect.enable = true;
+    firefox.enable = true;
+
+    # Enable home-manager and git
+    # home-manager.enable = true;
+    git.enable = true;
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -159,7 +175,14 @@
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
   };
 
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
+  # Enable auto update
+  system.autoUpgrade = {
+    enable = true;
+    channel = "https://nixos.org/channels/nixos-unstable";
+    dates = "weekly";
+  };
+
+  # Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     jee = {
       # You can set an initial password for your user.
@@ -177,15 +200,44 @@
       ];
 
       packages = with pkgs; [
-        firefox
         kate
+        # kdePackages.kdeconnect-kde
 
-        kdePackages.kdeconnect-kde
-        git
-
-        steam
+        # steam
+        armcord
+        haruna
+        qbittorrent
+        syncthing
+        sonarr
+        radarr
+        prowlarr
+        lidarr
+        jellyfin
+        jellyseerr
+        vivaldi
+        vscodium
+        freetube
+        protonvpn-cli
+        easyeffects
       ];
     };
+  };
+
+  # Install Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  # Install Syncthing
+  services = {
+      syncthing = {
+          enable = true;
+          user = "Jee PC NixOS";
+          dataDir = "/home/jee/Sync";    # Default folder for new synced folders
+          configDir = "/home/jee/.config/syncthing";   # Folder for Syncthing's settings and keys
+      };
   };
 
   # This setups a SSH server. Very important if you're setting up a headless system.
