@@ -11,7 +11,7 @@
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
-    # outputs.nixosModules.example
+    # outputs.nixosModules.wireguard
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -22,6 +22,10 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+
+    # Wireguard proton vpn
+    # ../modules/wireguard.nix
+    # ./protonvpn.nix
   ];
 
   # Using UEFI bootloader
@@ -96,8 +100,11 @@
     hostName = "nixos";
 
     # Enable networking, choose 1
-    networkmanager.enable = true; # Easier to use
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networkmanager = {
+      enable = true; # Easier to use
+      # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+      insertNameservers = [ "https://dns.nextdns.io/ff152f" ];
+    };
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
@@ -184,6 +191,7 @@
 
   environment.systemPackages = with pkgs; [
     kate
+    nextdns
   ];
 
   # Configure your system-wide user settings (groups, etc), add more users as needed.
@@ -211,8 +219,9 @@
         vivaldi
         vscodium
         freetube
-        protonvpn-cli
         easyeffects
+        protonvpn-gui
+        libxml2
 
         # Additional packages for jellyfin
         jellyfin
@@ -248,8 +257,25 @@
     ];
   };
 
-  # Install Syncthing
   services = {
+    # Setup NextDNS
+    nextdns = {
+      enable = true;
+      arguments = [ "-config" "10.0.3.0/24=ff152f" "-cache-size" "10MB" ];
+    };
+
+    # Enable system-resolved
+    resolved = {
+      enable = true;
+      extraConfig = ''
+      DNS=45.90.28.0#ff152f.dns.nextdns.io
+      DNS=2a07:a8c0::#ff152f.dns.nextdns.io
+      DNS=45.90.30.0#ff152f.dns.nextdns.io
+      DNS=2a07:a8c1::#ff152f.dns.nextdns.io
+      DNSOverTLS=yes
+      '';
+     };
+
     # Syncthing service
     syncthing = {
       enable = true;
@@ -338,7 +364,7 @@
 
     # Setup jellyseerr
     jellyseerr = {
-      enable = true;
+      # enable = true;
       port = 5055;
       openFirewall = true;
     };
