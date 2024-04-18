@@ -222,12 +222,19 @@
         easyeffects
         protonvpn-gui
         libxml2
+        eclipses.eclipse-jee
 
         # Additional packages for jellyfin
         jellyfin
         jellyfin-web
         jellyfin-ffmpeg
         jellyfin-media-player
+
+        # Libreoffice
+        libreoffice-qt-fresh
+        hunspell
+        hunspellDicts.uk_UA
+        hunspellDicts.th_TH
       ];
     };
   };
@@ -268,11 +275,11 @@
     resolved = {
       enable = true;
       extraConfig = ''
-      DNS=45.90.28.0#ff152f.dns.nextdns.io
-      DNS=2a07:a8c0::#ff152f.dns.nextdns.io
-      DNS=45.90.30.0#ff152f.dns.nextdns.io
-      DNS=2a07:a8c1::#ff152f.dns.nextdns.io
-      DNSOverTLS=yes
+        DNS=45.90.28.0#ff152f.dns.nextdns.io
+        DNS=2a07:a8c0::#ff152f.dns.nextdns.io
+        DNS=45.90.30.0#ff152f.dns.nextdns.io
+        DNS=2a07:a8c1::#ff152f.dns.nextdns.io
+        DNSOverTLS=yes
       '';
      };
 
