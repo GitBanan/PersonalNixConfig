@@ -33,7 +33,7 @@
     systemd-boot.enable = true;
     systemd-boot.configurationLimit = 20; # Maximum generations
     efi.canTouchEfiVariables = true;
-    timeout = 2; # Time to confirm generation
+    timeout = 1; # Time to confirm generation
   };
 
   nixpkgs = {
@@ -212,7 +212,6 @@
       ];
 
       packages = with pkgs; [
-        protonup-qt
         armcord # Better options?
         haruna
         qbittorrent # Need module
@@ -221,8 +220,12 @@
         freetube
         easyeffects
         protonvpn-gui
-        libxml2
+        libxml2 # Format XML
         eclipses.eclipse-jee
+        qalculate-qt
+        xautomation
+        zrok
+        neofetch
 
         # Additional packages for jellyfin
         jellyfin
@@ -235,9 +238,21 @@
         hunspell
         hunspellDicts.uk_UA
         hunspellDicts.th_TH
+
+        # Wine
+        wineWowPackages.stable
+        wineWowPackages.waylandFull
+        winetricks
+        protontricks
+        protonup-qt
       ];
     };
   };
+
+  # Setup VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "jee" ];
+  virtualisation.waydroid.enable = true;
 
   # Install Steam
   programs.steam = {
@@ -371,7 +386,7 @@
 
     # Setup jellyseerr
     jellyseerr = {
-      # enable = true;
+      enable = true;
       port = 5055;
       openFirewall = true;
     };
