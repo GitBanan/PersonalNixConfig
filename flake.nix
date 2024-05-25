@@ -10,6 +10,9 @@
     hardware.url = "github:nixos/nixos-hardware/master"; # Hardware Specific Configurations
     systems.url = "github:nix-systems/default-linux"; # Supported systems for your flake packages, shell, etc.
 
+    # impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:misterio77/impermanence";
+
     nix = {
       url = "github:nixos/nix/2.22-maintenance";
       inputs.nixpkgs.follows = "nixpkgs-stable";

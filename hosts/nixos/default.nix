@@ -3,8 +3,8 @@
 {
   inputs,
   # outputs,
-  # lib,
-  # config,
+  lib,
+  config,
   pkgs,
   ...
 }: {
@@ -25,9 +25,9 @@
     ../common/users/jee
   ];
 
-  nixpkgs = {
+  # nixpkgs = {
     # You can add overlays here
-    overlays = [
+    # overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       # outputs.overlays.additions
       # outputs.overlays.modifications
@@ -42,35 +42,13 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-    ];
+    # ];
     # Configure your nixpkgs instance
-    config = {
+    # config = {
       # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
-  };
-
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
-
-      # Opinionated: disable global registry
-      flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
-    };
-
-    # Opinionated: disable channels
-    channel.enable = false;
-    # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
+      # allowUnfree = true;
+    # };
+  # };
 
   # Using UEFI bootloader
   boot = {

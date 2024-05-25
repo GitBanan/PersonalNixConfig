@@ -7,7 +7,7 @@
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
 in {
   nix = {
-    package = pkgs.inputs.nix.nix;
+    # package = pkgs.inputs.nix.nix;
 
     settings = {
       # substituters = lib.mkAfter ["https://cache.m7.rs"];
@@ -16,7 +16,9 @@ in {
         "root"
         "@wheel"
       ];
+      # Deduplicate and optimize nix store
       auto-optimise-store = lib.mkDefault true;
+      # Enable flakes and new 'nix' command
       experimental-features = [
         "nix-command"
         "flakes"

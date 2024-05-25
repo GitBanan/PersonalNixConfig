@@ -11,7 +11,7 @@ in {
   users.mutableUsers = false;
   users.users.jee = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
     extraGroups =
       [
         "wheel"
