@@ -3,7 +3,7 @@
 cd /home/jee/MainDirectory/PC/Linux/Nix/nix-config/
 
 if [[ "$1" =~ 'g' ]]; then
-    gacp "$2"
+    gacp $2
 fi
 
 # Sudo
