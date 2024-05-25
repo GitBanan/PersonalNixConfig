@@ -2,20 +2,18 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
-  outputs,
-  lib,
-  config,
+  # outputs,
+  # lib,
+  # config,
   pkgs,
   ...
 }: {
   # You can import other NixOS modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/nixos):
-    # outputs.nixosModules.wireguard
-
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
+    # Import modules from other flakes (such as nixos-hardware):
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-gpu-amd
+    inputs.hardware.nixosModules.common-pc-ssd
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -23,22 +21,13 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
-    # Wireguard proton vpn
-    # ../modules/wireguard.nix
-    # ./protonvpn.nix
+    ../common/global
+    ../common/users/jee
   ];
-
-  # Using UEFI bootloader
-  boot.loader = {
-    systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 20; # Maximum generations
-    efi.canTouchEfiVariables = true;
-    timeout = 1; # Time to confirm generation
-  };
 
   nixpkgs = {
     # You can add overlays here
-    # overlays = [
+    overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       # outputs.overlays.additions
       # outputs.overlays.modifications
@@ -53,7 +42,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-    # ];
+    ];
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -61,39 +50,74 @@
     };
   };
 
-  nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    nixPath = ["/etc/nix/path"];
-
+  nix = let
+    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+  in {
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
+
+      # Opinionated: disable global registry
+      flake-registry = "";
+      # Workaround for https://github.com/NixOS/nix/issues/9574
+      nix-path = config.nix.nixPath;
     };
 
-    # Garbage collect
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
+    # Opinionated: disable channels
+    channel.enable = false;
+    # Opinionated: make flake registry and nix path match flake inputs
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+  };
+
+  # Using UEFI bootloader
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      systemd-boot.configurationLimit = 20; # Maximum generations
+      efi.canTouchEfiVariables = true;
+      timeout = 1; # Time to confirm generation
+    };
+
+    # kernelPackages = pkgs.linuxPackages_latest;
+    # kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=1002:73df,1002:ab28" ];
+    # kernelModules = [ "kvm-intel" ];
+    # initrd.availableKernelModules = [ "amdgpu" "vfio-pci" ];
+    # initrd.preDeviceCommands = ''
+    #   DEVS="00003:00.0 00003:00.1"
+    #   for DEV in $DEVS; do
+    #     echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
+    #   done
+    #   modprobe -i vfio-pci
+    # '';
+  };
+
+  # Setup VM
+  virtualisation = {
+    waydroid.enable = true;
+    # virtualbox.host.enable = true; # For VirtualBox
+
+    libvirtd = {
+      enable = true;
+      qemu = {
+        ovmf.enable = true;
+        runAsRoot = false;
+      };
+      onBoot = "ignore";
+      onShutdown = "shutdown";
     };
   };
 
-  environment.etc =
-    lib.mapAttrs'
-    (name: value: {
-      name = "nix/path/${name}";
-      value.source = value.flake;
-    })
-    config.nix.registry;
-
-  # Add the rest of your current configuration
+  # Setup hypervisor for VM
+  # dconf.settings = {
+  #   "org/virt-manager/virt-manager/connections" = {
+  #     autoconnect = ["qemu:///system"];
+  #     uris = ["qemu:///system"];
+  #   };
+  # };
+  # users.extraGroups.vboxusers.members = [ "jee" ]; # For VirtualBox
 
   networking = {
     # Set your hostname
@@ -111,49 +135,26 @@
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  # Set your time zone.
-  time.timeZone = "Asia/Kolkata";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IN";
-    LC_IDENTIFICATION = "en_IN";
-    LC_MEASUREMENT = "en_IN";
-    LC_MONETARY = "en_IN";
-    LC_NAME = "en_IN";
-    LC_NUMERIC = "en_IN";
-    LC_PAPER = "en_IN";
-    LC_TELEPHONE = "en_IN";
-    LC_TIME = "en_IN";
-  };
-
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true; # Enable Plasma 6
 
-  services.xserver = {
+  services = {
+    xserver = {
+      # Configure keymap in X11
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+
+      # Enable the X11 windowing system.
+      enable = true;
+      videoDrivers = [ "amdgpu" ];
+    };
     # Enable the X11 windowing system.
-    enable = true;
     displayManager.sddm = {
       enable = true;
       wayland.enable = true; # Enable Plasma 6
     };
-
-    # Configure keymap in X11
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
-
-  programs = {
-  # Enable optional KDE features
-    kdeconnect.enable = true;
-    firefox.enable = true;
-
-    # Enable home-manager and git
-    # home-manager.enable = true;
-    git.enable = true;
   };
 
   # Enable CUPS to print documents.
@@ -189,9 +190,20 @@
     dates = "weekly";
   };
 
+  programs = {
+  # Enable optional KDE features
+    kdeconnect.enable = true;
+    firefox.enable = true;
+
+    # Enable home-manager and git
+    # home-manager.enable = true;
+    git.enable = true;
+
+    virt-manager.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     kate
-    nextdns
   ];
 
   # Configure your system-wide user settings (groups, etc), add more users as needed.
@@ -205,7 +217,7 @@
       description = "Jee";
 
       # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
 
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
@@ -226,6 +238,14 @@
         xautomation
         zrok
         neofetch
+        python3
+        python311Packages.inquirerpy
+        python312Packages.inquirerpy
+        scrcpy
+        wl-clipboard
+        android-tools
+        lzip
+        pciutils
 
         # Additional packages for jellyfin
         jellyfin
@@ -248,11 +268,6 @@
       ];
     };
   };
-
-  # Setup VirtualBox
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "jee" ];
-  virtualisation.waydroid.enable = true;
 
   # Install Steam
   programs.steam = {
@@ -280,12 +295,6 @@
   };
 
   services = {
-    # Setup NextDNS
-    nextdns = {
-      enable = true;
-      arguments = [ "-config" "10.0.3.0/24=ff152f" "-cache-size" "10MB" ];
-    };
-
     # Enable system-resolved
     resolved = {
       enable = true;

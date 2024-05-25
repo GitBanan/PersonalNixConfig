@@ -1,72 +1,85 @@
 {
-  description = "Your new nix config";
+  description = "My NixOS config";
 
   inputs = {
     # Nixpkgs
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # Nix Packages (Default)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable Nix Packages
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11"; # Nix Packages (Default)
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable Nix Packages
+
     hardware.url = "github:nixos/nixos-hardware/master"; # Hardware Specific Configurations
+    systems.url = "github:nix-systems/default-linux"; # Supported systems for your flake packages, shell, etc.
+
+    nix = {
+      url = "github:nixos/nix/2.22-maintenance";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
     # User Environment Manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      # url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Nix Packages (Default)
     };
 
-    # TODO: Add any other flake you might need
-    # hardware.url = "github:nixos/nixos-hardware";
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
+    # Third party programs, packaged with nix
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    systems,
     ...
   } @ inputs: let
     inherit (self) outputs;
-    # Supported systems for your flake packages, shell, etc.
-    systems = [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-    # This is a function that generates an attribute by calling a function you
-    # pass to it, with each system as an argument
-    forAllSystems = nixpkgs.lib.genAttrs systems;
+    lib = nixpkgs.lib // home-manager.lib;
+    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
+    pkgsFor = lib.genAttrs (import systems) (
+      system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+    );
   in {
-    # Your custom packages
-    # Accessible through 'nix build', 'nix shell', etc
-    # packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    # Your custom packages and modifications, exported as overlays
-    # overlays = import ./overlays {inherit inputs;};
+    inherit lib;
     # Reusable nixos modules you might want to export
     # These are usually stuff you would upstream into nixpkgs
-    # nixosModules = import ./modules/wireguard.nix;
+    nixosModules = import ./modules/nixos;
     # Reusable home-manager modules you might want to export
     # These are usually stuff you would upstream into home-manager
-    # homeManagerModules = import ./modules/home-manager;
+    homeManagerModules = import ./modules/home-manager;
+
+    # Your custom packages and modifications, exported as overlays
+    overlays = import ./overlays {inherit inputs;};
+
+    # Your custom packages
+    # Accessible through 'nix build', 'nix shell', etc
+    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
+    # Shell packages
+    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
+    # Formatter for your nix files, available through 'nix fmt'
+    # Other options beside 'alejandra' include 'nixpkgs-fmt'
+    formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       # Replace with your hostname
-      nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          # > Our main nixos configuration file <
-          ./nixos/configuration.nix
-        ];
+      nixos = lib.nixosSystem {
+        modules = [./hosts/nixos];
+        specialArgs = {
+          inherit inputs outputs;
+        };
       };
     };
 
@@ -74,13 +87,12 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       # Replace with your username@hostname
-      "jee" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./home-manager/home.nix
-        ];
+      "jee@nixos" = lib.homeManagerConfiguration {
+        modules = [./home/jee/nixos.nix ./home/jee/nixpkgs.nix];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
       };
     };
   };
