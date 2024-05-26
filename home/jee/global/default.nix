@@ -8,7 +8,7 @@
 }: {
   imports =
     [
-      inputs.impermanence.nixosModules.home-manager.impermanence
+      # inputs.impermanence.nixosModules.home-manager.impermanence
       # ../features/cli
       # ../features/nvim
     ]
@@ -43,19 +43,19 @@
       FLAKE = "$HOME/MainDirectory/PC/Linux/Nix/nix-config/";
     };
 
-    persistence = {
-      "/persist/home/jee" = {
-        defaultDirectoryMethod = "symlink";
-        directories = [
-          "Documents"
-          "Downloads"
-          "Pictures"
-          "Videos"
-          ".local/bin"
-          ".local/share/nix" # trusted settings and repl history
-        ];
-        allowOther = true;
-      };
-    };
+    # persistence = {
+    #   "/persist/home/jee" = {
+    #     defaultDirectoryMethod = "symlink";
+    #     directories = [
+    #       "Documents"
+    #       "Downloads"
+    #       "Pictures"
+    #       "Videos"
+    #       ".local/bin"
+    #       ".local/share/nix" # trusted settings and repl history
+    #     ];
+    #     allowOther = true;
+    #   };
+    # };
   };
 }

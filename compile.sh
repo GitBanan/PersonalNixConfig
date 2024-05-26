@@ -2,12 +2,8 @@
 
 cd /home/jee/MainDirectory/PC/Linux/Nix/nix-config/
 
-if [[ "$1" =~ 'g' ]]; then
-    gacp $2
-fi
-
 # Sudo
-# [ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
+[ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
 
 if [[ "$1" =~ 'v' ]]; then
     nix-store --repair --verify --check-contents

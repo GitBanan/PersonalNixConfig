@@ -168,6 +168,18 @@
     dates = "weekly";
   };
 
+  # Start Zrok
+  systemd.user.services.zrok-jellyfin-service = {
+    enable = true;
+    after = [ "jellyfin.service" ];
+    wantedBy = [ "multi-user.target" ];
+    description = "Zrok service for Jellyfin";
+    serviceConfig = {
+        Type = "exec";
+        ExecStart = ''/home/jee/MainDirectory/PC/Linux/Scripts/zrok.sh'';
+    };
+  };
+
   programs = {
   # Enable optional KDE features
     kdeconnect.enable = true;
@@ -182,6 +194,7 @@
 
   environment.systemPackages = with pkgs; [
     kate
+    zrok
   ];
 
   # Configure your system-wide user settings (groups, etc), add more users as needed.
@@ -196,6 +209,9 @@
 
       # Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+
+      # Keep user service running after log out
+      linger = true;
 
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
@@ -214,7 +230,6 @@
         eclipses.eclipse-jee
         qalculate-qt
         xautomation
-        zrok
         neofetch
         python3
         python311Packages.inquirerpy
@@ -265,7 +280,7 @@
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
-      vaapiIntel
+      # vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
       intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)

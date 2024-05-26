@@ -11,7 +11,7 @@
     systems.url = "github:nix-systems/default-linux"; # Supported systems for your flake packages, shell, etc.
 
     # impermanence.url = "github:nix-community/impermanence";
-    impermanence.url = "github:misterio77/impermanence";
+    # impermanence.url = "github:misterio77/impermanence";
 
     nix = {
       url = "github:nixos/nix/2.22-maintenance";
@@ -75,7 +75,7 @@
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
+    # Available through 'nixos-rebuild switch --flake .#your-hostname'
     nixosConfigurations = {
       # Replace with your hostname
       nixos = lib.nixosSystem {
@@ -87,7 +87,7 @@
     };
 
     # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
+    # Available through 'home-manager switch --flake .#your-username@your-hostname'
     homeConfigurations = {
       # Replace with your username@hostname
       "jee@nixos" = lib.homeManagerConfiguration {
