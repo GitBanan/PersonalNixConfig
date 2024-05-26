@@ -7,25 +7,21 @@
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
-      # ./acme.nix
       ./audio.nix
-      # ./auto-upgrade.nix
       ./boot.nix
       # ./fish.nix
+      ./gamemode.nix
       ./kde.nix
       ./locale.nix
+      ./network.nix
+      # ./nix-ld.nix
       ./nix.nix
-      # ./openssh.nix
       # ./optin-persistence.nix
       # ./podman.nix
       # ./sops.nix
-      # ./ssh-serve-store.nix
-      # ./steam-hardware.nix
       ./systemd-initrd.nix
       # ./tailscale.nix
-      ./gamemode.nix
-      ./nix-ld.nix
-      # ./prometheus-node-exporter.nix
+      ./tools.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 

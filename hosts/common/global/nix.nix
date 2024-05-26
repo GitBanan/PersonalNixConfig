@@ -1,7 +1,7 @@
 {
   inputs,
   lib,
-  pkgs,
+  # pkgs,
   ...
 }: let
   flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;

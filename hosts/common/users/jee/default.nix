@@ -1,17 +1,24 @@
 {
   pkgs,
   config,
-  lib,
+  # lib,
   ...
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
-  # imports = [./packages.nix];
-
   # users.mutableUsers = false;
   users.users.jee = {
+    # You can set an initial password for your user.
+    # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
+    # Be sure to change it (using passwd) after rebooting!
+    initialPassword = "password";
     isNormalUser = true;
+    description = "Jee";
     # shell = pkgs.fish;
+
+    # Keep user service running after log out
+    linger = true;
+
     extraGroups =
       [
         "wheel"
@@ -19,9 +26,12 @@ in {
         "audio"
       ]
       ++ ifTheyExist [
+        "networkmanager"
         "network"
         "git"
         "libvirtd"
+        "qemu-libvirtd"
+        "disk"
         "docker"
       ];
 
