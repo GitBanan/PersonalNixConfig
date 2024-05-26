@@ -79,7 +79,7 @@
     nixosConfigurations = {
       # Replace with your hostname
       nixos = lib.nixosSystem {
-        modules = [./hosts/nixos];
+        modules = [ ./hosts/nixos ];
         specialArgs = {
           inherit inputs outputs;
         };
@@ -91,7 +91,7 @@
     homeConfigurations = {
       # Replace with your username@hostname
       "jee@nixos" = lib.homeManagerConfiguration {
-        modules = [./home/jee/nixos.nix ./home/jee/nixpkgs.nix];
+        modules = [ ./home/jee/nixos.nix ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;

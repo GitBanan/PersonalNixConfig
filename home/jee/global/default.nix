@@ -26,6 +26,14 @@
     };
   };
 
+  nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
+
   systemd.user.startServices = "sd-switch"; # Nicely reload system units when changing configs
 
   # Enable home-manager and git
@@ -37,7 +45,6 @@
   home = {
     username = lib.mkDefault "jee";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = lib.mkDefault "23.11"; # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
       FLAKE = "$HOME/MainDirectory/PC/Linux/Nix/nix-config/";
@@ -47,9 +54,13 @@
     #   "/persist/home/jee" = {
     #     defaultDirectoryMethod = "symlink";
     #     directories = [
+    #       "MainDirectory"
+    #       "Sync"
+    #       "VM"
     #       "Documents"
     #       "Downloads"
     #       "Pictures"
+    #       "Music"
     #       "Videos"
     #       ".local/bin"
     #       ".local/share/nix" # trusted settings and repl history
@@ -57,5 +68,8 @@
     #     allowOther = true;
     #   };
     # };
+
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    stateVersion = lib.mkDefault "23.11";
   };
 }

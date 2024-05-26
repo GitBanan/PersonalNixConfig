@@ -14,6 +14,8 @@
   environment.persistence = {
     "/persist" = {
       directories = [
+        "/var/lib/bluetooth"
+        "/etc/NetworkManager/system-connections"
         "/var/lib/systemd"
         "/var/lib/nixos"
         "/var/log"

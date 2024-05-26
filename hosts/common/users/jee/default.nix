@@ -8,7 +8,7 @@
 in {
   # imports = [./packages.nix];
 
-  users.mutableUsers = false;
+  # users.mutableUsers = false;
   users.users.jee = {
     isNormalUser = true;
     # shell = pkgs.fish;
@@ -22,13 +22,7 @@ in {
         "network"
         "git"
         "libvirtd"
-        # "minecraft"
-        # "wireshark"
-        # "i2c"
-        # "mysql"
-        # "docker"
-        # "podman"
-        # "deluge"
+        "docker"
       ];
 
     # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/jee/ssh.pub);

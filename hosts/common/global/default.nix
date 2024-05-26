@@ -8,8 +8,11 @@
     [
       inputs.home-manager.nixosModules.home-manager
       # ./acme.nix
+      ./audio.nix
       # ./auto-upgrade.nix
+      ./boot.nix
       # ./fish.nix
+      ./kde.nix
       ./locale.nix
       ./nix.nix
       # ./openssh.nix
@@ -34,6 +37,7 @@
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
     config = {
+      # Disable if you don't want unfree packages
       allowUnfree = true;
     };
   };

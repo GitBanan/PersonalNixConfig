@@ -23,173 +23,23 @@
 
     ../common/global
     ../common/users/jee
+
+    ../common/optional/vm.nix
+    # ../common/optional/passthrough.nix
   ];
-
-  # nixpkgs = {
-    # You can add overlays here
-    # overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      # outputs.overlays.additions
-      # outputs.overlays.modifications
-      # outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    # ];
-    # Configure your nixpkgs instance
-    # config = {
-      # Disable if you don't want unfree packages
-      # allowUnfree = true;
-    # };
-  # };
-
-  # Using UEFI bootloader
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      systemd-boot.configurationLimit = 20; # Maximum generations
-      efi.canTouchEfiVariables = true;
-      timeout = 1; # Time to confirm generation
-    };
-
-    # kernelPackages = pkgs.linuxPackages_latest;
-    # kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=1002:73df,1002:ab28" ];
-    # kernelModules = [ "kvm-intel" ];
-    # initrd.availableKernelModules = [ "amdgpu" "vfio-pci" ];
-    # initrd.preDeviceCommands = ''
-    #   DEVS="00003:00.0 00003:00.1"
-    #   for DEV in $DEVS; do
-    #     echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
-    #   done
-    #   modprobe -i vfio-pci
-    # '';
-  };
-
-  # Setup VM
-  virtualisation = {
-    waydroid.enable = true;
-    # virtualbox.host.enable = true; # For VirtualBox
-
-    libvirtd = {
-      enable = true;
-      qemu = {
-        ovmf.enable = true;
-        runAsRoot = false;
-      };
-      onBoot = "ignore";
-      onShutdown = "shutdown";
-    };
-  };
-
-  # Setup hypervisor for VM
-  # dconf.settings = {
-  #   "org/virt-manager/virt-manager/connections" = {
-  #     autoconnect = ["qemu:///system"];
-  #     uris = ["qemu:///system"];
-  #   };
-  # };
-  # users.extraGroups.vboxusers.members = [ "jee" ]; # For VirtualBox
 
   networking = {
     # Set your hostname
     hostName = "nixos";
-
-    # Enable networking, choose 1
-    networkmanager = {
-      enable = true; # Easier to use
-      # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-      insertNameservers = [ "https://dns.nextdns.io/ff152f" ];
-    };
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  };
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.desktopManager.plasma6.enable = true; # Enable Plasma 6
-
-  services = {
-    xserver = {
-      # Configure keymap in X11
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-
-      # Enable the X11 windowing system.
-      enable = true;
-      videoDrivers = [ "amdgpu" ];
-    };
-    # Enable the X11 windowing system.
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true; # Enable Plasma 6
-    };
   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
-    powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  };
-
-  # Enable auto update
-  system.autoUpgrade = {
-    enable = true;
-    channel = "https://nixos.org/channels/nixos-unstable";
-    dates = "weekly";
-  };
-
-  # Start Zrok
-  systemd.user.services.zrok-jellyfin-service = {
-    enable = true;
-    after = [ "jellyfin.service" ];
-    wantedBy = [ "multi-user.target" ];
-    description = "Zrok service for Jellyfin";
-    serviceConfig = {
-        Type = "exec";
-        ExecStart = ''/home/jee/MainDirectory/PC/Linux/Scripts/zrok.sh'';
-    };
-  };
-
   programs = {
-  # Enable optional KDE features
+    # Enable optional KDE features
     kdeconnect.enable = true;
     firefox.enable = true;
-
-    # Enable home-manager and git
-    # home-manager.enable = true;
-    git.enable = true;
-
-    virt-manager.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
