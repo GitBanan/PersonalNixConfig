@@ -31,38 +31,40 @@
   #  };
   #};
 
-  # Setup Arr stacks
-  sonarr = {
-    enable = true;
-    user = "jee";
-    openFirewall = true;
-    dataDir = "/home/jee/.config/sonarr";
-  };
-  radarr = {
-    enable = true;
-    user = "jee";
-    openFirewall = true;
-    dataDir = "/home/jee/.config/radarr";
-  };
-  prowlarr = {
-    enable = true;
-    openFirewall = true;
-  };
+  services = {
+    # Setup Arr stacks
+    sonarr = {
+      enable = true;
+      user = "jee";
+      openFirewall = true;
+      dataDir = "/home/jee/.config/sonarr";
+    };
+    radarr = {
+      enable = true;
+      user = "jee";
+      openFirewall = true;
+      dataDir = "/home/jee/.config/radarr";
+    };
+    prowlarr = {
+      enable = true;
+      openFirewall = true;
+    };
 
-  # Setup Media server
-  jellyfin = {
-    enable = true;
-    user = "jee";
-    openFirewall = true;
-    configDir = "/home/jee/.config/jellyfin";
-    dataDir = "/home/jee/.local/share/jellyfin";
-    cacheDir = "/home/jee/.cache/jellyfin";
-  };
+    # Setup Media server
+    jellyfin = {
+      enable = true;
+      user = "jee";
+      openFirewall = true;
+      configDir = "/home/jee/.config/jellyfin";
+      dataDir = "/home/jee/.local/share/jellyfin";
+      cacheDir = "/home/jee/.cache/jellyfin";
+    };
 
-  # Setup jellyseerr
-  jellyseerr = {
-    enable = true;
-    port = 5055;
-    openFirewall = true;
+    # Setup jellyseerr
+    jellyseerr = {
+      enable = true;
+      port = 5055;
+      openFirewall = true;
+    };
   };
 }
