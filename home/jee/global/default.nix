@@ -26,14 +26,6 @@
     };
   };
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
   systemd.user.startServices = "sd-switch"; # Nicely reload system units when changing configs
 
   # Enable home-manager and git
