@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-cd /home/jee/MainDirectory/PC/Linux/Nix/nix-config/
+cd /home/jee/MainDirectory/PC/Linux/Nix/nix-config/ || exit
 
 # Git
 if [[ "$1" =~ 'g' ]]; then
-    gacp $2
+    gacp "$2"
 fi
 
 # Sudo
