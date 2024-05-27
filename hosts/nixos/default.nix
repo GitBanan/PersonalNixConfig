@@ -27,6 +27,7 @@
     ../common/optional/gaming.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/libre.nix
+    ../common/optional/openssh.nix
     ../common/optional/passthrough.nix
     ../common/optional/python.nix
     ../common/optional/server.nix

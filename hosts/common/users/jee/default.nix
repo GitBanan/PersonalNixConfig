@@ -9,8 +9,6 @@ in {
   # users.mutableUsers = false;
   users.users.jee = {
     # You can set an initial password for your user.
-    # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-    # Be sure to change it (using passwd) after rebooting!
     initialPassword = "password";
     isNormalUser = true;
     description = "Jee";
@@ -26,13 +24,17 @@ in {
         "audio"
       ]
       ++ ifTheyExist [
+        "git"
         "networkmanager"
         "network"
-        "git"
+
+        "docker"
+
         "libvirtd"
         "qemu-libvirtd"
         "disk"
-        "docker"
+        "kvm"
+        "input"
       ];
 
     # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/jee/ssh.pub);
