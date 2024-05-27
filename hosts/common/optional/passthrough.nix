@@ -4,16 +4,61 @@
   ...
 }: let
   # VM_UUID = "ad2632db-0da0-4204-98b3-0592a185ebd0";
-  # VIRSH_GPU_VIDEO = "0000:03:00.0";
-  # VIRSH_GPU_AUDIO = "0000:03:00.1";
+  VIRSH_GPU_VIDEO = "0000:03:00.0";
+  VIRSH_GPU_AUDIO = "0000:03:00.1";
   # VIRSH_USB1 = "0000:00:14.0";
 
   startHook = ''
-    echo "Start" > /home/jee/VM/start
+    set -x
+
+    systemctl stop display-manager
+
+    echo 0 > /sys/class/vtconsole/vtcon0/bind
+    echo 0 > /sys/class/vtconsole/vtcon1/bind
+
+    #uncomment the next line if you're getting a black screen
+    echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
+
+    sleep 10
+
+    modprobe -r amdgpu
+    modprobe -r snd_hda_intel
+
+    virsh nodedev-detach ${VIRSH_GPU_VIDEO}
+    virsh nodedev-detach ${VIRSH_GPU_AUDIO}
+
+    sleep 10
+
+    modprobe vfio
+    modprobe vfio_pci
+    modprobe vfio_iommu_type1
   '';
 
   stopHook = ''
-    echo "stop" > /home/jee/VM/stop
+    set -x
+
+    modprobe -r vfio
+    modprobe -r vfio_pci
+    modprobe -r vfio_iommu_type1
+
+    sleep 10
+
+    virsh nodedev-reattach ${VIRSH_GPU_VIDEO}
+    virsh nodedev-reattach ${VIRSH_GPU_AUDIO}
+
+    echo 1 > /sys/class/vtconsole/vtcon0/bind
+    echo 1 > /sys/class/vtconsole/vtcon1/bind
+
+    sleep 3
+
+    echo "efi-framebuffer.0" > /sys/bus/platform/drivers/efi-framebuffer/bind
+
+    modprobe amdgpu
+    modprobe snd_hda_intel
+
+    sleep 3
+
+    systemctl start display-manager
   '';
 in {
   boot = {
