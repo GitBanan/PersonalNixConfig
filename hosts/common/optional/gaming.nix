@@ -12,6 +12,10 @@
     winetricks
     protontricks
     protonup-qt
+
+    lutris
+    legendary-gl
+    rare # GUI for legendary
   ];
 
   # Install Steam

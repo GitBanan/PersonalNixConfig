@@ -9,26 +9,39 @@
   # VIRSH_USB1 = "0000:00:14.0";
 
   startHook = ''
-    echo ''$VIRSH_GPU_VIDEO > "/sys/bus/pci/devices/''${VIRSH_GPU_VIDEO}/driver/unbind"
-    echo ''$VIRSH_GPU_AUDIO > "/sys/bus/pci/devices/''${VIRSH_GPU_AUDIO}/driver/unbind"
+    echo "Start" > /home/jee/VM/Start
+
+    #uncomment the next line if you're getting a black screen
+    echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/unbind
+
+    echo "${VIRSH_GPU_VIDEO}" > "/sys/bus/pci/devices/${VIRSH_GPU_VIDEO}/driver/unbind"
+    echo "${VIRSH_GPU_AUDIO}" > "/sys/bus/pci/devices/${VIRSH_GPU_AUDIO}/driver/unbind"
 
     sync
     echo "3" > /proc/sys/vm/drop_caches
     sync
     echo "1" > /proc/sys/vm/compact_memory
+
+    echo "End" > /home/jee/VM/Start
   '';
 
   stopHook = ''
-    echo ''$VIRSH_GPU_VIDEO > "/sys/bus/pci/devices/''${VIRSH_GPU_VIDEO}/driver/unbind"
-    echo ''$VIRSH_GPU_AUDIO > "/sys/bus/pci/devices/''${VIRSH_GPU_AUDIO}/driver/unbind"
+    echo "Start" > /home/jee/VM/End
 
-    echo ''$VIRSH_GPU_VIDEO > /sys/bus/pci/drivers/amdgpu/bind
-    echo ''$VIRSH_GPU_AUDIO > /sys/bus/pci/drivers/snd_hda_intel/bind
+    echo "${VIRSH_GPU_VIDEO}" > "/sys/bus/pci/devices/${VIRSH_GPU_VIDEO}/driver/unbind"
+    echo "${VIRSH_GPU_AUDIO}" > "/sys/bus/pci/devices/${VIRSH_GPU_AUDIO}/driver/unbind"
+
+    echo "efi-framebuffer.0" > /sys/bus/platform/drivers/efi-framebuffer/bind
+
+    echo "${VIRSH_GPU_VIDEO}" > /sys/bus/pci/drivers/amdgpu/bind
+    echo "${VIRSH_GPU_AUDIO}" > /sys/bus/pci/drivers/snd_hda_intel/bind
+
+    echo "End" > /home/jee/VM/End
   '';
 in {
   boot = {
     # kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [ "intel_iommu=on" "iommu=pt" ];
+    kernelParams = [ "intel_iommu=on" "iommu=pt" "iommu=1" "disable_idle_d3=1" "video=efifb:off" ];
     kernelModules = [ "kvm-intel" "amdgpu" "vfio" "vfio_iommu_type1" "vfio-pci" ];
 
     # CHANGE: Don't forget to put your own PCI IDs here
@@ -56,8 +69,8 @@ in {
   # };
 
   virtualisation.libvirtd.hooks.qemu = {
-    "win10" = pkgs.writeShellScript "win10.sh" ''
-      if [ ''$1 = "win10" ] || [ ''$1 = "win11" ]; then
+    "passHook" = pkgs.writeShellScript "passHook.sh" ''
+      if [ ''$1 = "win10-pass" ] || [ ''$1 = "win11-pass" ]; then
         if [ ''$2 = "prepare" ] && [ ''$3 = "begin" ]; then
           ${startHook}
         fi
