@@ -3,6 +3,8 @@
   # config,
   ...
 }: {
+  programs.gamemode.enable = true;
+
   environment.systemPackages = with pkgs; [
     armcord # Better options?
 
@@ -16,6 +18,7 @@
     lutris
     legendary-gl
     rare # GUI for legendary
+    heroic
   ];
 
   # Install Steam

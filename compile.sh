@@ -8,7 +8,9 @@ cd /home/jee/MainDirectory/PC/Linux/Nix/nix-config/ || exit
 # Git
 if [[ "$1" =~ 'g' ]]; then
     # sudo -u "$USER" gacp "$2"
-    gacp "$2"
+    git add .
+    git commit -am "$2"
+    git push
 fi
 
 if [[ "$1" =~ 'v' ]]; then

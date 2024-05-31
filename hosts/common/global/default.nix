@@ -10,7 +10,6 @@
       ./audio.nix
       ./boot.nix
       # ./fish.nix
-      ./gamemode.nix
       ./kde.nix
       ./locale.nix
       ./network.nix
