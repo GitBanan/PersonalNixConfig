@@ -13,7 +13,8 @@
     # Import modules from other flakes (such as nixos-hardware):
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-nvidia
-    inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardware.nixosModules.common-pc-laptop
+    inputs.hardware.nixosModules.common-pc-laptop-ssd
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -23,6 +24,8 @@
 
     ../common/global
     ../common/users/jee
+
+    # ../common/optional/nvidia.nix
 
     ../common/optional/gaming.nix
     ../common/optional/hardware-acceleration.nix
@@ -36,6 +39,13 @@
     # ../common/optional/vm.nix
     # ../common/optional/waydroid.nix
   ];
+
+  hardware.nvidia.prime = {
+      # Make sure to use the correct Bus ID values for your system!
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+      # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
+  };
 
   networking = {
     # Set your hostname
