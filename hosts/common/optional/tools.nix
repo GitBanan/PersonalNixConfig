@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     vivaldi
     haruna # Video player
+    jellyfin-media-player
     easyeffects
     qalculate-qt
 

@@ -31,7 +31,12 @@
   # Enable home-manager and git
   programs = {
     home-manager.enable = true;
-    git.enable = true;
+
+    git = {
+      enable = true;
+      userName  = "GitBanan";
+      userEmail = "dumping.runner332@addy.io";
+    };
   };
 
   home = {
@@ -39,7 +44,7 @@
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     sessionPath = ["$HOME/.local/bin"];
     sessionVariables = {
-      FLAKE = "$HOME/MainDirectory/PC/Linux/Nix/nix-config/";
+      FLAKE = "$HOME/Nix/PersonalNixConfig/";
     };
 
     # persistence = {

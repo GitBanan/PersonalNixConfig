@@ -84,6 +84,13 @@
           inherit inputs outputs;
         };
       };
+
+      NitroV = lib.nixosSystem {
+        modules = [ ./hosts/NitroV ];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
     };
 
     # Standalone home-manager configuration entrypoint
@@ -92,6 +99,14 @@
       # Replace with your username@hostname
       "jee@nixos" = lib.homeManagerConfiguration {
         modules = [ ./home/jee/nixos.nix ];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
+      "jee@NitroV" = lib.homeManagerConfiguration {
+        modules = [ ./home/jee/NitroV.nix ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;

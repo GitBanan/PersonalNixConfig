@@ -3,26 +3,44 @@
 # Sudo
 # [ "$UID" -eq 0 ] || exec sudo bash "$0" "$@"
 
-cd /home/jee/MainDirectory/PC/Linux/Nix/nix-config/ || exit
+cd /home/jee/Nix/PersonalNixConfig/ || exit
+
+git_comment=''
+host="$HOSTNAME" || host=''
+home_flag='false'
+update_flag='false'
+verify_flag='false'
+
+while getopts 'g:h:Huv' flag; do
+  case "${flag}" in
+    g) git_comment="${OPTARG}" ;;
+    h) host="${OPTARG}" ;;
+    H) home_flag='true' ;;
+    u) update_flag='true' ;;
+    v) verify_flag='true' ;;
+    *) echo "Setting up ${HOME}" || exit
+       exit 1 ;;
+  esac
+done
 
 # Git
-if [[ "$1" =~ 'g' ]]; then
+if [[ "$git_comment" != '' ]]; then
     # sudo -u "$USER" gacp "$2"
     git add .
-    git commit -am "$2"
+    git commit -am "$git_comment"
     git push
 fi
 
-if [[ "$1" =~ 'v' ]]; then
+if [[ "$verify_flag" == 'true' ]]; then
     nix-store --repair --verify --check-contents
 fi
 
-if [[ "$1" =~ 'u' ]]; then
+if [[ "$update_flag" == 'true' ]]; then
     nix flake update
 fi
 
-if [[ "$1" =~ 'h' ]]; then
-    home-manager switch --flake .#jee@nixos
-else
-    sudo nixos-rebuild switch --flake .#nixos
+nixos-rebuild --flake .\#$host switch --target-host $host --use-remote-sudo
+
+if [[ "$home_flag" == 'true' ]]; then
+    home-manager --flake switch .#jee@$host
 fi
