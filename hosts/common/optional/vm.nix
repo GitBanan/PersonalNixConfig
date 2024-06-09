@@ -1,4 +1,8 @@
 {
+  pkgs,
+  # config,
+  ...
+}: {
   # Setup VM
   virtualisation = {
     libvirtd = {
@@ -18,4 +22,8 @@
   programs = {
     virt-manager.enable = true;
   };
+
+  environment.systemPackages = [
+    pkgs.virtiofsd
+  ];
 }

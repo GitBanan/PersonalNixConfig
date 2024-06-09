@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
-
+  # config,
+  # lib,
+  # pkgs,
+  ...
+}: {
   # Enable OpenGL 32 bit support
   hardware.opengl.driSupport32Bit = true;
 
@@ -38,5 +41,4 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-  ...
 }

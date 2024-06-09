@@ -85,8 +85,8 @@
         };
       };
 
-      NitroV = lib.nixosSystem {
-        modules = [ ./hosts/NitroV ];
+      nitro = lib.nixosSystem {
+        modules = [ ./hosts/nitro ];
         specialArgs = {
           inherit inputs outputs;
         };
@@ -105,8 +105,8 @@
         };
       };
 
-      "jee@NitroV" = lib.homeManagerConfiguration {
-        modules = [ ./home/jee/NitroV.nix ];
+      "jee@nitro" = lib.homeManagerConfiguration {
+        modules = [ ./home/jee/nitro.nix ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;

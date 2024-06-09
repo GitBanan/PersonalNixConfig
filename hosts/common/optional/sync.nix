@@ -1,20 +1,8 @@
 {
-  pkgs,
+  # pkgs,
   # config,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
-    # All required packages for jellyfin
-    jellyfin
-    jellyfin-web
-    jellyfin-ffmpeg
-    jellyfin-media-player
-
-    qbittorrent
-
-    zrok
-  ];
-
   services = {
     # Syncthing service
     syncthing = {

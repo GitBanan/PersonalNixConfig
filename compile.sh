@@ -39,8 +39,8 @@ if [[ "$update_flag" == 'true' ]]; then
     nix flake update
 fi
 
-nixos-rebuild --flake .\#$host switch --target-host $host --use-remote-sudo
+sudo nixos-rebuild --flake ".#$host" switch
 
 if [[ "$home_flag" == 'true' ]]; then
-    home-manager --flake switch .#jee@$host
+    home-manager --flake switch ".#jee@$host"
 fi
