@@ -42,5 +42,5 @@ fi
 sudo nixos-rebuild --flake ".#$host" switch
 
 if [[ "$home_flag" == 'true' ]]; then
-    home-manager --flake switch ".#jee@$host"
+    home-manager --flake ".#jee@$host" switch
 fi
