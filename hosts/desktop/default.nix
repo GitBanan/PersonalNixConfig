@@ -39,7 +39,7 @@
 
   networking = {
     # Set your hostname
-    hostName = "nixos";
+    hostName = "desktop";
   };
 
   # Enable CUPS to print documents.

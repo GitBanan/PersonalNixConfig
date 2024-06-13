@@ -78,8 +78,8 @@
     # Available through 'nixos-rebuild switch --flake .#your-hostname'
     nixosConfigurations = {
       # Replace with your hostname
-      nixos = lib.nixosSystem {
-        modules = [ ./hosts/nixos ];
+      desktop = lib.nixosSystem {
+        modules = [ ./hosts/desktop ];
         specialArgs = {
           inherit inputs outputs;
         };
@@ -97,8 +97,8 @@
     # Available through 'home-manager switch --flake .#your-username@your-hostname'
     homeConfigurations = {
       # Replace with your username@hostname
-      "jee@nixos" = lib.homeManagerConfiguration {
-        modules = [ ./home/jee/nixos.nix ];
+      "jee@desktop" = lib.homeManagerConfiguration {
+        modules = [ ./home/jee/desktop.nix ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
