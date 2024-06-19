@@ -8,6 +8,9 @@
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
   };
   hardware.opengl = {
+    # Enable OpenGL 32 bit support
+    driSupport32Bit = true;
+
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
