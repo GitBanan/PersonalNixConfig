@@ -5,10 +5,12 @@
 }: {
   environment.systemPackages = with pkgs; [
     vivaldi
-    haruna # Video player
-    jellyfin-media-player
     easyeffects
     qalculate-qt
+    haruna # Video player
+
+    jellyfin-media-player
+    mpvScripts.mpris # Media keys support for jellyfin
 
     vscodium
     libxml2 # Format XML
