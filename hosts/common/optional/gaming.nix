@@ -19,6 +19,7 @@
     legendary-gl
     rare # GUI for legendary
     heroic
+    mangohud
   ];
 
   # Install Steam
