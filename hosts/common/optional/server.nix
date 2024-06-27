@@ -54,6 +54,9 @@
   };
 
   services = {
+    # Tailscale
+    tailscale.enable = true;
+
     # Setup Arr stacks
     sonarr = {
       enable = true;
