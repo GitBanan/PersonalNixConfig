@@ -12,6 +12,10 @@ in {
     settings = {
       # substituters = lib.mkAfter ["https://cache.m7.rs"];
       # trusted-public-keys = ["cache.m7.rs:kszZ/NSwE/TjhOcPPQ16IuUiuRSisdiIwhKZCxguaWg="];
+
+      substituters = [ "https://ezkea.cachix.org" ];
+      trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
+
       trusted-users = [
         "root"
         "@wheel"
@@ -31,9 +35,6 @@ in {
         "nixos-test"
       ];
       flake-registry = ""; # Disable global flake registry
-
-      substituters = [ "https://ezkea.cachix.org" ];
-      trusted-public-keys = [ "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI=" ];
     };
 
     # Garbage collect

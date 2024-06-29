@@ -47,6 +47,7 @@
     nixpkgs,
     home-manager,
     systems,
+    aagl,
     ...
   } @ inputs: let
     inherit (self) outputs;
