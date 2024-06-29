@@ -1,7 +1,7 @@
 # configuration.nix
 {
   # config,
-  # pkgs,
+  pkgs,
   ...
 }:
 let
