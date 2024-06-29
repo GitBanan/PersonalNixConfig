@@ -28,7 +28,8 @@
     ../common/optional/nvidia.nix
     ../common/optional/nvidia-prime.nix
 
-    ../common/optional/aagl-original.nix
+    # ../common/optional/aagl-original.nix
+    ../common/optional/aagl.nix
     ../common/optional/gaming.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/libre.nix

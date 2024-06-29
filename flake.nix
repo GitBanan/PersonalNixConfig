@@ -3,9 +3,9 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11"; # Nix Packages (Default)
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05"; # Nix Packages (Default)
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable Nix Packages
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
     hardware.url = "github:nixos/nixos-hardware/master"; # Hardware Specific Configurations
     systems.url = "github:nix-systems/default-linux"; # Supported systems for your flake packages, shell, etc.
