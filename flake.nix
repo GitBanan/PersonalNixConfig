@@ -37,7 +37,8 @@
     };
 
     aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
+      # url = "github:ezKEa/aagl-gtk-on-nix";
+      url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -86,14 +87,24 @@
     nixosConfigurations = {
       # Replace with your hostname
       desktop = lib.nixosSystem {
-        modules = [ ./hosts/desktop ];
+        modules = [
+          ./hosts/desktop
+        ];
         specialArgs = {
           inherit inputs outputs;
         };
       };
 
       nitro = lib.nixosSystem {
-        modules = [ ./hosts/nitro ];
+        modules = [
+          ./hosts/nitro
+          {
+            imports = [ aagl.nixosModules.default ];
+            nix.settings = aagl.nixConfig; # Set up Cachix
+            programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
+            programs.wavey-launcher.enable = true;
+          }
+        ];
         specialArgs = {
           inherit inputs outputs;
         };
