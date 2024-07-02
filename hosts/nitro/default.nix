@@ -31,6 +31,7 @@
     # ../common/optional/aagl-original.nix
     # ../common/optional/aagl.nix
     ../common/optional/gaming.nix
+    ../common/optional/gst.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/libre.nix
     ../common/optional/openssh.nix

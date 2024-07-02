@@ -25,6 +25,7 @@
     ../common/users/jee
 
     ../common/optional/gaming.nix
+    ../common/optional/gst.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/libre.nix
     ../common/optional/openssh.nix
