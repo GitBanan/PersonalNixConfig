@@ -20,12 +20,14 @@
           "Pixel7" = { id = "BEA64PF-MADNI3F-4ONKTOA-FMHRRAA-7IBPNBB-FGUYJUL-VSS7ON7-B62WYQC"; };
         };
         folders = {
-          "Aegis" = {
-            path = "/home/jee/Sync/Aegis";
+          "AppBackups" = {
+            path = "/home/jee/Sync/AppBackups";
             devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
-              params.cleanoutDays = "7";
+              params = {
+                cleanoutDays = "7";
+              };
             };
           };
           "Contacts" = {
