@@ -28,6 +28,16 @@
               params.cleanoutDays = "7";
             };
           };
+          "Contacts" = {
+            path = "/home/jee/Sync/Contacts";
+            devices = [ "Pixel7" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
           "DCIM" = {
             path = "/home/jee/Sync/DCIM";
             devices = [ "Pixel7" ];
