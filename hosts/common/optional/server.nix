@@ -35,7 +35,7 @@
   systemd.services = {
     restart-jellyfin = {
       description = "Restart Jellyfin";
-      enable = true;
+      enable = false;
       after = [ "jellyfin.service" ];
       wantedBy = [ "multi-user.target" ]; # Starts on boot
 
@@ -54,9 +54,6 @@
   };
 
   services = {
-    # Tailscale
-    tailscale.enable = true;
-
     # Setup Arr stacks
     sonarr = {
       enable = true;

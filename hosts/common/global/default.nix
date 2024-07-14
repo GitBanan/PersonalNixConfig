@@ -19,7 +19,7 @@
       # ./podman.nix
       # ./sops.nix
       ./systemd-initrd.nix
-      # ./tailscale.nix
+      ./tailscale.nix
       ./tools.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
