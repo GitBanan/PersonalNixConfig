@@ -19,6 +19,7 @@
       # ./podman.nix
       # ./sops.nix
       ./systemd-initrd.nix
+      ./swap.nix
       ./tailscale.nix
       ./tools.nix
     ]
