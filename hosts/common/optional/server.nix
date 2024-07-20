@@ -31,28 +31,6 @@
     };
   };
 
-  # Restart Jellyfin if it failes to launch (buggy - temporary fix)
-  systemd.services = {
-    restart-jellyfin = {
-      description = "Restart Jellyfin";
-      enable = false;
-      after = [ "jellyfin.service" ];
-      wantedBy = [ "multi-user.target" ]; # Starts on boot
-
-      serviceConfig = {
-        Type = "simple";
-        User = "jee";
-        Restart = "always";
-        # ExecStart = "sleep 10; systemctl restart jellyfin.service";
-      };
-
-      script = ''
-        sleep 10
-        systemctl restart jellyfin.service
-      '';
-    };
-  };
-
   services = {
     # Setup Arr stacks
     sonarr = {

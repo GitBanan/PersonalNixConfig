@@ -27,6 +27,7 @@
     ../common/optional/gaming.nix
     ../common/optional/gst.nix
     ../common/optional/hardware-acceleration.nix
+    ../common/optional/jellyfin-client.nix
     ../common/optional/libre.nix
     ../common/optional/openssh.nix
     ../common/optional/passthrough.nix
