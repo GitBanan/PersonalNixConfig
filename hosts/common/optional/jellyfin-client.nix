@@ -14,7 +14,7 @@
   system.userActivationScripts = {
     jellyfin-mpris = {
       text = ''
-        ln -s ${pkgs.mpvScripts.mpris}/share/mpv/scripts/mpris.so /home/${USER}/.local/share/jellyfinmediaplayer/scripts/"
+        ln -s ${pkgs.mpvScripts.mpris}/share/mpv/scripts/mpris.so /home/jee/.local/share/jellyfinmediaplayer/scripts/"
       '';
       deps = [];
     };
