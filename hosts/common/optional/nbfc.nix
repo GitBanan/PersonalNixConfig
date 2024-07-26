@@ -1,12 +1,17 @@
+# nbfc.nix
 {
+  config,
+  inputs,
   pkgs,
-  # config,
   ...
-}: {
-  environment.systemPackages = with pkgs; [
-    nbfc-linux.default
-  ];
+}: let
+  myUser = "jee"; #adjust this to your username
+  command = "bin/nbfc_service --config-file '/home/${myUser}/.config/nbfc.json'";
 
+in {
+  environment.systemPackages = with pkgs; [
+    inputs.nbfc-linux.packages.x86_64-linux.default
+  ];
   systemd.services.nbfc_service = {
     enable = true;
     description = "NoteBook FanControl service";
