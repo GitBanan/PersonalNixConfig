@@ -42,6 +42,8 @@ fi
 sudo nixos-rebuild --flake ".#$host" switch
 # sudo nixos-rebuild --flake ".#$host" switch --option eval-cache false
 # sudo nixos-rebuild --flake ".#$host" switch --option eval-cache false --show-trace
+# nix-collect-garbage -d
+# systemctl restart nix-daemon.service
 
 if [[ "$home_flag" == 'true' ]]; then
     home-manager --flake ".#jee@$host" switch

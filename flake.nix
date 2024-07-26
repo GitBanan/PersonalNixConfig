@@ -41,6 +41,11 @@
       url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nbfc-linux = {
+      url = "github:nbfc-linux/nbfc-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -98,12 +103,6 @@
       nitro = lib.nixosSystem {
         modules = [
           ./hosts/nitro
-          {
-            imports = [ aagl.nixosModules.default ];
-            nix.settings = aagl.nixConfig; # Set up Cachix
-            # programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
-            programs.wavey-launcher.enable = true;
-          }
         ];
         specialArgs = {
           inherit inputs outputs;

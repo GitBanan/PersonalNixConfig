@@ -17,7 +17,8 @@
     lzip # Unzip
     pciutils
     xautomation
-    neofetch
+    fastfetch
     android-tools # ADB
+    lm_sensors
   ];
 }
