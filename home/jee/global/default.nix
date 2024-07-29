@@ -47,6 +47,8 @@
       FLAKE = "$HOME/Nix/PersonalNixConfig/";
     };
 
+    enableNixpkgsReleaseCheck = false;
+
     # persistence = {
     #   "/persist/home/jee" = {
     #     defaultDirectoryMethod = "symlink";
