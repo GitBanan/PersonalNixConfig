@@ -20,5 +20,6 @@
     fastfetch
     android-tools # ADB
     lm_sensors
+    krita
   ];
 }
