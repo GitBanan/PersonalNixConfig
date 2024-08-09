@@ -9,6 +9,7 @@
     easyeffects
     qalculate-qt
     haruna # Video player
+    spotube
 
     vscodium
     libxml2 # Format XML
@@ -21,5 +22,6 @@
     android-tools # ADB
     lm_sensors
     krita
+    poppler_utils
   ];
 }
