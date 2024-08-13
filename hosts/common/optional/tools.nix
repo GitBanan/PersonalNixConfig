@@ -10,6 +10,7 @@
     qalculate-qt
     haruna # Video player
     spotube
+    freetube
 
     vscodium
     libxml2 # Format XML
