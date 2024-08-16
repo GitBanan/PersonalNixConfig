@@ -30,19 +30,19 @@
 
     # ../common/optional/aagl-original.nix
     # ../common/optional/aagl.nix
-    ../common/optional/gaming.nix
-    ../common/optional/gst.nix
-    ../common/optional/hardware-acceleration.nix
-    ../common/optional/jellyfin-client.nix
-    ../common/optional/libre.nix
-    ../common/optional/nbfc.nix
-    ../common/optional/openssh.nix
+    #../common/optional/gaming.nix
+    #../common/optional/gst.nix
+    #../common/optional/hardware-acceleration.nix
+    #../common/optional/jellyfin-client.nix
+    #../common/optional/libre.nix
+    #../common/optional/nbfc.nix
+    #../common/optional/openssh.nix
     # ../common/optional/passthrough.nix
-    ../common/optional/python.nix
+    #../common/optional/python.nix
     # ../common/optional/server.nix
-    ../common/optional/sync.nix
-    ../common/optional/tools.nix
-    ../common/optional/vm.nix
+    #../common/optional/sync.nix
+    #../common/optional/tools.nix
+    #../common/optional/vm.nix
     # ../common/optional/waydroid.nix
   ];
 
