@@ -18,6 +18,7 @@
 
     lzip # Unzip
     pciutils
+    lshw
     xautomation
     fastfetch
     android-tools # ADB

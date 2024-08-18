@@ -15,11 +15,10 @@
       ./network.nix
       # ./nix-ld.nix
       ./nix.nix
-      # ./optin-persistence.nix
       # ./podman.nix
       # ./sops.nix
-      ./systemd-initrd.nix
       ./swap.nix
+      ./systemd-initrd.nix
       ./tailscale.nix
       ./tools.nix
     ]
