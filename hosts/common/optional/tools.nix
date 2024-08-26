@@ -25,5 +25,7 @@
     lm_sensors
     krita
     poppler_utils
+    unrar
+    p7zip
   ];
 }
