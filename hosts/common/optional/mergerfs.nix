@@ -7,9 +7,9 @@
     mergerfs
   ];
 
-  fileSystems."/storage" = {
-  fsType = "fuse.mergerfs";
-  device = "/mnt/disks/*";
-  options = ["cache.files=partial" "dropcacheonclose=true" "category.create=mfs"];
-};
+  fileSystems."/storage/pool" = {
+    fsType = "fuse.mergerfs";
+    device = "/mnt/HDD_4TB:/mnt/Jee_HDD";
+    options = ["cache.files=partial" "dropcacheonclose=true" "category.create=mfs"];
+  };
 }
