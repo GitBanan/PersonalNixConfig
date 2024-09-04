@@ -21,6 +21,12 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/6831-4A9C";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  fileSystems."/mnt/980_Pro" =
+    { device = "/dev/disk/by-uuid/53e129a6-a517-423f-af0f-29ab6b6a87ec";
+      fsType = "btrfs";
     };
 
   fileSystems."/mnt/Jee_HDD" =
@@ -28,8 +34,8 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/mnt/980_Pro" =
-    { device = "/dev/disk/by-uuid/53e129a6-a517-423f-af0f-29ab6b6a87ec";
+  fileSystems."/mnt/HDD_4TB" =
+    { device = "/dev/disk/by-uuid/d8831f87-39ce-4b32-987b-0c2eaffbe1c7";
       fsType = "btrfs";
     };
 
@@ -43,6 +49,8 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

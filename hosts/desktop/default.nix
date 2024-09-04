@@ -29,6 +29,7 @@
     ../common/optional/hardware-acceleration.nix
     ../common/optional/jellyfin-client.nix
     ../common/optional/libre.nix
+    ../common/optional/mergerfs.nix
     ../common/optional/openssh.nix
     ../common/optional/passthrough.nix
     ../common/optional/python.nix
