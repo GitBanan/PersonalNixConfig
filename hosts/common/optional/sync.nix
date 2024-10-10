@@ -60,6 +60,16 @@
               };
             };
           };
+          "ProfileSync" = {
+            path = "/home/jee/Sync/ProfileSync";
+            devices = [ "Pixel7" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
           "SeedVault" = {
             path = "/home/jee/Sync/SeedVault";
             devices = [ "Pixel7" ];
