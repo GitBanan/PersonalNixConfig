@@ -40,6 +40,7 @@ if [[ "$update_flag" == 'true' ]]; then
 fi
 
 sudo nixos-rebuild --flake ".#$host" switch
+# sudo nixos-rebuild --flake ".#$host" switch --impure
 # sudo nixos-rebuild --flake ".#$host" switch --option eval-cache false
 # sudo nixos-rebuild --flake ".#$host" switch --option eval-cache false --show-trace
 # nix-collect-garbage -d

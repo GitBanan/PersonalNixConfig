@@ -6,7 +6,7 @@
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
-    armcord # Better options?
+    legcord # Better options?
 
     # Wine
     wineWowPackages.stable

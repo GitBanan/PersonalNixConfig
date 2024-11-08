@@ -15,13 +15,40 @@
     zrok
   ];
 
-  # Start Zrok
+  nixpkgs.config.permittedInsecurePackages = [
+    "qbittorrent-4.6.4" #TODO remove after update https://www.openwall.com/lists/oss-security/2024/10/30/4
+  ];
+
+  # Config Cloudflare tunnel
+  services.cloudflared = {
+    enable = true;
+
+    tunnels = {
+      "b933953f-8ded-497b-b133-5b55ab542b97" = {  # Jellyfin
+        credentialsFile = "%home%/.cloudflared/cert.pem";
+        ingress = {
+          "jellyfin.frostyhill.top" = "http://localhost:8096";
+        };
+        default = "http_status:404";
+      };
+
+      "36f081f1-1fe8-4cbf-8715-be2640cc7149" = {  # Mindustry
+        credentialsFile = "%home%/.cloudflared/cert.pem";
+        ingress = {
+          "mindustry.frostyhill.top" = "http://localhost:6364";
+        };
+        default = "http_status:404";
+      };
+    };
+  };
+
+  # Start Zrok Cloudflare on boot
   systemd.services = {
     zrok-jellyfin = {
       description = "Zrok service for Jellyfin";
       enable = true;
-      after = [ "jellyfin.service" ];
       wantedBy = [ "multi-user.target" ]; # Starts on boot
+      after = [ "jellyfin.service" ];
 
       serviceConfig = {
         Type = "simple";
