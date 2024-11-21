@@ -49,7 +49,7 @@
   services.printing.enable = true;
 
   # For running Epic Games store
-  hardware.opengl.driSupport32Bit = true;
+  # hardware.graphics.enable32Bit = true;
 
   programs = {
     # Enable optional KDE features

@@ -22,20 +22,22 @@
   # Config Cloudflare tunnel
   services.cloudflared = {
     enable = true;
+    user = "jee";
 
     tunnels = {
-      "b933953f-8ded-497b-b133-5b55ab542b97" = {  # Jellyfin
-        credentialsFile = "%home%/.cloudflared/cert.pem";
+      "8e02d1f1-2723-4558-9b3b-b99a67269df2" = {
+        credentialsFile = "/home/jee/.cloudflared/8e02d1f1-2723-4558-9b3b-b99a67269df2.json";
         ingress = {
-          "jellyfin.frostyhill.top" = "http://localhost:8096";
-        };
-        default = "http_status:404";
-      };
+          "frostyhill.top/jellyfin" = { # Jellyfin
+            service = "http://localhost:8096";
+          };
+          "jellyfin.frostyhill.top" = { # Jellyfin
+            service = "http://localhost:8096";
+          };
 
-      "36f081f1-1fe8-4cbf-8715-be2640cc7149" = {  # Mindustry
-        credentialsFile = "%home%/.cloudflared/cert.pem";
-        ingress = {
-          "mindustry.frostyhill.top" = "http://localhost:6364";
+          "frostyhill.top/mindustry" = { # Mindustry
+            service = "http://localhost:6364";
+          };
         };
         default = "http_status:404";
       };
