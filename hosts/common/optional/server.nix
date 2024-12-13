@@ -16,7 +16,7 @@
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
-    "qbittorrent-4.6.4" #TODO remove after update https://www.openwall.com/lists/oss-security/2024/10/30/4
+    "aspnetcore-runtime-wrapped-6.0.36"
   ];
 
   # Config Cloudflare tunnel
