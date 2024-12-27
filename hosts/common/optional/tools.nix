@@ -4,8 +4,6 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    vivaldi
-
     easyeffects
     qalculate-qt
     haruna # Video player
