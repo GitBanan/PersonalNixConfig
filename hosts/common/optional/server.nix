@@ -10,6 +10,7 @@
     jellyfin-ffmpeg
 
     qbittorrent
+    qbittorrent-nox
 
     cloudflared
     zrok
