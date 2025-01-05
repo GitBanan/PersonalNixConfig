@@ -25,5 +25,6 @@
     poppler_utils
     unrar
     p7zip
+    rustdesk-flutter
   ];
 }
