@@ -7,7 +7,8 @@
     easyeffects
     qalculate-qt
     haruna # Video player
-    spotube
+    # spotube
+    nuclear
     freetube
 
     vscodium
