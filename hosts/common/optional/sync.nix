@@ -60,6 +60,16 @@
               };
             };
           };
+          "Freetube" = {
+            path = "/home/jee/Sync/Freetube";
+            devices = [ "Pixel7" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
           "ProfileSync" = {
             path = "/home/jee/Sync/ProfileSync";
             devices = [ "Pixel7" ];
