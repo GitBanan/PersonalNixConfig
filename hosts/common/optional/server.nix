@@ -83,6 +83,10 @@
       enable = true;
       openFirewall = true;
     };
+    flaresolverr = {
+      enable = true;
+      openFirewall = true;
+    };
     lidarr = {
       enable = true;
       user = "jee";

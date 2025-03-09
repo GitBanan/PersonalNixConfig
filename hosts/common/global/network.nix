@@ -17,10 +17,10 @@
     resolved = {
       enable = true;
       extraConfig = ''
-        DNS=45.90.28.0#ff152f.dns.nextdns.io
-        DNS=2a07:a8c0::#ff152f.dns.nextdns.io
-        DNS=45.90.30.0#ff152f.dns.nextdns.io
-        DNS=2a07:a8c1::#ff152f.dns.nextdns.io
+        DNS=45.90.28.0#Desktop--Resolve-ff152f.dns.nextdns.io
+        DNS=2a07:a8c0::#Desktop--Resolve-ff152f.dns.nextdns.io
+        DNS=45.90.30.0#Desktop--Resolve-ff152f.dns.nextdns.io
+        DNS=2a07:a8c1::#Desktop--Resolve-ff152f.dns.nextdns.io
         DNSOverTLS=yes
       '';
      };
