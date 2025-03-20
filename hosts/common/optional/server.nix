@@ -26,24 +26,17 @@
   # Config Cloudflare tunnel
   services.cloudflared = {
     enable = true;
-    user = "jee";
+    # user = "jee";
 
     tunnels = {
-      "8e02d1f1-2723-4558-9b3b-b99a67269df2" = {
-        credentialsFile = "/home/jee/.cloudflared/8e02d1f1-2723-4558-9b3b-b99a67269df2.json";
-        ingress = {
-          "frostyhill.top/jellyfin" = { # Jellyfin
-            service = "http://localhost:8096";
-          };
-          "jellyfin.frostyhill.top" = { # Jellyfin
-            service = "http://localhost:8096";
-          };
-
-          "frostyhill.top/mindustry" = { # Mindustry
-            service = "http://localhost:6364";
-          };
-        };
+      "3ec98f6-c196-4dca-975c-a488ec3b5a5c" = {
+        credentialsFile = "/home/jee/.cloudflared/3ec98f6-c196-4dca-975c-a488ec3b5a5c.json";
         default = "http_status:404";
+        #ingress = {
+        #  "*.frostyhill.top" = { # Jellyfin
+        #    service = "http://localhost:8096";
+        #  };
+        #};
       };
     };
   };
@@ -84,7 +77,7 @@
       openFirewall = true;
     };
     flaresolverr = {
-      enable = true;
+      enable = false;
       openFirewall = true;
     };
     lidarr = {
