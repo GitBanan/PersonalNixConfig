@@ -1,4 +1,8 @@
 {
+  pkgs,
+  # config,
+  ...
+}: {
   networking = {
     # Enable networking, choose 1
     networkmanager = {
@@ -13,6 +17,11 @@
   };
 
   services = {
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn; #GUI
+    };
+
     # Enable system-resolved
     resolved = {
       enable = true;

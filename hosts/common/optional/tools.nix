@@ -10,6 +10,7 @@
     # spotube
     nuclear
     freetube
+    # mullvad-vpn
 
     vscodium
     libxml2 # Format XML
@@ -26,6 +27,6 @@
     poppler_utils
     unrar
     p7zip
-    rustdesk-flutter
+    # rustdesk-flutter
   ];
 }
