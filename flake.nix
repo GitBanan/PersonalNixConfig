@@ -5,7 +5,7 @@
     # Nixpkgs
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11"; # Nix Packages (Default)
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable Nix Packages
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
     hardware.url = "github:nixos/nixos-hardware/master"; # Hardware Specific Configurations
     systems.url = "github:nix-systems/default-linux"; # Supported systems for your flake packages, shell, etc.
@@ -47,7 +47,6 @@
     nixpkgs,
     home-manager,
     systems,
-    aagl,
     ...
   } @ inputs: let
     inherit (self) outputs;
