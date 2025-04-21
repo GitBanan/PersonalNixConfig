@@ -22,7 +22,7 @@
         "flakes"
         "ca-derivations"
       ];
-      warn-dirty = false;
+      # warn-dirty = false;
     };
   };
 
@@ -47,7 +47,7 @@
       FLAKE = "$HOME/Nix/PersonalNixConfig/";
     };
 
-    enableNixpkgsReleaseCheck = false;
+    # enableNixpkgsReleaseCheck = false;
 
     # persistence = {
     #   "/persist/home/jee" = {
