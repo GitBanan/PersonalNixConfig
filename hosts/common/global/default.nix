@@ -7,6 +7,7 @@
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
+      ./alias.nix
       ./audio.nix
       ./boot.nix
       # ./fish.nix
