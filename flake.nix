@@ -30,11 +30,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    aagl = {
+    # aagl = {
       # url = "github:ezKEa/aagl-gtk-on-nix";
-      url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+      # url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
+      # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     nbfc-linux = {
       url = "github:nbfc-linux/nbfc-linux";
@@ -102,6 +102,15 @@
           inherit inputs outputs;
         };
       };
+
+      hp260g9 = lib.nixosSystem {
+        modules = [
+          ./hosts/hp260g9
+        ];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
     };
 
     # Standalone home-manager configuration entrypoint
@@ -118,6 +127,14 @@
 
       "jee@nitro" = lib.homeManagerConfiguration {
         modules = [ ./home/jee/nitro.nix ];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
+      "jee@hp260g9" = lib.homeManagerConfiguration {
+        modules = [ ./home/jee/hp260g9.nix ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
