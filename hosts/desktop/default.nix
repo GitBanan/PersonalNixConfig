@@ -24,7 +24,6 @@
     ../common/global
     ../common/users/jee
 
-    ../common/optional/autoupgrade.nix.nix
     ../common/optional/bluetooth.nix
     ../common/optional/cloudflared.nix
     ../common/optional/editing-tools.nix

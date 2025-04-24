@@ -9,6 +9,7 @@
       inputs.home-manager.nixosModules.home-manager
       ./alias.nix
       ./audio.nix
+      ./autoupgrade.nix
       ./boot.nix
       ./fish.nix
       ./locale.nix

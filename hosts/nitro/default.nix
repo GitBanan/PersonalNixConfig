@@ -28,7 +28,6 @@
     ../common/optional/nvidia.nix
     ../common/optional/nvidia-prime.nix
 
-    ../common/optional/autoupgrade.nix.nix
     ../common/optional/bluetooth.nix
     ../common/optional/editing-tools.nix
     ../common/optional/game-tools.nix
