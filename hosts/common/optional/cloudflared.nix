@@ -11,7 +11,27 @@
   };
   users.groups.cloudflared = { };
 
-  systemd.services.my_tunnel = {
+  # Config Cloudflare tunnel
+  services.cloudflared = {
+    enable = true;
+    # user = "jee";
+
+    tunnels = {
+      "3ec98f6-c196-4dca-975c-a488ec3b5a5c" = {
+        credentialsFile = "/home/jee/.cloudflared/3ec98f6-c196-4dca-975c-a488ec3b5a5c.json";
+        default = "http_status:404";
+        #ingress = {
+        #  "*.frostyhill.top" = { # Jellyfin
+        #    service = "http://localhost:8096";
+        #  };
+        #};
+      };
+    };
+  };
+
+  systemd.services.cloudflared-autorun = {
+    description = "Start cloudflared tunnel";
+    enable = false;
     wantedBy = [ "multi-user.target" ];
     # after = [ "network.target" ];
     after = [ "network-online.target" "systemd-resolved.service" ];

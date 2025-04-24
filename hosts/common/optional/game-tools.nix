@@ -6,7 +6,7 @@
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
-    legcord # Better options?
+    legcord # Discord
 
     # Wine
     wineWowPackages.stable

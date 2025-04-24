@@ -1,8 +1,4 @@
-{
-  pkgs,
-  # config,
-  ...
-}: {
+{config, ...}: {
   networking = {
     # Enable networking, choose 1
     networkmanager = {
@@ -17,19 +13,14 @@
   };
 
   services = {
-    mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn; #GUI
-    };
-
     # Enable system-resolved
     resolved = {
       enable = true;
       extraConfig = ''
-        DNS=45.90.28.0#Desktop--Resolve-ff152f.dns.nextdns.io
-        DNS=2a07:a8c0::#Desktop--Resolve-ff152f.dns.nextdns.io
-        DNS=45.90.30.0#Desktop--Resolve-ff152f.dns.nextdns.io
-        DNS=2a07:a8c1::#Desktop--Resolve-ff152f.dns.nextdns.io
+        DNS=45.90.28.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        DNS=2a07:a8c0::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        DNS=45.90.30.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        DNS=2a07:a8c1::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
         DNSOverTLS=yes
       '';
      };

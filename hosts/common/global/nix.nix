@@ -20,20 +20,25 @@ in {
         "root"
         "@wheel"
       ];
+
       # Deduplicate and optimize nix store
       auto-optimise-store = lib.mkDefault true;
+
       # Enable flakes and new 'nix' command
       experimental-features = [
         "nix-command"
         "flakes"
         "ca-derivations"
       ];
-      warn-dirty = false;
+
+      # warn-dirty = false;
+
       system-features = [
         "kvm"
         "big-parallel"
         "nixos-test"
       ];
+
       flake-registry = ""; # Disable global flake registry
     };
 

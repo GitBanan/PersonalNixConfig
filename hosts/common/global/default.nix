@@ -10,14 +10,12 @@
       ./alias.nix
       ./audio.nix
       ./boot.nix
-      # ./fish.nix
-      ./kde.nix
+      ./fish.nix
       ./locale.nix
       ./network.nix
-      # ./nix-ld.nix
+      ./nix-ld.nix
       ./nix.nix
-      # ./podman.nix
-      # ./sops.nix
+      ./plasma.nix
       ./swap.nix
       ./systemd-initrd.nix
       ./tailscale.nix

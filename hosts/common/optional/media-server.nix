@@ -17,49 +17,14 @@
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
-    "aspnetcore-runtime-wrapped-6.0.36"
-    "aspnetcore-runtime-6.0.36"
-    "dotnet-sdk-wrapped-6.0.428"
-    "dotnet-sdk-6.0.428"
+    #"aspnetcore-runtime-wrapped-6.0.36"
+    #"aspnetcore-runtime-6.0.36"
+    #"dotnet-sdk-wrapped-6.0.428"
+    #"dotnet-sdk-6.0.428"
   ];
 
-  # Config Cloudflare tunnel
-  services.cloudflared = {
-    enable = true;
-    # user = "jee";
-
-    tunnels = {
-      "3ec98f6-c196-4dca-975c-a488ec3b5a5c" = {
-        credentialsFile = "/home/jee/.cloudflared/3ec98f6-c196-4dca-975c-a488ec3b5a5c.json";
-        default = "http_status:404";
-        #ingress = {
-        #  "*.frostyhill.top" = { # Jellyfin
-        #    service = "http://localhost:8096";
-        #  };
-        #};
-      };
-    };
-  };
-
-  # Start Zrok Cloudflare on boot
-  systemd.services = {
-    zrok-jellyfin = {
-      description = "Zrok service for Jellyfin";
-      enable = true;
-      wantedBy = [ "multi-user.target" ]; # Starts on boot
-      after = [ "jellyfin.service" ];
-
-      serviceConfig = {
-        Type = "simple";
-        User = "jee";
-        Restart = "always";
-        ExecStart = "${pkgs.zrok}/bin/zrok share reserved jellyfinjeeserveraccess --headless";
-      };
-    };
-  };
-
   services = {
-    # Setup Arr stacks
+    # Setup Arr stack
     sonarr = {
       enable = true;
       user = "jee";
@@ -77,7 +42,7 @@
       openFirewall = true;
     };
     flaresolverr = {
-      enable = false;
+      enable = true;
       openFirewall = true;
     };
     lidarr = {
@@ -102,6 +67,23 @@
       enable = true;
       port = 5055;
       openFirewall = true;
+    };
+  };
+
+  # Start Zrok Cloudflare on boot
+  systemd.services = {
+    zrok-jellyfin = {
+      description = "Zrok service for Jellyfin";
+      enable = true;
+      wantedBy = [ "multi-user.target" ]; # Starts on boot
+      after = [ "jellyfin.service" ];
+
+      serviceConfig = {
+        Type = "simple";
+        User = "jee";
+        Restart = "always";
+        ExecStart = "${pkgs.zrok}/bin/zrok share reserved jellyfinjeeserveraccess --headless";
+      };
     };
   };
 

@@ -24,12 +24,13 @@
     ../common/global
     ../common/users/jee
 
-    ../common/optional/hardware-acceleration.nix
-    ../common/optional/mergerfs.nix
+    ../common/optional/autoupgrade.nix.nix
+    ../common/optional/game-server.nix
+    #../common/optional/mergerfs.nix
     ../common/optional/openssh.nix
-    ../common/optional/server.nix
+    #../common/optional/server.nix
     ../common/optional/sync.nix
-    ../common/optional/tools.nix
+    #../common/optional/tools.nix
   ];
 
   networking = {

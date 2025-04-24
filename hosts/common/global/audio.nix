@@ -14,10 +14,4 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
-    powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  };
 }
