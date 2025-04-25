@@ -13,7 +13,7 @@
   systemd.services = {
     excludevpn-tailscaled = {
       description = "Exclude tailscale from Mullvad VPN";
-      enable = true;
+      enable = false;
       wantedBy = [ "multi-user.target" ]; # Starts on boot
       after = [ "tailscaled.service" "mullvad-daemon.service"];
       wants = [ "tailscaled.service" "mullvad-daemon.service"];

@@ -13,7 +13,7 @@
 
   # Config Cloudflare tunnel
   services.cloudflared = {
-    enable = true;
+    enable = false;
     # user = "jee";
 
     tunnels = {
