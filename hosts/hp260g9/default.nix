@@ -47,7 +47,7 @@
     # Enable optional KDE features
     # kdeconnect.enable = true;
 
-    # firefox.enable = true;
+    firefox.enable = true;
   };
 
   # environment.systemPackages = with pkgs; [];
