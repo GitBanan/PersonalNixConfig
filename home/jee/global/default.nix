@@ -35,7 +35,7 @@
     git = {
       enable = true;
       userName  = "GitBanan";
-      userEmail = "dumping.runner332@addy.io";
+      userEmail = "github@frostyhill.top";
     };
   };
 
