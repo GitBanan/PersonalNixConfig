@@ -56,7 +56,7 @@ in {
       after = ["network.target"];
 
       serviceConfig = {
-        TimeoutSec = "15min";
+        TimeoutSec = "1min";
         ExecStart = "${steam-run} ${cfg.dataDir}/FactoryServer.sh ${cfg.launchOptions}";
         Restart = "always";
         User = "satisfactory";
