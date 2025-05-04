@@ -8,7 +8,7 @@
     vlc
     # spotube
     nuclear
-    freetube
+    unstable.freetube
     unstable.grayjay
     yt-dlp
   ];
