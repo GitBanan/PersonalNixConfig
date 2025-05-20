@@ -6,10 +6,14 @@
   environment.systemPackages = with pkgs; [
     haruna # Video player
     vlc
+
     # spotube
-    nuclear
+    # nuclear
+    tidal-dl
+    tidal-hifi
+
     unstable.freetube
-    unstable.grayjay
+    # unstable.grayjay
     yt-dlp
   ];
 }
