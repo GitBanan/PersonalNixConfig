@@ -25,7 +25,7 @@
     ../common/users/jee
 
     ../common/optional/bluetooth.nix
-    ../common/optional/cloudflared.nix
+    # ../common/optional/cloudflared.nix
     ../common/optional/editing-tools.nix
     ../common/optional/game-tools.nix
     ../common/optional/hardware-acceleration.nix

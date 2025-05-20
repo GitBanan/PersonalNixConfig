@@ -18,7 +18,7 @@
     lutris
     legendary-gl
     rare # GUI for legendary
-    heroic
+    # heroic
     mangohud
   ];
 
