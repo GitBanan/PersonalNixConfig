@@ -4,4 +4,5 @@
   # List your module files here
   # wireguard = import ./wireguard.nix;
   satisfactory = import ./satisfactory.nix;
+  qbittorrent = import ./qbittorrent.nix;
 }

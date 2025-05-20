@@ -10,7 +10,6 @@
     jellyfin-ffmpeg
 
     qbittorrent
-    qbittorrent-nox
 
     cloudflared
     zrok
@@ -50,6 +49,15 @@
       user = "jee";
       openFirewall = true;
       dataDir = "/home/jee/.config/lidarr";
+    };
+
+    # Setup qbittorrent module
+    qbittorrent = {
+      enable = false;
+      user = "jee";
+      openFirewall = true;
+      dataDir = "/home/jee/.config/qbittorrent";
+      port = 5080;
     };
 
     # Setup Media server
