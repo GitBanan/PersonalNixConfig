@@ -3,9 +3,9 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11"; # Nix Packages (Default)
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05"; # Stable Nix Packages
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable Nix Packages
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05"; # Nix Packages (Default)
 
     hardware.url = "github:nixos/nixos-hardware/master"; # Hardware Specific Configurations
     systems.url = "github:nix-systems/default-linux"; # Supported systems for your flake packages, shell, etc.
@@ -20,7 +20,7 @@
 
     # User Environment Manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       # url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Nix Packages (Default)
     };
