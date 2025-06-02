@@ -3,7 +3,7 @@
   # config,
   ...
 }: {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs.unstable; [
     haruna # Video player
     vlc
 
@@ -12,8 +12,8 @@
     tidal-dl
     tidal-hifi
 
-    unstable.freetube
-    # unstable.grayjay
+    freetube
+    grayjay
     yt-dlp
   ];
 }
