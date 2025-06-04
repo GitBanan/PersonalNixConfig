@@ -10,7 +10,7 @@
       user = "jee";
       dataDir = "/home/jee/Sync";    # Default folder for new synced folders
       configDir = "/home/jee/.config/syncthing";   # Folder for Syncthing's settings and keys
-      guiAddress = "127.0.0.1:8384";
+      guiAddress = "0.0.0.0:8384";
       openDefaultPorts = true;
 
       overrideDevices = true;
