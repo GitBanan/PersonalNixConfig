@@ -12,7 +12,7 @@
     qbittorrent
 
     cloudflared
-    zrok
+    # zrok
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -82,7 +82,7 @@
   systemd.services = {
     zrok-jellyfin = {
       description = "Zrok service for Jellyfin";
-      enable = true;
+      enable = false;
       wantedBy = [ "multi-user.target" ]; # Starts on boot
       after = [ "jellyfin.service" ];
 
@@ -94,26 +94,4 @@
       };
     };
   };
-
-  # Jellyfin intro skipper plugin fix
-  #nixpkgs.overlays = with pkgs; [
-  #  (
-  #    final: prev:
-  #      {
-  #        jellyfin-web = prev.jellyfin-web.overrideAttrs (finalAttrs: previousAttrs: {
-  #          installPhase = ''
-  #            runHook preInstall
-
-              # this is the important line
-  #            sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script></head>#" dist/index.html
-
-  #           mkdir -p $out/share
-  #            cp -a dist $out/share/jellyfin-web
-
-  #            runHook postInstall
-  #          '';
-  #        });
-  #      }
-  #  )
-  #];
 }
