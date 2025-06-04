@@ -25,11 +25,11 @@
     ../common/users/jee
 
     ../common/optional/game-server.nix
-    #../common/optional/mergerfs.nix
+    ../common/optional/hardware-acceleration.nix
+    ../common/optional/media-server.nix
     ../common/optional/openssh.nix
-    #../common/optional/server.nix
     ../common/optional/sync.nix
-    #../common/optional/tools.nix
+    ../common/optional/system-tools.nix
   ];
 
   networking = {
