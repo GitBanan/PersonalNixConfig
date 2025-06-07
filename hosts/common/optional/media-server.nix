@@ -11,7 +11,7 @@
 
     qbittorrent
 
-    cloudflared
+    # cloudflared
     # zrok
   ];
 

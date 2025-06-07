@@ -31,7 +31,7 @@
     ../common/optional/hardware-acceleration.nix
     ../common/optional/jellyfin-client.nix
     ../common/optional/libre.nix
-    ../common/optional/media-server.nix
+    # ../common/optional/media-server.nix
     ../common/optional/media-tools.nix
     ../common/optional/mergerfs.nix
     ../common/optional/mullvad.nix
