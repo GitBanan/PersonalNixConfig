@@ -28,7 +28,7 @@
     ../common/optional/hardware-acceleration.nix
     ../common/optional/media-server.nix
     ../common/optional/openssh.nix
-    ../common/optional/sync.nix
+    # ../common/optional/sync.nix
     ../common/optional/system-tools.nix
   ];
 

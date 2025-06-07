@@ -53,11 +53,11 @@
 
     # Setup qbittorrent module
     qbittorrent = {
-      enable = false;
+      enable = true;
       user = "jee";
       openFirewall = true;
       dataDir = "/home/jee/.config/qbittorrent";
-      port = 5080;
+      port = 8080;
     };
 
     # Setup Media server
