@@ -20,6 +20,8 @@
     rare # GUI for legendary
     # heroic
     mangohud
+
+    prismlauncher # Minecraft
   ];
 
   # Install Steam

@@ -25,20 +25,19 @@
       inputs.nixpkgs.follows = "nixpkgs"; # Nix Packages (Default)
     };
 
+    nbfc-linux = {
+      url = "github:nbfc-linux/nbfc-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # aagl = {
-      # url = "github:ezKEa/aagl-gtk-on-nix";
-      # url = "github:ezKEa/aagl-gtk-on-nix/release-24.05";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    nbfc-linux = {
-      url = "github:nbfc-linux/nbfc-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
