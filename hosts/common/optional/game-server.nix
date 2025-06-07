@@ -1,8 +1,12 @@
 {
   pkgs,
-  # config,
+  inputs,
   ...
 }: {
+  # Nix-Minecraft overlay
+  imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+
   services = {
     satisfactory-server = {
       enable = true;
