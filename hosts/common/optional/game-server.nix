@@ -16,7 +16,7 @@
     minecraft-servers = {
       enable = true;
       eula = true;
-      # openFirewall = true;
+      openFirewall = true;
 
       servers.vanilla = {
         enable = true;
