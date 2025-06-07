@@ -25,6 +25,20 @@
         # Specify the custom minecraft server package
         package = pkgs.vanillaServers.vanilla;
         # package = pkgs.minecraftServers.vanilla-server;
+
+        # see here for more info: https://minecraft.gamepedia.com/Server.properties#server.properties
+        serverProperties = {
+          motd = "Jee's Vanilla server";
+          server-port = 25565;
+
+          # level-seed = "10292992";
+          online-mode = "false";
+          # enforce-secure-profile = "false";
+          # max-players = 5;
+
+          gamemode = "survival";
+          pvp = "false";
+        };
       };
 
       servers.fabric = {
