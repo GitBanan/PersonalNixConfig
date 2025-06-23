@@ -28,6 +28,7 @@
     # ../common/optional/cloudflared.nix
     ../common/optional/editing-tools.nix
     ../common/optional/game-tools.nix
+    ../common/optional/gst.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/jellyfin-client.nix
     ../common/optional/libre.nix

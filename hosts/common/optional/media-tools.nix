@@ -11,6 +11,7 @@
     # nuclear
     tidal-dl
     tidal-hifi
+    high-tide
 
     freetube
     grayjay
