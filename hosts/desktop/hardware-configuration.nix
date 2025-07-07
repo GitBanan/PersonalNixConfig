@@ -29,16 +29,6 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/mnt/Jee_HDD" =
-    { device = "/dev/disk/by-uuid/b37c9bbe-6d33-4989-b22f-5bbba3f6746f";
-      fsType = "btrfs";
-    };
-
-  fileSystems."/mnt/HDD_4TB" =
-    { device = "/dev/disk/by-uuid/d8831f87-39ce-4b32-987b-0c2eaffbe1c7";
-      fsType = "btrfs";
-    };
-
   swapDevices =
     [ { device = "/dev/disk/by-uuid/a4a59861-244e-48c1-9f41-638849f66b0e"; }
     ];
@@ -50,7 +40,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.virbr0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wg0-mullvad.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

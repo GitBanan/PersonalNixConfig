@@ -34,7 +34,7 @@
     ../common/optional/libre.nix
     # ../common/optional/media-server.nix
     ../common/optional/media-tools.nix
-    ../common/optional/mergerfs.nix
+    #../common/optional/mergerfs.nix
     ../common/optional/mullvad.nix
     ../common/optional/openssh.nix
     ../common/optional/python.nix
