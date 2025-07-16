@@ -8,7 +8,10 @@
     poppler_utils
     pciutils
     lshw
-    xautomation
     lm_sensors
+
+    xautomation
+
+    python313Packages.qt-material # GUI for Tidal-DL
   ];
 }
