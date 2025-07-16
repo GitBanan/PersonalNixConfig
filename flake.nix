@@ -41,7 +41,7 @@
     };
 
     tidal-ng = {
-      url = "https://gist.github.com/xaolanx/4c88d0cbc0dee90764bae767006103f8";
+      #url = "https://gist.github.com/xaolanx/4c88d0cbc0dee90764bae767006103f8";
       # inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
