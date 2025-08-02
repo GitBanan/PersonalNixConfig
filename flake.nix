@@ -98,6 +98,15 @@
         };
       };
 
+      hp260g9 = lib.nixosSystem {
+        modules = [
+          ./hosts/hp260g9
+        ];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
       nitro = lib.nixosSystem {
         modules = [
           ./hosts/nitro
@@ -107,9 +116,9 @@
         };
       };
 
-      hp260g9 = lib.nixosSystem {
+      vostro = lib.nixosSystem {
         modules = [
-          ./hosts/hp260g9
+          ./hosts/vostro
         ];
         specialArgs = {
           inherit inputs outputs;
@@ -129,6 +138,14 @@
         };
       };
 
+      "jee@hp260g9" = lib.homeManagerConfiguration {
+        modules = [ ./home/jee/hp260g9.nix ];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
       "jee@nitro" = lib.homeManagerConfiguration {
         modules = [ ./home/jee/nitro.nix ];
         pkgs = pkgsFor.x86_64-linux;
@@ -137,8 +154,8 @@
         };
       };
 
-      "jee@hp260g9" = lib.homeManagerConfiguration {
-        modules = [ ./home/jee/hp260g9.nix ];
+      "jee@vostro" = lib.homeManagerConfiguration {
+        modules = [ ./home/jee/vostro.nix ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
