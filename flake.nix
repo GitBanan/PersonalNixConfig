@@ -107,6 +107,15 @@
         };
       };
 
+      nano = lib.nixosSystem {
+        modules = [
+          ./hosts/nano
+        ];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
       nitro = lib.nixosSystem {
         modules = [
           ./hosts/nitro
@@ -140,6 +149,14 @@
 
       "jee@hp260g9" = lib.homeManagerConfiguration {
         modules = [ ./home/jee/hp260g9.nix ];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
+      "jee@nano" = lib.homeManagerConfiguration {
+        modules = [ ./home/jee/nano.nix ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
