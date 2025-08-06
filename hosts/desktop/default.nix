@@ -6,6 +6,7 @@
   # lib,
   # config,
   # pkgs,
+  flatpaks,
   ...
 }: {
   # You can import other NixOS modules here
@@ -14,6 +15,9 @@
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
+
+    # Flatpak Flake
+    flatpaks.nixosModules.nix-flatpak
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -27,6 +31,7 @@
     ../common/optional/bluetooth.nix
     # ../common/optional/cloudflared.nix
     ../common/optional/editing-tools.nix
+    ../common/optional/flatpak.nix
     ../common/optional/game-tools.nix
     ../common/optional/gst.nix
     ../common/optional/hardware-acceleration.nix

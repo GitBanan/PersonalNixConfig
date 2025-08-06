@@ -13,17 +13,23 @@
     # impermanence.url = "github:nix-community/impermanence";
     # impermanence.url = "github:misterio77/impermanence";
 
-    nix = {
-      url = "github:nixos/nix/2.22-maintenance";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
     # User Environment Manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       # url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs"; # Nix Packages (Default)
     };
+
+    nix = {
+      url = "github:nixos/nix/2.22-maintenance";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    nix-flatpak = {
+      # url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
+    flatpaks.url = "../";
 
     nbfc-linux = {
       url = "github:nbfc-linux/nbfc-linux";

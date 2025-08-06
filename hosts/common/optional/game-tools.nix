@@ -34,4 +34,9 @@
       proton-ge-bin # Glorious Egg Proton
     ];
   };
+
+  # Add here the flatpaks you want to install
+  services.flatpak.packages = [
+
+  ];
 }
