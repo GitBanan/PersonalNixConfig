@@ -6,7 +6,7 @@
   # lib,
   # config,
   # pkgs,
-  flatpaks,
+  nix-flatpak,
   ...
 }: {
   # You can import other NixOS modules here
@@ -17,7 +17,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     # Flatpak Flake
-    flatpaks.nixosModules.nix-flatpak
+    nix-flatpak.nixosModules.nix-flatpak
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix

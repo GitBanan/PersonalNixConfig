@@ -29,7 +29,6 @@
       # url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
       url = "github:gmodena/nix-flatpak/?ref=latest";
     };
-    flatpaks.url = "../";
 
     nbfc-linux = {
       url = "github:nbfc-linux/nbfc-linux";
