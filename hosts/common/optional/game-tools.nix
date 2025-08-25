@@ -35,8 +35,9 @@
     ];
   };
 
-  # Add here the flatpaks you want to install
-  services.flatpak.packages = [
-
-  ];
+  # Lossless Scaling's frame generation
+  services.lsfg-vk = {
+    enable = true;
+    ui.enable = true; # installs gui for configuring lsfg-vk
+  };
 }

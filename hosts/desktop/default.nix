@@ -6,7 +6,8 @@
   # lib,
   # config,
   # pkgs,
-  nix-flatpak,
+  # nix-flatpak,
+  #lsfg-vk-flake,
   ...
 }: {
   # You can import other NixOS modules here
@@ -17,7 +18,10 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     # Flatpak Flake
-    nix-flatpak.nixosModules.nix-flatpak
+    inputs.nix-flatpak.nixosModules.nix-flatpak
+
+    # Lossless Scaling's frame generation
+    inputs.lsfg-vk-flake.nixosModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix

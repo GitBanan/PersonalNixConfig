@@ -9,7 +9,7 @@
     jellyfin-web
     jellyfin-ffmpeg
 
-    qbittorrent
+    # qbittorrent
 
     # cloudflared
     # zrok
@@ -56,8 +56,8 @@
       enable = true;
       user = "jee";
       openFirewall = true;
-      dataDir = "/home/jee/.config/qbittorrent";
-      port = 8080;
+      profileDir = "/home/jee/.config/qbittorrent";
+      webuiPort = 8080;
     };
 
     # Setup Media server
