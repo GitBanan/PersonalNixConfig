@@ -37,7 +37,7 @@
 
   # Lossless Scaling's frame generation
   services.lsfg-vk = {
-    enable = true;
+    enable = false;
     ui.enable = true; # installs gui for configuring lsfg-vk
   };
 }
