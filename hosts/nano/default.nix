@@ -29,8 +29,6 @@
     ../common/optional/openssh.nix
     # ../common/optional/sync.nix
     ../common/optional/system-tools.nix
-
-    ../common/optional/game-server.nix
   ];
 
   networking = {
