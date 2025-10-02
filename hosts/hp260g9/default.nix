@@ -24,7 +24,8 @@
     ../common/global
     ../common/users/jee
 
-    ../common/optional/game-server.nix
+    ../common/optional/minecraft-server.nix
+    ../common/optional/satisfactory-server.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/media-server.nix
     ../common/optional/openssh.nix

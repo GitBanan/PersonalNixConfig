@@ -24,11 +24,13 @@
     ../common/global
     ../common/users/jee
 
-    ../common/optional/game-server.nix
+    ../common/optional/minecraft-server.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/openssh.nix
     # ../common/optional/sync.nix
     ../common/optional/system-tools.nix
+
+    ../common/optional/game-server.nix
   ];
 
   networking = {

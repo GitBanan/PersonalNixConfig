@@ -8,11 +8,6 @@
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
   services = {
-    satisfactory-server = {
-      enable = true;
-      beta = "experimental";
-    };
-
     minecraft-servers = {
       enable = true;
       eula = true;
@@ -37,6 +32,7 @@
           # max-players = 5;
 
           gamemode = "survival";
+	  difficulty = "normal";
           pvp = "false";
         };
       };
