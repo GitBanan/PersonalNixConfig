@@ -34,6 +34,8 @@
           gamemode = "survival";
 	  difficulty = "normal";
           pvp = "false";
+
+          keepInventory = "true";
         };
       };
 
