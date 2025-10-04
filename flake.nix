@@ -25,10 +25,10 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    nix-flatpak = {
+    #nix-flatpak = {
       # url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
-      url = "github:gmodena/nix-flatpak/?ref=latest";
-    };
+      #url = "github:gmodena/nix-flatpak/?ref=latest";
+    #};
 
     lsfg-vk-flake = {
       url = "github:pabloaul/lsfg-vk-flake/main";

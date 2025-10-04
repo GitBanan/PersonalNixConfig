@@ -11,10 +11,10 @@
     # nuclear
     tidal-dl
     tidal-hifi
-    high-tide
+    # high-tide
 
-    freetube
-    grayjay
+    # freetube
+    # grayjay
     yt-dlp
   ];
 }

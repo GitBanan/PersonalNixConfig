@@ -31,6 +31,7 @@
 
     ../common/optional/bluetooth.nix
     ../common/optional/editing-tools.nix
+    ../common/optional/flatpak.nix
     ../common/optional/game-tools.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/jellyfin-client.nix

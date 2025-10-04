@@ -18,7 +18,7 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     # Flatpak Flake
-    inputs.nix-flatpak.nixosModules.nix-flatpak
+    #inputs.nix-flatpak.nixosModules.nix-flatpak
 
     # Lossless Scaling's frame generation
     inputs.lsfg-vk-flake.nixosModules.default
