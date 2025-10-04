@@ -5,6 +5,8 @@
 }: {
   services.home-assistant = {
     enable = true;
+    openFirewall = true;
+
     extraComponents = [
       # Components required to complete the onboarding
       "analytics"
@@ -16,6 +18,7 @@
       # https://www.home-assistant.io/integrations/isal
       "isal"
     ];
+
     config = {
       # Includes dependencies for a basic setup
       # https://www.home-assistant.io/integrations/default_config/
