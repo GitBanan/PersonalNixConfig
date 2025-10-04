@@ -24,6 +24,7 @@
     ../common/global
     ../common/users/jee
 
+    ../common/optional/bluetooth.nix
     ../common/optional/minecraft-server.nix
     ../common/optional/hardware-acceleration.nix
     ../common/optional/home-assistant.nix
