@@ -34,9 +34,14 @@
           gamemode = "survival";
           difficulty = "normal";
           pvp = "false";
-
-          keepInventory = "true";
         };
+
+	operators = {
+	  jee = {
+	    uuid = "62b250b3-796b-3bbb-b285-c67a312130f3";
+	    level = 2;
+	  };
+	};
       };
 
       servers.fabric = {
