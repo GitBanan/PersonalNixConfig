@@ -9,7 +9,7 @@ in {
   # users.mutableUsers = false;
   users.users.jee = {
     # You can set an initial password for your user.
-    initialPassword = "password";
+    initialPassword = config.sops.secrets.default-user-password.path;
     isNormalUser = true;
     description = "Jee";
     # shell = pkgs.fish;

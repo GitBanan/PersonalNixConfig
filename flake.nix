@@ -17,12 +17,17 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       # url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs"; # Nix Packages (Default)
+      inputs.nixpkgs.follows = "nixpkgs-stable"; # Nix Packages (Default)
     };
 
     nix = {
       url = "github:nixos/nix/2.22-maintenance";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #nix-flatpak = {
@@ -47,7 +52,7 @@
 
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #tidal-ng = {

@@ -1,6 +1,6 @@
 {
-  pkgs,
-  inputs,
+  # pkgs,
+  # inputs,
   ...
 }: {
   services = {
@@ -9,4 +9,4 @@
       beta = "experimental";
     };
   };
-};
+}

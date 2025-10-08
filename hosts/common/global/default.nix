@@ -14,9 +14,10 @@
       ./fish.nix
       ./locale.nix
       ./network.nix
-      ./nix-ld.nix
       ./nix.nix
+      ./nix-ld.nix
       ./plasma.nix
+      ./sops.nix
       ./swap.nix
       ./systemd-initrd.nix
       ./tailscale.nix

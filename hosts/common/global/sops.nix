@@ -1,16 +1,20 @@
 {
   inputs,
-  lib,
-  config,
+  # config,
   ...
-}: let
-  isEd25519 = k: k.type == "ed25519";
-  getKeyPath = k: k.path;
-  keys = builtins.filter isEd25519 config.services.openssh.hostKeys;
-in {
-  imports = [inputs.sops-nix.nixosModules.sops];
+}: {
+  imports = [ inputs.sops-nix.nixosModules.sops ];
 
   sops = {
-    age.sshKeyPaths = map getKeyPath keys;
+    defaultSopsFile = ../secrets.yaml;
+
+    age = {
+      keyFile = "/home/jee/.config/sops/age/keys.txt";
+    };
+
+    # This is the actual specification of the secrets.
+    secrets = {
+      default-user-password = {};
+    };
   };
 }
