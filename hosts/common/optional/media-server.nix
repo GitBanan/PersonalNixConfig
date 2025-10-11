@@ -1,6 +1,6 @@
 {
   pkgs,
-  # config,
+  config,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -58,6 +58,46 @@
       openFirewall = true;
       profileDir = "/home/jee/.config/qbittorrent";
       webuiPort = 8080;
+
+      serverConfig = {
+        #Application = {
+          #FileLogger = {
+            #Enabled = true;
+            #Path = "/home/jee/.config/qbittorrent/qBittorrent/data/logs";
+          #};
+        #};
+        BitTorrent = {
+          Session = {
+            AlternativeGlobalDLSpeedLimit = 50;
+            AlternativeGlobalUPSpeedLimit = 1;
+            DefaultSavePath = "/home/jee/Downloads";
+            DisableAutoTMMByDefault = false;
+            DisableAutoTMMTriggers = {
+              CategorySavePathChanged = false;
+              DefaultSavePathChanged = false;
+            };
+            GlobalDLSpeedLimit = 10000;
+            GlobalUPSpeedLimit = 10000;
+            IgnoreLimitsOnLAN = true;
+            QueueingSystemEnabled = false;
+            TorrentContentLayout = "Subfolder";
+          };
+        };
+        Core.AutoDeleteAddedTorrentFile = "Never";
+        LegalNotice.Accepted = true;
+        Preferences = {
+          General.Locale = "en";
+          WebUI = {
+            Username = "admin";
+            Password_PBKDF2 = "@ByteArray(" + config.sops.secrets.qbittorrent-password.path + ")";
+          };
+        };
+        RSS = {
+          AutoDownloader = {
+            DownloadRepacks = true;
+          };
+        };
+      };
     };
 
     # Setup Media server
