@@ -10,4 +10,7 @@
     efi.canTouchEfiVariables = true;
     timeout = 1; # Time to confirm generation
   };
+
+  # Disable emergency mode when mount fails
+  systemd.enableEmergencyMode = false;
 }
