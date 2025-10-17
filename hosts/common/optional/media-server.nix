@@ -1,6 +1,6 @@
 {
   pkgs,
-  config,
+  # config,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -56,16 +56,10 @@
       enable = true;
       user = "jee";
       openFirewall = true;
-      profileDir = "/home/jee/.config/qbittorrent";
+      # profileDir = "/home/jee/.config/qbittorrent";
       webuiPort = 8080;
 
       serverConfig = {
-        #Application = {
-          #FileLogger = {
-            #Enabled = true;
-            #Path = "/home/jee/.config/qbittorrent/qBittorrent/data/logs";
-          #};
-        #};
         BitTorrent = {
           Session = {
             AlternativeGlobalDLSpeedLimit = 50;
@@ -89,7 +83,7 @@
           General.Locale = "en";
           WebUI = {
             Username = "admin";
-            Password_PBKDF2 = "@ByteArray(" + config.sops.secrets.qbittorrent-password.path + ")";
+            Password_PBKDF2 = "@ByteArray(qFEwkraPjUiRAGg/O+Mdzg==:tqu35bJc9Bx6YQ3WWrx9S+9dacnm/UQrJDWIpvC/+9klhaYlITKgheZbMxjQh4viiNmrsgTH3IwDle6QDKjiog==)";
           };
         };
         RSS = {

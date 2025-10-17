@@ -15,7 +15,6 @@
     # This is the actual specification of the secrets.
     secrets = {
       default-user-password = {};
-      qbittorrent-password = {};
     };
   };
 }
