@@ -1,9 +1,10 @@
 {
   pkgs,
-  # config,
+  config,
   inputs,
   ...
 }: {
+  # Use unstable package for HAss
   imports = [
     "${inputs.nixpkgs-unstable}/nixos/modules/services/home-automation/home-assistant.nix"
   ];
@@ -21,7 +22,7 @@
       "analytics"
       "google_translate"
       "met"
-      # "radio_browser"
+      "radio_browser"
       "shopping_list"
       # Recommended for fast zlib compression
       # https://www.home-assistant.io/integrations/isal
@@ -46,8 +47,8 @@
             host = "192.168.29.107";
             port = "80";
     	    ssl = "false";
-    	    username = "";
-    	    password = "";
+    	    username = builtins.readFile config.sops.secrets.hikvision-user.path;
+    	    password = builtins.readFile config.sops.secrets.hikvision-password.path;
 	    customize = {
       	      motion = {
                 delay = "10";

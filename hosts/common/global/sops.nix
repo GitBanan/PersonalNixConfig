@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   # config,
   ...
 }: {
@@ -15,6 +16,13 @@
     # This is the actual specification of the secrets.
     secrets = {
       default-user-password = {};
+
+      hikvision-user = {};
+      hikvision-password = {};
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    sops
+  ];
 }
