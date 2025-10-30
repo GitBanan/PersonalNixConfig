@@ -21,13 +21,13 @@
     # Enable system-resolved
     resolved = {
       enable = true;
-      dnsovertls = "true";
-      extraConfig = ''
-        DNS=45.90.28.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        DNS=2a07:a8c0::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        DNS=45.90.30.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        DNS=2a07:a8c1::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-      '';
+      #dnsovertls = "true";
+      #extraConfig = ''
+        #DNS=45.90.28.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        #DNS=2a07:a8c0::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        #DNS=45.90.30.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        #DNS=2a07:a8c1::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+      #'';
      };
   };
 }

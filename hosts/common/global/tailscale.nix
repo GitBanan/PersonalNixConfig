@@ -1,10 +1,11 @@
 {
-  # pkgs,
+  pkgs,
   lib,
   ...
 }: {
   services.tailscale = {
     enable = true;
+    package = pkgs.unstable.tailscale;
     useRoutingFeatures = lib.mkDefault "client";
     # extraUpFlags = ["--login-server https://tailscale.m7.rs"];
   };
