@@ -9,7 +9,7 @@
     containers.homeassistant = {
       volumes = [
         "home-assistant:/config"
-        "/mnt/hdd_4gb/hass:/media"
+        "/mnt/hdd_4tb_cctv/hass:/media"
       ];
       environment.TZ = "Europe/Berlin";
       # Note: The image will not be updated on rebuilds, unless the version label changes

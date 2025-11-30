@@ -24,9 +24,9 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/mnt/hdd_4gb" =
-    { device = "/dev/disk/by-uuid/d8831f87-39ce-4b32-987b-0c2eaffbe1c7";
-      fsType = "btrfs";
+  fileSystems."/mnt/hdd_4tb_cctv" =
+    { device = "/dev/disk/by-uuid/52ea53e4-1afe-42ff-a9aa-2238687eb051";
+      fsType = "ext4";
     };
 
   swapDevices =
