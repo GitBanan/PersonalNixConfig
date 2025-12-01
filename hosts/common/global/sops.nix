@@ -19,6 +19,8 @@
 
       hikvision-user = {};
       hikvision-password = {};
+
+      nextdns-subdomain = {};
     };
   };
 

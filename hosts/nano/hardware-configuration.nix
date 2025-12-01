@@ -25,7 +25,7 @@
     };
 
   fileSystems."/mnt/hdd_4tb_cctv" =
-    { device = "/dev/disk/by-uuid/52ea53e4-1afe-42ff-a9aa-2238687eb051";
+    { device = "/dev/disk/by-uuid/d8ae8088-5a05-400b-8ec0-6d4aec949159";
       fsType = "ext4";
     };
 

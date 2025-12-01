@@ -1,15 +1,19 @@
-{config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   networking = {
     # Enable networking, choose 1
     networkmanager = {
       enable = true; # Easier to use
       # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-      insertNameservers = [ "
-        45.90.28.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        2a07:a8c0::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        45.90.30.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        2a07:a8c1::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-      " ];
+      #insertNameservers = [ "
+        #45.90.28.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        #2a07:a8c0::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        #45.90.30.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+        #2a07:a8c1::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
+      #" ];
     };
 
     # Configure network proxy if necessary
@@ -29,5 +33,12 @@
         #DNS=2a07:a8c1::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
       #'';
      };
+
+    nextdns = {
+      enable = true;
+      arguments = [ "-config" config.sops.secrets.nextdns-subdomain.path "-cache-size" "10MB" ];
+    };
   };
+
+  environment.systemPackages = with pkgs; [ nextdns ];
 }
