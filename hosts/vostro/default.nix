@@ -40,7 +40,7 @@
     ../common/optional/mullvad.nix
     ../common/optional/openssh.nix
     ../common/optional/python.nix
-    ../common/optional/sync.nix
+    # ../common/optional/sync.nix
     ../common/optional/system-tools.nix
   ];
 

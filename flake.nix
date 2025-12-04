@@ -3,9 +3,9 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05"; # Stable Nix Packages
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11"; # Stable Nix Packages
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Unstable Nix Packages
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05"; # Nix Packages (Default)
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11"; # Nix Packages (Default)
 
     hardware.url = "github:nixos/nixos-hardware/master"; # Hardware Specific Configurations
     systems.url = "github:nix-systems/default-linux"; # Supported systems for your flake packages, shell, etc.
@@ -15,7 +15,7 @@
 
     # User Environment Manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       # url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-stable"; # Nix Packages (Default)
     };
@@ -34,6 +34,11 @@
       # url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
       #url = "github:gmodena/nix-flatpak/?ref=latest";
     #};
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     lsfg-vk-flake = {
       url = "github:pabloaul/lsfg-vk-flake/main";

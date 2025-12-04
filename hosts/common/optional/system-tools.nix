@@ -5,7 +5,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     fastfetch
-    poppler_utils
+    poppler-utils
     pciutils
     lshw
     lm_sensors
