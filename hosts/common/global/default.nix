@@ -12,14 +12,17 @@
       ./autoupgrade.nix
       ./boot.nix
       ./fish.nix
+      ./hardware-acceleration.nix
       ./locale.nix
       ./network.nix
+      ./openssh.nix
       ./nix.nix
       ./nix-ld.nix
       ./plasma.nix
       ./sops.nix
       ./swap.nix
       ./systemd-initrd.nix
+      ./system-tools.nix
       ./tailscale.nix
       ./tools.nix
     ]

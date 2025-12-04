@@ -37,15 +37,9 @@ in {
         "input"
       ];
 
-    # openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/jee/ssh.pub);
     # hashedPasswordFile = config.sops.secrets.jee-password.path;
     packages = [pkgs.home-manager];
   };
-
-  # sops.secrets.jee-password = {
-  #   sopsFile = ../../secrets.yaml;
-  #   neededForUsers = true;
-  # };
 
   home-manager.users.jee = import ../../../../home/jee/${config.networking.hostName}.nix;
 

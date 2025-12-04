@@ -24,13 +24,9 @@
     ../common/global
     ../common/users/jee
 
-    ../common/optional/bluetooth.nix
     ../common/optional/minecraft-server.nix
-    ../common/optional/hardware-acceleration.nix
     ../common/optional/home-assistant-oci.nix
-    ../common/optional/openssh.nix
     # ../common/optional/sync.nix
-    ../common/optional/system-tools.nix
   ];
 
   networking = {
