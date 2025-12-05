@@ -30,13 +30,12 @@
       };
 
       frigate = {
-        # autoStart = true;
-        # privileged = true;
-        # shmSize = "674m";
+        privileged = true;
         image = "ghcr.io/blakeblackshear/frigate:stable";
+
         volumes = [
           "frigate:/config"
-          "/mnt/hdd_4tb_cctv/hass:/media"
+          "/mnt/hdd_4tb_cctv/hass:/media/frigate"
           "/etc/localtime:/etc/localtime:ro"
         ];
         ports = [
@@ -51,7 +50,10 @@
           # "--network=host"
 
           # Hardware acceleration (Intel/AMD/Nvidia fallback)
-          "--device=/dev/dri"
+          "--device=/dev/dri/renderD128"
+
+          # Size caluclated for ~6 1440p cams
+          "--shm-size=600m"
 
           # Pass devices into the container, so Home Assistant can discover and make use of them
           # "--device=/dev/ttyACM0:/dev/ttyACM0"
@@ -61,7 +63,7 @@
   };
 
   services.mosquitto = {
-    enable = true;
+    enable = false;
     listeners = [
       {
         acl = [ "pattern readwrite #" ];
