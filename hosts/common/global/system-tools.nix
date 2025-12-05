@@ -13,5 +13,7 @@
     xautomation
 
     python313Packages.qt-material # GUI for Tidal-DL
+
+    ffmpeg
   ];
 }
