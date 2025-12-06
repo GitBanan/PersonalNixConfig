@@ -25,8 +25,14 @@
     };
 
   fileSystems."/mnt/hdd_4tb_cctv" =
-    { device = "/dev/disk/by-uuid/d8ae8088-5a05-400b-8ec0-6d4aec949159";
+    { 
+      device = "/dev/disk/by-uuid/d8ae8088-5a05-400b-8ec0-6d4aec949159";
       fsType = "ext4";
+      options = [
+        "nofail"
+        "x-systemd.automount"
+        "x-systemd.device-timeout=5"
+      ];
     };
 
   swapDevices =
