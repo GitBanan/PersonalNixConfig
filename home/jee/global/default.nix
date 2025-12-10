@@ -34,8 +34,10 @@
 
     git = {
       enable = true;
-      userName  = "GitBanan";
-      userEmail = "github@frostyhill.top";
+      settings.user = {
+        name  = "GitBanan";
+        email = "github@frostyhill.top";
+      };
     };
   };
 
