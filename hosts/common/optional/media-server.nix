@@ -65,6 +65,7 @@
           Session = {
             AlternativeGlobalDLSpeedLimit = 50;
             AlternativeGlobalUPSpeedLimit = 1;
+            BandwidthSchedulerEnabled = true;
             DefaultSavePath = "/home/jee/Downloads";
             DisableAutoTMMByDefault = false;
             DisableAutoTMMTriggers = {
@@ -82,6 +83,10 @@
         LegalNotice.Accepted = true;
         Preferences = {
           General.Locale = "en";
+          Scheduler = {
+            end_time = "@Variant(\0\0\0\xf\0m\xdd\0)";
+            start_time = "@Variant(\0\0\0\xf\x1\xee\x62\x80)";
+          };
           WebUI = {
             Username = "admin";
             Password_PBKDF2 = "@ByteArray(qFEwkraPjUiRAGg/O+Mdzg==:tqu35bJc9Bx6YQ3WWrx9S+9dacnm/UQrJDWIpvC/+9klhaYlITKgheZbMxjQh4viiNmrsgTH3IwDle6QDKjiog==)";
