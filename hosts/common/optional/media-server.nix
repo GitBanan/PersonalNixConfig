@@ -65,7 +65,7 @@
           Session = {
             AlternativeGlobalDLSpeedLimit = 50;
             AlternativeGlobalUPSpeedLimit = 1;
-            BandwidthSchedulerEnabled = true;
+            BandwidthSchedulerEnabled = false;
             DefaultSavePath = "/home/jee/Downloads";
             DisableAutoTMMByDefault = false;
             DisableAutoTMMTriggers = {
