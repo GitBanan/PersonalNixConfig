@@ -17,8 +17,8 @@
 
     lutris
     legendary-gl
-    rare # GUI for legendary
-    # heroic
+    # rare # GUI for legendary
+    heroic
     mangohud
 
     prismlauncher # Minecraft
