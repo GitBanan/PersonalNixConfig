@@ -18,7 +18,7 @@
     inputs.hardware.nixosModules.common-pc-laptop-ssd
 
     # Lossless Scaling's frame generation
-    inputs.lsfg-vk-flake.nixosModules.default
+    # inputs.lsfg-vk-flake.nixosModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -30,6 +30,7 @@
     ../common/users/jee
 
     ../common/optional/bluetooth.nix
+    ../common/optional/docker.nix
     ../common/optional/editing-tools.nix
     ../common/optional/flatpak.nix
     ../common/optional/game-tools.nix

@@ -5,7 +5,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # jellyfin-media-player
+    jellyfin-media-player
     # nur.repos.mio.jellyfin-media-player
     mpvScripts.mpris # Media keys support for jellyfin
     # Create symlink to script eg:
