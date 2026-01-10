@@ -7,37 +7,52 @@
     # Enable networking, choose 1
     networkmanager = {
       enable = true; # Easier to use
-      # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-      #insertNameservers = [ "
-        #45.90.28.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        #2a07:a8c0::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        #45.90.30.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        #2a07:a8c1::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-      #" ];
+
+      # dns = "systemd-resolved";
+      # dns = "none";
+
+      # insertNameservers = [ "
+        # 45.90.28.0#${config.networking.hostName}--Resolved-${NEXTDNS_PROFILE_ID}.dns.nextdns.io
+        # 2a07:a8c0::#${config.networking.hostName}--Resolved-${NEXTDNS_PROFILE_ID}.dns.nextdns.io
+        # 45.90.30.0#${config.networking.hostName}--Resolved-${NEXTDNS_PROFILE_ID}.dns.nextdns.io
+        # 2a07:a8c1::#${config.networking.hostName}--Resolved-${NEXTDNS_PROFILE_ID}.dns.nextdns.io
+      # " ];
     };
 
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Let NextDNS manage DNS
+    nameservers = [ "127.0.0.1" "::1" ];
   };
 
   services = {
     # Enable system-resolved
     resolved = {
       enable = true;
-      #dnsovertls = "true";
-      #extraConfig = ''
-        #DNS=45.90.28.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        #DNS=2a07:a8c0::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        #DNS=45.90.30.0#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-        #DNS=2a07:a8c1::#${config.networking.hostName}--Resolved-ff152f.dns.nextdns.io
-      #'';
+      dnsovertls = "true";
+      extraConfig = ''
+        1.1.1.1
+      '';
      };
 
     nextdns = {
       enable = true;
-      arguments = [ "-config" config.sops.secrets.nextdns-subdomain.path "-cache-size" "10MB" ];
+      arguments = [
+        "-profile" "$NEXTDNS_PROFILE_ID"
+        "-cache-size" "10MB"
+        "-report-client-info"
+      ];
     };
+  };
+
+  systemd.services.nextdns.serviceConfig = {
+    EnvironmentFile = config.sops.templates."nextdns-config".path;
+  };
+
+  systemd.services.nextdns-activate = {
+    script = ''
+      /run/current-system/sw/bin/nextdns activate
+    '';
+    after = [ "nextdns.service" ];
+    wantedBy = [ "multi-user.target" ];
   };
 
   environment.systemPackages = with pkgs; [ nextdns ];

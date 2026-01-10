@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  # config,
+  config,
   ...
 }: {
   imports = [ inputs.sops-nix.nixosModules.sops ];
@@ -20,7 +20,13 @@
       hikvision-user = {};
       hikvision-password = {};
 
-      nextdns-subdomain = {};
+      nextdns-profile-id = {};
+    };
+
+    templates = {
+      "nextdns-config".content = ''
+        NEXTDNS_PROFILE_ID=${config.sops.placeholder."nextdns-profile-id"}
+      '';
     };
   };
 
