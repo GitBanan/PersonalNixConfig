@@ -22,7 +22,7 @@
           "--network=host"
 
           # Hardware acceleration (Intel/AMD/Nvidia fallback)
-          "--device=/dev/dri"
+          "--device=/dev/dri/renderD128"
 
           # Pass devices into the container, so Home Assistant can discover and make use of them
           # "--device=/dev/ttyACM0:/dev/ttyACM0"
@@ -63,7 +63,7 @@
   };
 
   services.mosquitto = {
-    enable = false;
+    enable = true;
     listeners = [
       {
         acl = [ "pattern readwrite #" ];

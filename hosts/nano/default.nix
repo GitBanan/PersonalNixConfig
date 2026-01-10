@@ -24,8 +24,9 @@
     ../common/global
     ../common/users/jee
 
-    ../common/optional/minecraft-server.nix
+    ../common/optional/docker.nix
     ../common/optional/home-assistant-oci.nix
+    ../common/optional/minecraft-server.nix
     # ../common/optional/sync.nix
   ];
 
