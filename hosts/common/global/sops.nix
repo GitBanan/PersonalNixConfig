@@ -21,6 +21,8 @@
       hikvision-password = {};
 
       nextdns-profile-id = {};
+
+      mqtt-password = {};
     };
 
     templates = {

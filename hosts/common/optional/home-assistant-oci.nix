@@ -32,7 +32,6 @@
       frigate = {
         privileged = true;
         image = "ghcr.io/blakeblackshear/frigate:stable";
-
         volumes = [
           "frigate:/config"
           "/mnt/hdd_4tb_cctv/hass:/media/frigate"
@@ -61,8 +60,18 @@
     listeners = [
       {
         acl = [ "pattern readwrite #" ];
-        omitPasswordAuth = true;
-        settings.allow_anonymous = true;
+        # omitPasswordAuth = true;
+        # settings.allow_anonymous = true;
+        password = config.sops.secrets.mqtt-password.path;
+
+        users = {
+          hass = {
+            # acl = [ "read #" ];
+          };
+          frigate = {
+            # acl = [ "write frigate/#" ];
+          };
+        };
       }
     ];
   };
@@ -72,7 +81,7 @@
     1883  # MQTT
     8971  # Frigate
     8554  # RTSP
-    1984  # go2rtc
     # 8555  # WebRTC
+    # 1984  # go2rtc, no auth!
   ];
 }

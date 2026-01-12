@@ -9,12 +9,12 @@
 
     # spotube
     # nuclear
-    tidal-dl
+    # tidal-dl
     tidal-hifi
     # high-tide
 
     # freetube
-    # grayjay
+    grayjay
     yt-dlp
   ];
 }

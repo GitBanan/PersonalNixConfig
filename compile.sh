@@ -47,8 +47,6 @@ sudo nixos-rebuild --flake ".#$host" switch
 # nix-collect-garbage -d
 # systemctl restart nix-daemon.service
 
-# nix-shell -p sops --run "sops hosts/common/secrets.yaml"
-
 if [[ "$home_flag" == 'true' ]]; then
     home-manager --flake ".#jee@$host" switch
 fi
