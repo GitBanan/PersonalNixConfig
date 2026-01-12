@@ -38,16 +38,10 @@
           "/mnt/hdd_4tb_cctv/hass:/media/frigate"
           "/etc/localtime:/etc/localtime:ro"
         ];
-        ports = [
-            "8971:8971"
-            # "5000:5000" # Internal unauthenticated access. Expose carefully.
-            "8554:8554" # RTSP feeds
-            "8555:8555/tcp" # WebRTC over tcp
-            "8555:8555/udp" # WebRTC over udp
-        ];
+
         extraOptions = [
           # Use the host network namespace for all sockets
-          # "--network=host"
+          "--network=host"
 
           # Hardware acceleration (Intel/AMD/Nvidia fallback)
           "--device=/dev/dri/renderD128"
@@ -76,5 +70,9 @@
   networking.firewall.allowedTCPPorts = [
     8123  # HASS
     1883  # MQTT
+    8971  # Frigate
+    8554  # RTSP
+    1984  # go2rtc
+    # 8555  # WebRTC
   ];
 }
