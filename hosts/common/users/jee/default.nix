@@ -12,7 +12,7 @@ in {
     initialPassword = config.sops.secrets.default-user-password.path;
     isNormalUser = true;
     description = "Jee";
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
 
     # Keep user service running after log out
     linger = true;

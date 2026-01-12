@@ -62,14 +62,15 @@
         acl = [ "pattern readwrite #" ];
         # omitPasswordAuth = true;
         # settings.allow_anonymous = true;
-        password = config.sops.secrets.mqtt-password.path;
 
         users = {
           hass = {
             # acl = [ "read #" ];
+            passwordFile = config.sops.secrets.mqtt-password.path;
           };
           frigate = {
             # acl = [ "write frigate/#" ];
+            passwordFile = config.sops.secrets.mqtt-password.path;
           };
         };
       }
