@@ -29,6 +29,7 @@ in {
         "network"
 
         "docker"
+        "dialout"
 
         "libvirtd"
         "qemu-libvirtd"

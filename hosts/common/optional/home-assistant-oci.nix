@@ -72,6 +72,10 @@
             # acl = [ "write frigate/#" ];
             passwordFile = config.sops.secrets.mqtt-password.path;
           };
+          growatt = {
+            # acl = [ "write frigate/#" ];
+            passwordFile = config.sops.secrets.mqtt-password.path;
+          };
         };
       }
     ];

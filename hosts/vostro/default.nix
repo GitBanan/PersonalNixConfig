@@ -32,6 +32,7 @@
     ../common/optional/bluetooth.nix
     ../common/optional/docker.nix
     ../common/optional/editing-tools.nix
+    ../common/optional/flash-tools.nix
     ../common/optional/flatpak.nix
     ../common/optional/game-tools.nix
     ../common/optional/jellyfin-client.nix
