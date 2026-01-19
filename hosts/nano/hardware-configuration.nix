@@ -24,9 +24,13 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  fileSystems."/mnt/hdd_1tb_internal" =
+    { device = "/dev/disk/by-uuid/65e46d8e-decd-4adc-9377-79942530aeff";
+      fsType = "ext4";
+    };
+
   fileSystems."/mnt/hdd_4tb_cctv" =
-    { 
-      device = "/dev/disk/by-uuid/d8ae8088-5a05-400b-8ec0-6d4aec949159";
+    { device = "/dev/disk/by-uuid/d8ae8088-5a05-400b-8ec0-6d4aec949159";
       fsType = "ext4";
       options = [
         "nofail"
