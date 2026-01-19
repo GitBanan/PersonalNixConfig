@@ -22,6 +22,8 @@ in {
         "wheel"
         "video"
         "audio"
+
+        "dialout"
       ]
       ++ ifTheyExist [
         "git"
@@ -29,7 +31,6 @@ in {
         "network"
 
         "docker"
-        "dialout"
 
         "libvirtd"
         "qemu-libvirtd"
