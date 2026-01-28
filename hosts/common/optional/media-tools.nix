@@ -14,7 +14,7 @@
     # high-tide
 
     # freetube
-    grayjay
+    # grayjay
     yt-dlp
   ];
 }
