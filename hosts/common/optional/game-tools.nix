@@ -5,15 +5,16 @@
 }: {
   programs.gamemode.enable = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs.unstable; [
     legcord # Discord
 
     # Wine
-    wineWowPackages.stable
-    wineWowPackages.waylandFull
+    # wineWowPackages.stable
+    # wineWowPackages.waylandFull
     winetricks
     protontricks
-    protonup-qt
+    # protonup-qt
+    protonplus
 
     lutris
     legendary-gl
