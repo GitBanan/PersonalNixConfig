@@ -20,13 +20,16 @@
     };
 
     # Let NextDNS manage DNS
-    # nameservers = [ "127.0.0.1" "::1" ];
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
   };
 
   services = {
     # Enable system-resolved
     resolved = {
-      enable = true;
+      enable = false;
      };
 
     nextdns = {
