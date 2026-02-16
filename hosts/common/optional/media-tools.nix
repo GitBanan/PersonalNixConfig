@@ -9,7 +9,8 @@
 
     # spotube
     # nuclear
-    # tidal-dl
+    tidal-dl
+    streamrip
     tidal-hifi
     # high-tide
 
