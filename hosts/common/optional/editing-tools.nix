@@ -18,5 +18,7 @@
 
     vscodium
     krita
+
+    nixfmt
   ];
 }
