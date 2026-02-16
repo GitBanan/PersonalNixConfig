@@ -7,6 +7,6 @@
     python3
     # python311Packages.inquirerpy
     # python312Packages.inquirerpy
-    python313Packages.tidalapi
+    unstable.python313Packages.tidalapi
   ];
 }
