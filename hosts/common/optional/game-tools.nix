@@ -9,8 +9,9 @@
     legcord # Discord
 
     # Wine
-    # wineWowPackages.stable
-    # wineWowPackages.waylandFull
+    wine64
+    wineWowPackages.stable
+    wineWowPackages.waylandFull
     winetricks
     protontricks
     # protonup-qt
