@@ -22,8 +22,8 @@
       ./sops.nix
       ./swap.nix
       ./systemd-initrd.nix
-      ./system-tools.nix
       ./tailscale.nix
+      ./terminal-tools.nix
       ./tools.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);

@@ -4,6 +4,8 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    vim
+
     easyeffects
     android-tools # ADB
     qalculate-qt

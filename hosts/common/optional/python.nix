@@ -5,8 +5,10 @@
 }: {
   environment.systemPackages = with pkgs; [
     python3
-    # python311Packages.inquirerpy
-    # python312Packages.inquirerpy
+    pipx
+
+    python313Packages.qt-material # GUI for Tidal-DL
+
     unstable.python313Packages.tidalapi
   ];
 }

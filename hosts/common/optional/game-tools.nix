@@ -10,8 +10,8 @@
 
     # Wine
     wine64
-    wineWowPackages.stable
-    wineWowPackages.waylandFull
+    wineWow64Packages.stable
+    wineWow64Packages.waylandFull
     winetricks
     protontricks
     # protonup-qt

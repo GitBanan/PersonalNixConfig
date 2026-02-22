@@ -4,7 +4,6 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    fastfetch
     poppler-utils
     pciutils
     lshw
@@ -12,8 +11,8 @@
 
     xautomation
 
-    python313Packages.qt-material # GUI for Tidal-DL
-
     ffmpeg
+
+    localsend
   ];
 }

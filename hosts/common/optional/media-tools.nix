@@ -9,10 +9,11 @@
 
     # spotube
     # nuclear
-    tidal-dl
-    streamrip
     tidal-hifi
     # high-tide
+
+    # tidal-dl
+    # streamrip
 
     # freetube
     # grayjay
