@@ -14,6 +14,7 @@
 
     # tidal-dl
     # streamrip
+    picard
 
     # freetube
     # grayjay
