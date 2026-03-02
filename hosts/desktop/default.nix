@@ -42,8 +42,8 @@
     ../common/optional/libre.nix
     # ../common/optional/media-server.nix
     ../common/optional/media-tools.nix
-    #../common/optional/mergerfs.nix
-    ../common/optional/mullvad.nix
+    # ../common/optional/mergerfs.nix
+    # ../common/optional/mullvad.nix
     ../common/optional/python.nix
     ../common/optional/sync.nix
     ../common/optional/system-tools.nix

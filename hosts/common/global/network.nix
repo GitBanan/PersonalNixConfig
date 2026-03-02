@@ -1,11 +1,22 @@
 {
   pkgs,
   config,
+  inputs,
   ...
-}: let
+}:
+let
+  # DNSCrypt
   hasIPv6Internet = false;
   StateDirectory = "dnscrypt-proxy";
-in {
+
+  blocklist_base = builtins.readFile inputs.oisd;
+  extraBlocklist = '''';
+  blocklist_txt = pkgs.writeText "blocklist.txt" ''
+    ${extraBlocklist}
+    ${blocklist_base}
+  '';
+in
+{
   networking = {
     # Enable networking, choose 1
     networkmanager = {
@@ -27,7 +38,6 @@ in {
       # "2a07:a8c0::#${config.networking.hostName}--Resolved-$NEXTDNS_PROFILE_ID.dns.nextdns.io"
       # "45.90.30.0#${config.networking.hostName}--Resolved-$NEXTDNS_PROFILE_ID.dns.nextdns.io"
       # "2a07:a8c1::#${config.networking.hostName}--Resolved-$NEXTDNS_PROFILE_ID.dns.nextdns.io"
-      "100.64.0.7"
     ];
   };
 
@@ -74,7 +84,15 @@ in {
         # that match your criteria and choose the best one.
         server_names = [
           "mullvad-base-doh"
+          "nextdns"
+          "adguard-dns-doh"
+          "dnscry.pt-atlanta-ipv4"
+          "dnscry.pt-bangkok-ipv4"
+          "dnscry.pt-bengaluru-ipv4"
+          "dnscry.pt-frankfurt-ipv4"
         ];
+
+        cloaking_rules = "/etc/nixos/configs/dnscrpyt-cloaking.txt";
       };
     };
 
@@ -90,7 +108,7 @@ in {
           "2a07:a8c0::"
           "45.90.28.0"
         ];
-        add-cpe-id = config.sops.secrets.nextdns-profile-id.path;
+        add-cpe-id = config.sops.secrets.nextdns-profile-id.path; # Does not work
       };
     };
 

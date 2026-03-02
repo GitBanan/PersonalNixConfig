@@ -38,7 +38,7 @@
     ../common/optional/jellyfin-client.nix
     ../common/optional/libre.nix
     ../common/optional/media-tools.nix
-    ../common/optional/mullvad.nix
+    # ../common/optional/mullvad.nix
     ../common/optional/python.nix
     # ../common/optional/sync.nix
     ../common/optional/system-tools.nix

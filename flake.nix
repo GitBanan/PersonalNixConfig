@@ -30,6 +30,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    oisd = {
+      url = "https://big.oisd.nl/domainswild";
+      flake = false;
+    };
+
     #nix-flatpak = {
       # url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
       #url = "github:gmodena/nix-flatpak/?ref=latest";
