@@ -44,8 +44,8 @@
     ../common/optional/media-tools.nix
     # ../common/optional/mergerfs.nix
     # ../common/optional/mullvad.nix
+    ../common/optional/productivity-tools.nix
     ../common/optional/python.nix
-    ../common/optional/sync.nix
     ../common/optional/system-tools.nix
   ];
 
@@ -54,18 +54,7 @@
     hostName = "desktop";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # For running Epic Games store
-  # hardware.graphics.enable32Bit = true;
-
-  programs = {
-    # Enable optional KDE features
-    kdeconnect.enable = true;
-
-    firefox.enable = true;
-  };
+  services.syncthing.dataDir = "/home/jee/Sync";  # Defaut and base folder
 
   # environment.systemPackages = with pkgs; [];
 

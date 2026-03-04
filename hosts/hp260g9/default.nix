@@ -27,7 +27,7 @@
     ../common/optional/minecraft-server.nix
     ../common/optional/satisfactory-server.nix
     ../common/optional/media-server.nix
-    # ../common/optional/sync.nix
+    ../common/optional/sync-full.nix
   ];
 
   networking = {
@@ -35,18 +35,7 @@
     hostName = "hp260g9";
   };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # For running Epic Games store
-  # hardware.graphics.enable32Bit = true;
-
-  programs = {
-    # Enable optional KDE features
-    # kdeconnect.enable = true;
-
-    firefox.enable = true;
-  };
+  services.syncthing.dataDir = "/mnt/Backup_8TB/Sync";  # Defaut and base folder
 
   # environment.systemPackages = with pkgs; [];
 

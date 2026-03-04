@@ -4,15 +4,10 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    poppler-utils
-    pciutils
-    lshw
-    lm_sensors
-
     xautomation
-
     ffmpeg
-
-    localsend
+    easyeffects
+    qalculate-qt
+    rustdesk-flutter
   ];
 }

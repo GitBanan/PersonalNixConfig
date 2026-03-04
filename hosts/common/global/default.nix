@@ -11,6 +11,7 @@
       ./audio.nix
       ./autoupgrade.nix
       ./boot.nix
+      ./diagnostics-tools.nix
       ./fish.nix
       ./hardware-acceleration.nix
       ./locale.nix
@@ -21,10 +22,9 @@
       ./plasma.nix
       ./sops.nix
       ./swap.nix
+      ./sync.nix
       ./systemd-initrd.nix
       ./tailscale.nix
-      ./terminal-tools.nix
-      ./tools.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 

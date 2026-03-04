@@ -4,23 +4,23 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # Kate packages
+    kdePackages.kate
+    nodePackages_latest.bash-language-server
+    nil # Nix bash
+
     vim
+    vscodium
 
-    easyeffects
-    android-tools # ADB
-    qalculate-qt
-    rustdesk-flutter
-
+    nixfmt
     libxml2 # Format XML
     eclipses.eclipse-jee
+    poppler-utils # pdf convertion
 
     lzip # Unzip
     unrar
     p7zip
 
-    vscodium
     krita
-
-    nixfmt
   ];
 }

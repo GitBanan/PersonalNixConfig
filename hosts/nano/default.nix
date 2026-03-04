@@ -27,7 +27,7 @@
     ../common/optional/docker.nix
     ../common/optional/home-assistant-oci.nix
     ../common/optional/minecraft-server.nix
-    # ../common/optional/sync.nix
+    ../common/optional/sync-full.nix
   ];
 
   networking = {
@@ -35,18 +35,7 @@
     hostName = "nano";
   };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # For running Epic Games store
-  # hardware.graphics.enable32Bit = true;
-
-  programs = {
-    # Enable optional KDE features
-    # kdeconnect.enable = true;
-
-    firefox.enable = true;
-  };
+  services.syncthing.dataDir = "/mnt/hdd_1tb_internal/Sync";  # Defaut and base folder
 
   # environment.systemPackages = with pkgs; [];
 
