@@ -17,12 +17,15 @@
     secrets = {
       default-user-password = {};
 
+      syncthing-user = {};
+      syncthing-password = {};
+
       hikvision-user = {};
       hikvision-password = {};
 
-      nextdns-profile-id = {};
-
       mqtt-password = {};
+
+      nextdns-profile-id = {};
     };
 
     templates = {

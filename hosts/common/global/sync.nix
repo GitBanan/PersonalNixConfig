@@ -12,6 +12,10 @@
       configDir = "/home/jee/.config/syncthing";   # Folder for Syncthing's settings and keys
       guiAddress = "0.0.0.0:8384";
       openDefaultPorts = true;
+      # Optional: GUI credentials (can be set in the browser instead)
+      # settings.gui.user = "SyncthingUser";
+      # settings.gui.password = "temppassword";
+      # guiPasswordFile = config.sops.secrets.syncthing-password.path;
 
       overrideDevices = true;
       overrideFolders = true;
@@ -56,4 +60,7 @@
       };
     };
   };
+
+  # port 8384  is the default port to allow access from the network.
+  networking.firewall.allowedTCPPorts = [ 8384 ];
 }
