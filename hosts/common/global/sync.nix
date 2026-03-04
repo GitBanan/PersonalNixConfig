@@ -41,7 +41,7 @@
             };
           };
           "Productivity" = {
-            path = "${config.services.syncthing.dataDir}/FileShare";
+            path = "${config.services.syncthing.dataDir}/Productivity";
             versioning = {
               type = "trashcan";
               params = {
