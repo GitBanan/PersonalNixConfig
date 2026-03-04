@@ -18,7 +18,7 @@
       # guiPasswordFile = config.sops.secrets.syncthing-password.path;
 
       overrideDevices = false;
-      overrideFolders = true;
+      overrideFolders = false;
       settings = {
         # Limited folders for main systems
         folders = {
