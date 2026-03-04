@@ -17,7 +17,7 @@
       # settings.gui.password = "temppassword";
       # guiPasswordFile = config.sops.secrets.syncthing-password.path;
 
-      overrideDevices = true;
+      overrideDevices = false;
       overrideFolders = true;
       settings = {
         # Limited folders for main systems
