@@ -25,6 +25,7 @@
       ./sync.nix
       ./systemd-initrd.nix
       ./tailscale.nix
+      ./wake-on-lan.nix
     ]
     ++ (builtins.attrValues outputs.nixosModules);
 
