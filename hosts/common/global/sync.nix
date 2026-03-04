@@ -20,10 +20,6 @@
       overrideDevices = true;
       overrideFolders = true;
       settings = {
-        devices = {
-          "Pixel7" = { id = "BEA64PF-MADNI3F-4ONKTOA-FMHRRAA-7IBPNBB-FGUYJUL-VSS7ON7-B62WYQC"; };
-        };
-
         # Limited folders for main systems
         folders = {
           "FileShare" = {
