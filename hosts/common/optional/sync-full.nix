@@ -10,7 +10,6 @@
         folders = {
           "AppBackups" = {
             path = "${config.services.syncthing.dataDir}/AppBackups";
-            devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -20,7 +19,6 @@
           };
           "Contacts" = {
             path = "${config.services.syncthing.dataDir}/Contacts";
-            devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -30,7 +28,6 @@
           };
           "DCIM" = {
             path = "${config.services.syncthing.dataDir}/DCIM";
-            devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -40,7 +37,6 @@
           };
           "ProfileSync" = {
             path = "${config.services.syncthing.dataDir}/ProfileSync";
-            devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -50,7 +46,6 @@
           };
           "SeedVault" = {
             path = "${config.services.syncthing.dataDir}/SeedVault";
-            devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
               params = {

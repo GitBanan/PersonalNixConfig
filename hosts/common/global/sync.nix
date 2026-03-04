@@ -24,7 +24,6 @@
         folders = {
           "FileShare" = {
             path = "${config.services.syncthing.dataDir}/FileShare";
-            devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -34,7 +33,6 @@
           };
           "Freetube" = {
             path = "${config.services.syncthing.dataDir}/Freetube";
-            devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -44,7 +42,6 @@
           };
           "Productivity" = {
             path = "${config.services.syncthing.dataDir}/FileShare";
-            devices = [ "Pixel7" ];
             versioning = {
               type = "trashcan";
               params = {
