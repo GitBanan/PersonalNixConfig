@@ -35,6 +35,7 @@
 
       options = {
         globalAnnounceEnabled = false;
+        urAccepted = 3;
       };
     };
   };
