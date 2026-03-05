@@ -41,6 +41,7 @@
     # ../common/optional/mullvad.nix
     ../common/optional/productivity-tools.nix
     ../common/optional/python.nix
+    ../common/optional/sync-light.nix
     ../common/optional/system-tools.nix
   ];
 

@@ -15,10 +15,13 @@
 
     # This is the actual specification of the secrets.
     secrets = {
-      default-user-password = {};
+      default-user-password = {
+        neededForUsers = true;
+      };
 
-      syncthing-user = {};
-      syncthing-password = {};
+      syncthing-password = {
+        owner = "jee";
+      };
 
       hikvision-user = {};
       hikvision-password = {};

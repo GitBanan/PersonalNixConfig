@@ -13,42 +13,19 @@
       guiAddress = "0.0.0.0:8384";
       openDefaultPorts = true;
       # Optional: GUI credentials (can be set in the browser instead)
-      # settings.gui.user = "SyncthingUser";
+      settings.gui.user = "SyncthingUser";
       # settings.gui.password = "temppassword";
-      # guiPasswordFile = config.sops.secrets.syncthing-password.path;
+      guiPasswordFile = config.sops.secrets."syncthing-password".path;
 
       overrideDevices = false;
-      overrideFolders = false;
+      overrideFolders = true;
       settings = {
-        # Limited folders for main systems
-        folders = {
-          "FileShare" = {
-            path = "${config.services.syncthing.dataDir}/FileShare";
-            versioning = {
-              type = "trashcan";
-              params = {
-                cleanoutDays = "7";
-              };
-            };
-          };
-          "Freetube" = {
-            path = "${config.services.syncthing.dataDir}/Freetube";
-            versioning = {
-              type = "trashcan";
-              params = {
-                cleanoutDays = "7";
-              };
-            };
-          };
-          "Productivity" = {
-            path = "${config.services.syncthing.dataDir}/Productivity";
-            versioning = {
-              type = "trashcan";
-              params = {
-                cleanoutDays = "7";
-              };
-            };
-          };
+        devices = {
+          "Pixel" = { id = "BEA64PF-MADNI3F-4ONKTOA-FMHRRAA-7IBPNBB-FGUYJUL-VSS7ON7-B62WYQC"; };
+        };
+
+        gui = {
+          theme = "black";
         };
       };
     };
