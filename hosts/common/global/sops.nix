@@ -23,18 +23,15 @@
         owner = "jee";
       };
 
-      hikvision-user = {};
-      hikvision-password = {};
-
       mqtt-password = {};
 
       nextdns-profile-id = {};
     };
 
     templates = {
-      "nextdns-config".content = ''
-        NEXTDNS_PROFILE_ID=${config.sops.placeholder."nextdns-profile-id"}
-      '';
+      "nextdns-config".content = ''NEXTDNS_PROFILE_ID=${config.sops.placeholder."nextdns-profile-id"}'';
+
+      # "syncthing-nano".content = ''${config.sops.placeholder."syncthing-nano"}'';
     };
   };
 

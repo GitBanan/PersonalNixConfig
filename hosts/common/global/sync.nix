@@ -22,11 +22,19 @@
       settings = {
         devices = {
           "Pixel" = { id = "BEA64PF-MADNI3F-4ONKTOA-FMHRRAA-7IBPNBB-FGUYJUL-VSS7ON7-B62WYQC"; };
+          "Desktop" = { id = "W4K2KDX-IRNNTXF-XOUUWN7-ITWWP67-HFOAW4E-YBAMOY4-GWW4KEP-WZMVFQQ"; };
+          "Vostro" = { id = "NRYRVGC-H3PVGKA-N7VH34E-QOX5MI6-D6WFJ2R-OZAHSPB-7BY3DQB-STZENQS"; };
+          "Nano" = { id = "K23SLN4-7MG6RXR-573XAYV-PRZPI4X-Q2DVASS-QGODSXU-MNHMJBI-2TRUVQO"; };
+          "Hp260g9" = { id = "7PEIAWV-HAY2G3N-ROOZEHL-6RT2UC3-YFWRMOH-L465CGA-ZPTBSA3-X3S5LAF"; };
         };
 
         gui = {
           theme = "black";
         };
+      };
+
+      options = {
+        globalAnnounceEnabled = false;
       };
     };
   };

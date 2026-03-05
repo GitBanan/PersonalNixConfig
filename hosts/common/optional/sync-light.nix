@@ -10,7 +10,7 @@
         folders = {
           "FileShare" = {
             path = "${config.services.syncthing.dataDir}/FileShare";
-            devices = [ "Pixel" ];
+            devices = [ "Pixel" "Desktop" "Vostro" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -20,7 +20,7 @@
           };
           "Freetube" = {
             path = "${config.services.syncthing.dataDir}/Freetube";
-            devices = [ "Pixel" ];
+            devices = [ "Pixel" "Desktop" "Vostro" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -30,7 +30,7 @@
           };
           "Productivity" = {
             path = "${config.services.syncthing.dataDir}/Productivity";
-            devices = [ "Pixel" ];
+            devices = [ "Pixel" "Desktop" "Vostro" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
