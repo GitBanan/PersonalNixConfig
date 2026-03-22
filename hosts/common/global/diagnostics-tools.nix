@@ -10,5 +10,6 @@
     lm_sensors
     dig
     nix-output-monitor # Monitor build logs during Nix compile
+    speedtest-cli
   ];
 }

@@ -73,7 +73,7 @@
               DefaultSavePathChanged = false;
             };
             GlobalDLSpeedLimit = 10000;
-            GlobalUPSpeedLimit = 10000;
+            GlobalUPSpeedLimit = 1000;
             IgnoreLimitsOnLAN = true;
             QueueingSystemEnabled = false;
             TorrentContentLayout = "Subfolder";
