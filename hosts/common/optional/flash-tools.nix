@@ -7,6 +7,8 @@
     esphome
     esptool
 
+    arduino-ide
+
     # android-tools # ADB
   ];
 }
