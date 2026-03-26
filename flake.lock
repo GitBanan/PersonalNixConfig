@@ -170,11 +170,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1774422943,
-        "narHash": "sha256-o1xgNumjljdBBfOrcQX95hhKGFOJQYNZqpF3EfaScMk=",
+        "lastModified": 1774465523,
+        "narHash": "sha256-4v7HPm63Q90nNn4fgkgKsjW1AH2Klw7XzPtHJr562nM=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "632e4bfc21c01e5be900d0d8255a5368a5d6082f",
+        "rev": "de895be946ad1d8aafa0bb6dfc7e7e0e9e466a29",
         "type": "github"
       },
       "original": {
@@ -250,11 +250,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1774107410,
-        "narHash": "sha256-wuVa3ffQKY8vbNH5h2zufSlNmqWMBK6KqpEzBqwPvKA=",
+        "lastModified": 1774448612,
+        "narHash": "sha256-0RmAD6V/jROjQxmzuCAeC6D4P/yqh9zrzfVrluePNGs=",
         "owner": "nbfc-linux",
         "repo": "nbfc-linux",
-        "rev": "dea53db61bf5d54319ba0d637b6f1abfb7515d78",
+        "rev": "d9b100661f11a60f53dde0b3c2fc9e1369a745fb",
         "type": "github"
       },
       "original": {
@@ -298,11 +298,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774406534,
-        "narHash": "sha256-x2+9p+Vct6v3XIgamvTfgC1icQBZpKfrJq50GLZGFM4=",
+        "lastModified": 1774493390,
+        "narHash": "sha256-aBSOcFXiEbDYJDDkzwLEBvnegqeb+sieLm6HwfNOnWw=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "12131e4555267c8c78f0b12bffc427422bca417c",
+        "rev": "745921bfb8d18daf16134433e70ce2460d9d7589",
         "type": "github"
       },
       "original": {
@@ -398,11 +398,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1774106199,
-        "narHash": "sha256-US5Tda2sKmjrg2lNHQL3jRQ6p96cgfWh3J1QBliQ8Ws=",
+        "lastModified": 1774386573,
+        "narHash": "sha256-4hAV26quOxdC6iyG7kYaZcM3VOskcPUrdCQd/nx8obc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6c9a78c09ff4d6c21d0319114873508a6ec01655",
+        "rev": "46db2e09e1d3f113a13c0d7b81e2f221c63b8ce9",
         "type": "github"
       },
       "original": {
@@ -420,11 +420,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774448284,
-        "narHash": "sha256-AE38FIdrYX+LGXbdN3TzPGTPwYzVXyKFCBgj3AxbI/0=",
+        "lastModified": 1774492642,
+        "narHash": "sha256-q2idQ5Ipihjh70vYBeSHNKpfFn5faXlYDI4Q2bZxX5E=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "c38a993dab71c0670d443f7c69d7e632c95fce8e",
+        "rev": "43f55874e48234f6d6030fafffba2b46d1839d40",
         "type": "github"
       },
       "original": {
@@ -436,7 +436,7 @@
     "oisd": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-GySM782z0gRveg6zPt2vj3NLapjmutqC0MWYQPYC0V4=",
+        "narHash": "sha256-a3ev7YMjknUAmGVTtRFSOZxe6gZf/SuQKBveEOwgQfw=",
         "type": "file",
         "url": "https://big.oisd.nl/domainswild"
       },
