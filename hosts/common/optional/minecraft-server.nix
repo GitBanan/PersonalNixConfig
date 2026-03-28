@@ -45,7 +45,7 @@
       };
 
       servers.fabric = {
-        enable = true;
+        enable = false;
 
         # Specify the custom minecraft server package
         package = pkgs.fabricServers.fabric-1_21_8;
@@ -66,8 +66,6 @@
           gamemode = "survival";
           difficulty = "normal";
           pvp = "false";
-
-          keepInventory = "true";
         };
 
         symlinks = {
