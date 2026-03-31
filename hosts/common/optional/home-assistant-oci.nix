@@ -89,4 +89,10 @@
     # 8555  # WebRTC
     # 1984  # go2rtc, no auth!
   ];
+
+  services.esphome = {
+    enable = true;
+    openFirewall = true;
+    address = "0.0.0.0";
+  };
 }
