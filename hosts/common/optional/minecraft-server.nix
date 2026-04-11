@@ -19,7 +19,7 @@
 
         # Specify the custom minecraft server package
         package = pkgs.vanillaServers.vanilla-1_21_11;
-	# package = pkgs.vanillaServers.vanilla-26_1;
+        # package = pkgs.vanillaServers.vanilla-26_1_2;
         # package = pkgs.minecraftServers.vanilla-server;
 
         # see here for more info: https://minecraft.gamepedia.com/Server.properties#server.properties
