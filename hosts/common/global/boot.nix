@@ -1,5 +1,5 @@
 {
-  # pkgs,
+  pkgs,
   # config,
   ...
 }: {
@@ -13,4 +13,7 @@
 
   # Disable emergency mode when mount fails
   systemd.enableEmergencyMode = false;
+
+  # Copyfail patch TODO Revert when fixed in release
+  boot.kernelPackages = pkgs.linuxPackages_6_18;
 }

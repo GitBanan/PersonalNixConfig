@@ -10,6 +10,11 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+
+    # openldap = prev.openldap.overrideAttrs {  # Added for lutris build errors
+      # doCheck = !prev.stdenv.hostPlatform.isi686;
+      # doCheck = false;
+    # };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

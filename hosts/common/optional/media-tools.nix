@@ -7,6 +7,8 @@
     haruna # Video player
     vlc
 
+    jellyfin-desktop
+
     # spotube
     # nuclear
     tidal-hifi

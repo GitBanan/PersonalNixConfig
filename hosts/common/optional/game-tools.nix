@@ -5,7 +5,8 @@
 }: {
   programs.gamemode.enable = true;
 
-  environment.systemPackages = with pkgs.unstable; [
+  environment.systemPackages =
+  (with pkgs.unstable; [
     legcord # Discord
 
     # Wine
@@ -17,14 +18,18 @@
     # protonup-qt
     protonplus
 
-    lutris
+    # lutris
     legendary-gl
     # rare # GUI for legendary
     heroic
     mangohud
 
     prismlauncher # Minecraft
-  ];
+  ])
+  ++
+  (with pkgs; [
+    lutris  # Build failures
+  ]);
 
   # Install Steam
   programs.steam = {

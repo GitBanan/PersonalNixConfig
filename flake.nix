@@ -99,7 +99,7 @@
     homeManagerModules = import ./modules/home-manager;
 
     # Your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays {inherit inputs outputs;};
 
     # Your custom packages
     # Accessible through 'nix build', 'nix shell', etc
