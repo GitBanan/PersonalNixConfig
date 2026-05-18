@@ -31,11 +31,11 @@
         gui = {
           theme = "black";
         };
-      };
 
-      options = {
-        globalAnnounceEnabled = false;
-        urAccepted = 3;
+        options = {
+          globalAnnounceEnabled = false;
+          urAccepted = 3;
+        };
       };
     };
   };
