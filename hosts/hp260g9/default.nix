@@ -33,6 +33,20 @@
   networking = {
     # Set your hostname
     hostName = "hp260g9";
+
+    interfaces = {
+      eno2 = {
+        ipv4.addresses = [{
+          address = "192.168.0.11";
+          prefixLength = 24;
+        }];
+      };
+    };
+
+    # defaultGateway = {
+      # address = "192.168.0.1";
+      # interface = "eno2";
+    # };
   };
 
   services.syncthing.dataDir = "/mnt/Backup_8TB/Sync";  # Defaut and base folder
