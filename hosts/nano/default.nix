@@ -43,10 +43,10 @@
       };
     };
 
-    # defaultGateway = {
-      # address = "192.168.0.1";
-      # interface = "enp2s0";
-    # };
+    defaultGateway = {
+      address = "192.168.0.1";
+      interface = "enp2s0";
+    };
   };
 
   services.syncthing.dataDir = "/mnt/hdd_1tb_internal/Sync";  # Defaut and base folder

@@ -43,10 +43,10 @@
       };
     };
 
-    # defaultGateway = {
-      # address = "192.168.0.1";
-      # interface = "eno2";
-    # };
+    defaultGateway = {
+      address = "192.168.0.1";
+      interface = "eno2";
+    };
   };
 
   services.syncthing.dataDir = "/mnt/Backup_8TB/Sync";  # Defaut and base folder
