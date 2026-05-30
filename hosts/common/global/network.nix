@@ -6,7 +6,7 @@
 }:
 let
   # DNSCrypt
-  hasIPv6Internet = false;
+  hasIPv6Internet = true;
   StateDirectory = "dnscrypt-proxy";
 
   blocklist_base = builtins.readFile inputs.oisd;
