@@ -6,7 +6,7 @@
   services = {
     satisfactory-server = {
       enable = true;
-      beta = "experimental";
+      # beta = "experimental";
     };
   };
 }

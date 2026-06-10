@@ -46,7 +46,7 @@
     # ../common/optional/mullvad.nix
     ../common/optional/productivity-tools.nix
     ../common/optional/python.nix
-    ../common/optional/sync-light.nix
+    ../common/optional/sync-full.nix
     ../common/optional/system-tools.nix
   ];
 
@@ -55,7 +55,7 @@
     hostName = "desktop";
   };
 
-  services.syncthing.dataDir = "/home/jee/Sync";  # Defaut and base folder
+  services.syncthing.dataDir = "/mnt/HDD_4TB/Sync";  # Defaut and base folder
 
   # environment.systemPackages = with pkgs; [];
 
