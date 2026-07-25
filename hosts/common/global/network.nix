@@ -7,7 +7,6 @@
 let
   # DNSCrypt
   hasIPv6Internet = true;
-  StateDirectory = "dnscrypt-proxy";
 
   blocklist_base = builtins.readFile inputs.oisd;
   extraBlocklist = '''';
@@ -67,7 +66,7 @@ in
             "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
           ];
           minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3"; # See https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-          cache_file = "/var/lib/${StateDirectory}/public-resolvers.md";
+          cache_file = "/var/lib/dnscrypt-proxy/public-resolvers.md";
         };
 
         # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
@@ -93,6 +92,18 @@ in
         ];
 
         cloaking_rules = "/etc/nixos/configs/dnscrpyt-cloaking.txt";
+
+        blocked_names.blocked_names_file = blocklist_txt;
+
+        query_log = {
+          file = "/var/log/dnscrypt-proxy/query.log";
+          format = "tsv";
+          ignored_qtypes = ["DNSKEY" "NS"];
+        };
+
+        nx_log.file = "/var/log/dnscrypt-proxy/nx.log";
+        blocked_names.log_file = "/var/log/dnscrypt-proxy/blocked-names.log";
+        # allowed_names.log_file = "/var/log/dnscrypt-proxy/allowed-names.log";
       };
     };
 
@@ -121,8 +132,6 @@ in
       ];
     };
   };
-
-  systemd.services.dnscrypt-proxy.serviceConfig.StateDirectory = StateDirectory;
 
   systemd.services.nextdns-activate = {
     enable = false;

@@ -40,20 +40,20 @@
       #url = "github:gmodena/nix-flatpak/?ref=latest";
     #};
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    #nur = {
+    #  url = "github:nix-community/NUR";
+    #  inputs.nixpkgs.follows = "nixpkgs-unstable";
+    #};
 
-    lsfg-vk-flake = {
-      url = "github:pabloaul/lsfg-vk-flake/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #lsfg-vk-flake = {
+    #  url = "github:pabloaul/lsfg-vk-flake/main";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
-    nbfc-linux = {
-      url = "github:nbfc-linux/nbfc-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #nbfc-linux = {
+    #  url = "github:nbfc-linux/nbfc-linux?dir=pkgbuilds/nix";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
