@@ -2,6 +2,7 @@
   environment.shellAliases = {
     gs = "git status";
     fu = "nix flake update";
+    pn = "cd ~/Nix/PersonalNixConfig";
   };
 
   programs.bash.shellAliases = {

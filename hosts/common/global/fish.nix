@@ -9,6 +9,9 @@
     };
 
     shellInit = ''
+      # Disable greeting
+      set fish_greeting
+
       # git commit and push function
       function gacp
         git add .
