@@ -8,8 +8,13 @@
       functions.enable = true;
     };
 
-    shellAliases = {
-      gacp = "git add .; and git commit -m $argv[1]; and git push; and";
-    };
+    shellInit = ''
+      # git commit and push function
+      function gacp
+        git add .
+        git commit -m "$argv"
+        git push
+      end
+    '';
   };
 }
