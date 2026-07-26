@@ -7,5 +7,9 @@
       config.enable = true;
       functions.enable = true;
     };
+
+    shellAliases = {
+      gacp = "git add .; and git commit -am $argv; and git push";
+    };
   };
 }
