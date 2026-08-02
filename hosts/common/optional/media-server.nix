@@ -77,6 +77,8 @@
             IgnoreLimitsOnLAN = true;
             QueueingSystemEnabled = false;
             TorrentContentLayout = "Subfolder";
+
+            GlobalMaxSeedingMinutes = 0;  # Modem issues on seeding TODO
           };
         };
         Core.AutoDeleteAddedTorrentFile = "Never";
