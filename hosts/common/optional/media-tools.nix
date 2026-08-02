@@ -7,7 +7,8 @@
     haruna # Video player
     vlc
 
-    jellyfin-desktop
+    jellyfin-desktop  # QT_QPA_PLATFORM=xcb
+    jftui
 
     # spotube
     # nuclear

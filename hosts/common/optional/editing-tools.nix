@@ -6,7 +6,7 @@
   environment.systemPackages = with pkgs; [
     # Kate packages
     kdePackages.kate
-    nodePackages_latest.bash-language-server
+    bash-language-server
     nil # Nix bash
 
     vim

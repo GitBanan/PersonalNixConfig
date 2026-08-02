@@ -14,4 +14,7 @@
   # environment.persistence = {
   #  "/persist".directories = ["/var/lib/tailscale"];
   # };
+
+  # Fixing tailsacle shutdown delays (Adding iwd.service to existing), review later to see if fixed upstream TODO
+  # systemd.services.tailscaled.after = [ "iwd.service" "network-pre.target" "NetworkManager.service" "systemd-resolved.service" ];
 }

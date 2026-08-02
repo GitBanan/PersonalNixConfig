@@ -32,6 +32,7 @@
     ../common/global
     ../common/users/jee
 
+    ../common/optional/android-webcam.nix
     ../common/optional/bluetooth.nix
     # ../common/optional/cloudflared.nix
     ../common/optional/editing-tools.nix
@@ -45,7 +46,7 @@
     # ../common/optional/mergerfs.nix
     # ../common/optional/mullvad.nix
     ../common/optional/productivity-tools.nix
-    ../common/optional/python.nix
+    # ../common/optional/python.nix
     ../common/optional/sync-full.nix
     ../common/optional/system-tools.nix
   ];
