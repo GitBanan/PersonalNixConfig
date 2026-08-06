@@ -57,7 +57,7 @@
       enable = true;
       user = "jee";
       openFirewall = true;
-      profileDir = "/var/lib/qbittorrent";
+      profileDir = "/var/lib/qBittorrent";
       webuiPort = 8080;
 
       serverConfig = {
