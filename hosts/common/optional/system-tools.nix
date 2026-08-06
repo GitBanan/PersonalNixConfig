@@ -8,6 +8,5 @@
     ffmpeg
     easyeffects
     qalculate-qt
-    rustdesk-flutter
   ];
 }

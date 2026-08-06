@@ -48,11 +48,13 @@ in
     # Enable system-resolved
     resolved = {
       enable = false;
-      # dnssec = "true";
-      dnsovertls = "true";
-      fallbackDns = [
-        "100.64.0.7"
-      ];
+      settings.Resolve = {
+        # dnssec = "true";
+        dnsovertls = "true";
+        fallbackDns = [
+          "100.64.0.7"
+        ];
+      };
      };
 
     # See https://wiki.nixos.org/wiki/Encrypted_DNS

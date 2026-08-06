@@ -20,7 +20,7 @@
 
       serviceConfig = {
         Type = "simple";
-        User = "jee";
+        # User = "jee";
         Restart = "always";
         RestartSec=10;
         ExecStart = "${pkgs.mullvad}/bin/mullvad split-tunnel add $(pidof tailscaled)";

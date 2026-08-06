@@ -9,6 +9,6 @@
 
     arduino-ide
 
-    # android-tools # ADB
+    android-tools # ADB
   ];
 }

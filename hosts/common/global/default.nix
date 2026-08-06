@@ -16,9 +16,9 @@
       ./hardware-acceleration.nix
       ./locale.nix
       ./network.nix
-      ./openssh.nix
       ./nix.nix
       ./nix-ld.nix
+      ./openssh.nix
       ./plasma.nix
       ./sops.nix
       ./swap.nix

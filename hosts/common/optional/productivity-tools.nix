@@ -18,5 +18,6 @@
 
   environment.systemPackages = with pkgs; [
     localsend
+    rustdesk-flutter
   ];
 }

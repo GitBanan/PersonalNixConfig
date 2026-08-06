@@ -26,15 +26,15 @@
     # Setup Arr stack
     sonarr = {
       enable = true;
-      user = "jee";
+      user = "sonarr";
       openFirewall = true;
-      dataDir = "/home/jee/.config/sonarr";
+      dataDir = "/var/lib/sonarr";
     };
     radarr = {
       enable = true;
-      user = "jee";
+      user = "radarr";
       openFirewall = true;
-      dataDir = "/home/jee/.config/radarr";
+      dataDir = "/var/lib/radarr";
     };
     prowlarr = {
       enable = true;
@@ -46,10 +46,10 @@
       package = pkgs.unstable.flaresolverr;
     };
     lidarr = {
-      enable = true;
-      user = "jee";
+      enable = false;
+      user = "lidarr";
       openFirewall = true;
-      dataDir = "/home/jee/.config/lidarr";
+      dataDir = "/var/lib/lidarr";
     };
 
     # Setup qbittorrent module
@@ -57,7 +57,7 @@
       enable = true;
       user = "jee";
       openFirewall = true;
-      # profileDir = "/home/jee/.config/qbittorrent";
+      profileDir = "/var/lib/qbittorrent";
       webuiPort = 8080;
 
       serverConfig = {
@@ -105,11 +105,11 @@
     # Setup Media server
     jellyfin = {
       enable = true;
-      user = "jee";
+      # user = "jee";
       openFirewall = true;
-      configDir = "/home/jee/.config/jellyfin";
-      dataDir = "/home/jee/.local/share/jellyfin";
-      cacheDir = "/home/jee/.cache/jellyfin";
+      configDir = "/var/lib/jellyfin/config";
+      dataDir = "/var/lib/jellyfin";
+      cacheDir = "/var/cache/jellyfin";
     };
 
     # Setup jellyseerr
