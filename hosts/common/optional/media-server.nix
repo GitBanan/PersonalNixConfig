@@ -22,17 +22,21 @@
     #"dotnet-sdk-6.0.428"
   ];
 
+  users.groups.mediaserver = {};
+
   services = {
     # Setup Arr stack
     sonarr = {
       enable = true;
       user = "sonarr";
+      group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/sonarr";
     };
     radarr = {
       enable = true;
       user = "radarr";
+      group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/radarr";
     };
@@ -48,6 +52,7 @@
     lidarr = {
       enable = false;
       user = "lidarr";
+      group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/lidarr";
     };
@@ -56,6 +61,7 @@
     qbittorrent = {
       enable = true;
       user = "jee";
+      group = "mediaserver";
       openFirewall = true;
       profileDir = "/var/lib/qBittorrent";
       webuiPort = 8080;
@@ -106,6 +112,7 @@
     jellyfin = {
       enable = true;
       user = "jee";
+      group = "mediaserver";
       # user = "jellyfin";
       openFirewall = true;
       configDir = "/home/jee/.config/jellyfin";
@@ -117,7 +124,7 @@
     };
 
     # Setup jellyseerr
-    jellyseerr = {
+    seerr = {
       enable = true;
       port = 5055;
       openFirewall = true;

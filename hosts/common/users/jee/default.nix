@@ -31,6 +31,7 @@ in {
         "network"
 
         "docker"
+        "mediaserver"
 
         "libvirtd"
         "qemu-libvirtd"
