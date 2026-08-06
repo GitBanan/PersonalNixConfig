@@ -105,11 +105,15 @@
     # Setup Media server
     jellyfin = {
       enable = true;
-      # user = "jee";
+      user = "jee";
+      # user = "jellyfin";
       openFirewall = true;
-      configDir = "/var/lib/jellyfin/config";
-      dataDir = "/var/lib/jellyfin";
-      cacheDir = "/var/cache/jellyfin";
+      configDir = "/home/jee/.config/jellyfin";
+      dataDir = "/home/jee/.local/share/jellyfin";
+      cacheDir = "/home/jee/.cache/jellyfin";
+      # configDir = "/var/lib/jellyfin/config";
+      # dataDir = "/var/lib/jellyfin";
+      # cacheDir = "/var/cache/jellyfin";
     };
 
     # Setup jellyseerr
