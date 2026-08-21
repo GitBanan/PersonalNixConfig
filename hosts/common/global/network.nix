@@ -14,6 +14,24 @@ let
     ${extraBlocklist}
     ${blocklist_base}
   '';
+
+  cloaking_txt = pkgs.writeText "cloaking.txt" ''
+    localhost         127.0.0.1
+    localhost         ::1
+
+    nano.lan          192.168.0.10
+    hp260g9.lan       192.168.0.11
+    desktop.lan       192.168.0.100
+    vostro.lan        192.168.0.101
+
+    nano.tail         100.120.141.36
+    hp260g9.tail      100.113.195.24
+    desktop.tail      100.88.111.75
+    vostro.tail       100.68.184.52
+
+    nodemcud1-waterlevel.local      192.168.0.31
+    nodemcud2-waterlevel.local      192.168.0.32
+  '';
 in
 {
   networking = {
@@ -93,9 +111,9 @@ in
           "dnscry.pt-frankfurt-ipv4"
         ];
 
-        cloaking_rules = "/etc/nixos/configs/dnscrpyt-cloaking.txt";
-
         blocked_names.blocked_names_file = blocklist_txt;
+
+        cloaking_rules = cloaking_txt;
 
         query_log = {
           file = "/var/log/dnscrypt-proxy/query.log";

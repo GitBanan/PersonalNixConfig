@@ -33,6 +33,7 @@
       openFirewall = true;
       dataDir = "/var/lib/sonarr";
     };
+
     radarr = {
       enable = true;
       user = "radarr";
@@ -40,21 +41,44 @@
       openFirewall = true;
       dataDir = "/var/lib/radarr";
     };
+
     prowlarr = {
       enable = true;
       openFirewall = true;
     };
+
     flaresolverr = {
       enable = true;
       openFirewall = true;
       package = pkgs.unstable.flaresolverr;
     };
+
     lidarr = {
       enable = false;
       user = "lidarr";
       group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/lidarr";
+    };
+
+    bazarr = {
+      enable = true;
+      user = "bazarr";
+      group = "mediaserver";
+      openFirewall = true;
+      dataDir = "/var/lib/bazarr";
+    };
+
+    recyclarr = {
+      enable = false;
+      user = "recyclarr";
+      group = "mediaserver";
+      schedule = "daily";
+      command = "sync";
+
+      configuration = {
+
+      };
     };
 
     # Setup qbittorrent module
