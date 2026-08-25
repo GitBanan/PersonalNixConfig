@@ -28,7 +28,7 @@
     # Setup Arr stack
     sonarr = {
       enable = true;
-      user = "sonarr";
+      user = "arr";
       group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/sonarr";
@@ -36,7 +36,7 @@
 
     radarr = {
       enable = true;
-      user = "radarr";
+      user = "arr";
       group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/radarr";
@@ -55,7 +55,7 @@
 
     lidarr = {
       enable = false;
-      user = "lidarr";
+      user = "arr";
       group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/lidarr";
@@ -63,7 +63,7 @@
 
     bazarr = {
       enable = true;
-      user = "bazarr";
+      user = "arr";
       group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/bazarr";
@@ -71,7 +71,7 @@
 
     recyclarr = {
       enable = false;
-      user = "recyclarr";
+      user = "arr";
       group = "mediaserver";
       schedule = "daily";
       command = "sync";
@@ -84,7 +84,7 @@
     # Setup qbittorrent module
     qbittorrent = {
       enable = true;
-      user = "jee";
+      user = "arr";
       group = "mediaserver";
       openFirewall = true;
       profileDir = "/var/lib/qBittorrent";
@@ -96,7 +96,7 @@
             AlternativeGlobalDLSpeedLimit = 50;
             AlternativeGlobalUPSpeedLimit = 1;
             BandwidthSchedulerEnabled = false;
-            DefaultSavePath = "/home/jee/Downloads";
+            DefaultSavePath = "/mnt/Backup_8TB/Media/Default";
             DisableAutoTMMByDefault = false;
             DisableAutoTMMTriggers = {
               CategorySavePathChanged = false;

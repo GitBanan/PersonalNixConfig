@@ -1,6 +1,7 @@
 {
   environment.shellAliases = {
     gs = "git status";
+    gp = "git pull";
     fu = "nix flake update";
     pn = "cd ~/Nix/PersonalNixConfig";
   };
