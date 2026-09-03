@@ -22,6 +22,10 @@
     #"dotnet-sdk-6.0.428"
   ];
 
+  users.users.arr = {
+    group = "mediaserver";
+    isSystemUser = true;
+  };
   users.groups.mediaserver = {};
 
   services = {
