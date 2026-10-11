@@ -16,5 +16,8 @@
   # };
 
   # Fixing tailsacle shutdown delays (Adding iwd.service to existing), review later to see if fixed upstream TODO
-  # systemd.services.tailscaled.after = [ "iwd.service" "network-pre.target" "NetworkManager.service" "systemd-resolved.service" ];
+  systemd.services.tailscaled = {
+    # overrideStrategy = "asDropin";
+    after = [ "network-pre.target" "NetworkManager.service" "systemd-resolved.service" "iwd.service" "wpa_supplicant.service"];
+  };
 }

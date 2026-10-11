@@ -18,16 +18,6 @@
               };
             };
           };
-          "Freetube" = {
-            path = "${config.services.syncthing.dataDir}/Freetube";
-            devices = [ "Pixel" "Desktop" "Vostro" "Nano" "Hp260g9" ];
-            versioning = {
-              type = "trashcan";
-              params = {
-                cleanoutDays = "7";
-              };
-            };
-          };
           "LinuxBackups" = {
             path = "${config.services.syncthing.dataDir}/LinuxBackups";
             devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];

@@ -7,7 +7,9 @@
 
   environment.systemPackages =
   (with pkgs.unstable; [
-    legcord # Discord
+     # Discord Clients
+    # legcord
+    goofcord
 
     # Wine
     wine64

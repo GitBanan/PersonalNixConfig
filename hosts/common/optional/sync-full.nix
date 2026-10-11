@@ -18,16 +18,6 @@
               };
             };
           };
-          "Freetube" = {
-            path = "${config.services.syncthing.dataDir}/Freetube";
-            devices = [ "Pixel" "Desktop" "Vostro" "Nano" "Hp260g9" ];
-            versioning = {
-              type = "trashcan";
-              params = {
-                cleanoutDays = "7";
-              };
-            };
-          };
           "LinuxBackups" = {
             path = "${config.services.syncthing.dataDir}/LinuxBackups";
             devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];
@@ -54,7 +44,7 @@
         folders = {
           "AppBackups" = {
             path = "${config.services.syncthing.dataDir}/AppBackups";
-            devices = [ "Pixel" "Nano" "Hp260g9" ];
+            devices = [ "Pixel" "Desktop" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -64,7 +54,7 @@
           };
           "Contacts" = {
             path = "${config.services.syncthing.dataDir}/Contacts";
-            devices = [ "Pixel" "Nano" "Hp260g9" ];
+            devices = [ "Pixel" "Desktop" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -74,7 +64,17 @@
           };
           "DCIM" = {
             path = "${config.services.syncthing.dataDir}/DCIM";
-            devices = [ "Pixel" "Nano" "Hp260g9" ];
+            devices = [ "Pixel" "Desktop" "Nano" "Hp260g9" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
+          "Ludusavi" = {
+            path = "${config.services.syncthing.dataDir}/Ludusavi";
+            devices = [ "Pixel" "Desktop" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -84,7 +84,7 @@
           };
           "ProfileSync" = {
             path = "${config.services.syncthing.dataDir}/ProfileSync";
-            devices = [ "Pixel" "Nano" "Hp260g9" ];
+            devices = [ "Pixel" "Desktop" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -94,7 +94,7 @@
           };
           "SeedVault" = {
             path = "${config.services.syncthing.dataDir}/SeedVault";
-            devices = [ "Pixel" "Nano" "Hp260g9" ];
+            devices = [ "Pixel" "Desktop" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
