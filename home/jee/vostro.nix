@@ -29,5 +29,5 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  services.ludusavi.settings.backup.path = "/home/jee/Sync/Ludusavi";
+  services.ludusavi.settings.backup.path = "/home/jee/Sync/Ludusavi/client";
 }

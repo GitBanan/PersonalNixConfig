@@ -28,5 +28,5 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  services.ludusavi.settings.backup.path = "/mnt/Backup_8TB/Sync/Ludusavi";
+  services.ludusavi.settings.backup.path = "/mnt/Backup_8TB/Sync/Ludusavi/server";
 }

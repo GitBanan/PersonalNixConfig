@@ -28,8 +28,8 @@
               };
             };
           };
-          "Ludusavi" = {
-            path = "${config.services.syncthing.dataDir}/Ludusavi";
+          "Ludusavi Client" = {
+            path = "${config.services.syncthing.dataDir}/Ludusavi/client";
             devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";

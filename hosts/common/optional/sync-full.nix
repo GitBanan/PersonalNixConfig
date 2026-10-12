@@ -28,8 +28,18 @@
               };
             };
           };
-          "Ludusavi" = {
-            path = "${config.services.syncthing.dataDir}/Ludusavi";
+          "Ludusavi Client" = {
+            path = "${config.services.syncthing.dataDir}/Ludusavi/client";
+            devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
+          "Ludusavi Server" = {
+            path = "${config.services.syncthing.dataDir}/Ludusavi/server";
             devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
