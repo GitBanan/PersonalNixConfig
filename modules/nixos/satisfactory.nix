@@ -60,6 +60,7 @@ in {
         ExecStart = "${steam-run} ${cfg.dataDir}/FactoryServer.sh ${cfg.launchOptions}";
         Restart = "always";
         User = "satisfactory";
+        Group = "satisfactory";
         WorkingDirectory = cfg.dataDir;
       };
 

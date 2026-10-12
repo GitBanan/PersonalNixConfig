@@ -31,13 +31,15 @@ in {
         "network"
 
         "docker"
-        "mediaserver"
-
         "libvirtd"
         "qemu-libvirtd"
         "disk"
         "kvm"
         "input"
+
+        "mediaserver"
+        "minecraft"
+        "satisfactory"
       ];
 
     # hashedPasswordFile = config.sops.secrets.jee-password.path;
