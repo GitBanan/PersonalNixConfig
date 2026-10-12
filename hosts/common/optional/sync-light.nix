@@ -28,6 +28,16 @@
               };
             };
           };
+          "Ludusavi" = {
+            path = "${config.services.syncthing.dataDir}/Ludusavi";
+            devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
           "Productivity" = {
             path = "${config.services.syncthing.dataDir}/Productivity";
             devices = [ "Pixel" "Desktop" "Vostro" "Nano" "Hp260g9" ];
