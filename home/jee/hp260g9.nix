@@ -20,8 +20,8 @@
     # ./nvim.nix
     ./global
 
-    # ./optional/ludusavi
-    # ./optional/ludusavi/hp260g9.nix
+    ./optional/ludusavi
+    ./optional/ludusavi/hp260g9.nix
   ];
 
   # Add stuff for your user as you see fit:
