@@ -40,7 +40,7 @@
           };
           "Ludusavi Server" = {
             path = "${config.services.syncthing.dataDir}/Ludusavi/server";
-            devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];
+            devices = [ "Desktop" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
