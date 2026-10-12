@@ -23,7 +23,7 @@
         };
         retention = {
           full = 1;
-          differential = 1;
+          differential = 5;
         };
         format = {
           chosen = "zip";
@@ -34,8 +34,14 @@
             zstd.level = 10;
           };
         };
+        ignoredGames = [
+          "Barotrauma"
+          "Buckshot Roulette"
+          "Stick Fight: The Game"
+          "Totally Accurate Battlegrounds"
+        ];
       };
-      # language = "en-US";
+      language = "en-US";
       restore = {
         path = "${config.services.ludusavi.settings.backup.path}";
       };

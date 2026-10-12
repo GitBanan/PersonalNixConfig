@@ -5,14 +5,6 @@
 }: {
   services.ludusavi = {
     settings = {
-      backup = {
-        ignoredGames = [
-          "Barotrauma"
-          "Buckshot Roulette"
-          "Stick Fight: The Game"
-          "Totally Accurate Battlegrounds"
-        ];
-      };
       roots = [
         {
           path = "~/.local/share/Steam";
