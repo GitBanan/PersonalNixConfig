@@ -1,6 +1,7 @@
 {
   pkgs,
-  # config,
+  config,
+  lib,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -49,6 +50,7 @@
     prowlarr = {
       enable = true;
       openFirewall = true;
+      dataDir = "/var/lib/prowlarr";
     };
 
     flaresolverr = {
@@ -57,20 +59,20 @@
       package = pkgs.unstable.flaresolverr;
     };
 
-    lidarr = {
-      enable = false;
-      user = "arr";
-      group = "mediaserver";
-      openFirewall = true;
-      dataDir = "/var/lib/lidarr";
-    };
-
     bazarr = {
       enable = true;
       user = "arr";
       group = "mediaserver";
       openFirewall = true;
       dataDir = "/var/lib/bazarr";
+    };
+
+    lidarr = {
+      enable = false;
+      user = "arr";
+      group = "mediaserver";
+      openFirewall = true;
+      dataDir = "/var/lib/lidarr";
     };
 
     recyclarr = {
@@ -156,7 +158,14 @@
       enable = true;
       port = 5055;
       openFirewall = true;
+      configDir = "/var/lib/seerr";
     };
+  };
+
+  # Override "0700" perms set by packages
+  systemd.tmpfiles.settings = {
+    "10-radarr"."${config.services.radarr.dataDir}".d.mode = lib.mkForce "0755";
+    "10-bazarr"."${config.services.bazarr.dataDir}".d.mode = lib.mkForce "0755";
   };
 
   # Start Zrok Cloudflare on boot

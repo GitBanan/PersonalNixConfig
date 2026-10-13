@@ -22,7 +22,7 @@
           };
         };
         retention = {
-          full = 1;
+          full = 2;
           differential = 5;
         };
         format = {

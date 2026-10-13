@@ -37,9 +37,9 @@ in {
         "kvm"
         "input"
 
-        "mediaserver"
-        "minecraft"
-        "satisfactory"
+        # "mediaserver"
+        # "minecraft"
+        # "satisfactory"
       ];
 
     # hashedPasswordFile = config.sops.secrets.jee-password.path;
