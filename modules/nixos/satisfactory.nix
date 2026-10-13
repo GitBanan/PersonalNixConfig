@@ -75,7 +75,7 @@ in {
       createHome = true;
       isSystemUser = true;
       group = "satisfactory";
-      homeMode = 755;
+      homeMode = "755";
     };
     users.groups.satisfactory = {};
 
