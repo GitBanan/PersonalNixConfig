@@ -50,7 +50,7 @@
     prowlarr = {
       enable = true;
       openFirewall = true;
-      dataDir = "/var/lib/prowlarr";
+      dataDir = "/var/lib/prowlarrL";
     };
 
     flaresolverr = {
@@ -166,7 +166,35 @@
   systemd.tmpfiles.settings = {
     "10-radarr"."${config.services.radarr.dataDir}".d.mode = lib.mkForce "0755";
     "10-bazarr"."${config.services.bazarr.dataDir}".d.mode = lib.mkForce "0755";
+    "10-prowlarr"."${config.services.prowlarr.dataDir}".d = {
+      user = lib.mkForce "arr";
+      group = lib.mkForce "mediaserver";
+      mode = lib.mkForce "0755";
+    };
+#    "10-seerr"."${config.services.seerr.configDir}".d = {
+#      user = "arr";
+#      group = "mediaserver";
+#      mode = lib.mkForce "0755";
+#    };
   };
+
+#  systemd.services.prowlarr.serviceConfig.StateDirectory = lib.mkForce "";
+
+  # Override dynamic user setup in seerr
+  systemd.services.seerr.serviceConfig = {
+#    User = "arr";
+#    Group = "mediaserver";
+#    ProtectSystem = lib.mkForce "no";
+    StateDirectory = lib.mkForce "seerr";
+#    PrivateMounts = lib.mkForce false;
+  };
+#  systemd.services.seerr.unitConfig.RequiresMountsFor = lib.mkForce [];
+  systemd.mounts = [{
+    what = "/var/lib/seerrL";
+    where = "/var/lib/private/seerr";
+    options = "bind";
+    wantedBy = [ "local-fs.target" ];
+  }];
 
   # Start Zrok Cloudflare on boot
   systemd.services = {

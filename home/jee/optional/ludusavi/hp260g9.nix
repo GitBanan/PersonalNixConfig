@@ -37,7 +37,7 @@
         {
           name = "Prowlarr";
           files = [
-            "/var/lib/prowlarr/Backups"
+            "/var/lib/prowlarrL/Backups"
           ];
         }
         {
@@ -69,8 +69,8 @@
         {
           name = "Seerr";
           files = [
-            "/var/lib/seerr/settings.json"
-            "/var/lib/seerr/db"
+            "/var/lib/seerrL/settings.json"
+            "/var/lib/seerrL/db"
           ];
         }
       ];
