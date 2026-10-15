@@ -5,6 +5,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     fastfetch
+    busybox
     pciutils
     lshw
     lm_sensors

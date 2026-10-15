@@ -21,6 +21,14 @@
       ];
       customGames = [
         {
+          name = "Need for Speed: Most Wanted";
+          files = [
+            "<winDocuments>/NFS Most Wanted/<storeUserId>"
+            "/home/jee/Games/Lutris/need-for-speed-most-wanted/Need For Speed Most Wanted Black Edition/SAVE"
+          ];
+          registry = [ "HKEY_LOCAL_MACHINE/SOFTWARE/WOW6432Node/EA Games/Need for Speed Most Wanted" ];
+        }
+        {
           name = "Barony";
           files = [
             "<base>/config"
@@ -43,7 +51,7 @@
           "Don't Starve Together"
           "Lethal Company"
           "Mount & Blade: Warband"
-          "Need for Speed: Most Wanted"
+          # "Need for Speed: Most Wanted"
           "Space Engineers"
           "While True: learn()"
         ];
