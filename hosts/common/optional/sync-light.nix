@@ -10,7 +10,7 @@
         folders = {
           "FileShare" = {
             path = "${config.services.syncthing.dataDir}/FileShare";
-            devices = [ "Pixel" "Desktop" "Vostro" "Nano" "Hp260g9" ];
+            devices = [ "Pixel" "Desktop" "Vostro" "Steamdeck" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -20,7 +20,7 @@
           };
           "LinuxBackups" = {
             path = "${config.services.syncthing.dataDir}/LinuxBackups";
-            devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];
+            devices = [ "Desktop" "Vostro" "Steamdeck" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -30,7 +30,7 @@
           };
           "Ludusavi Client" = {
             path = "${config.services.syncthing.dataDir}/Ludusavi/client";
-            devices = [ "Desktop" "Vostro" "Nano" "Hp260g9" ];
+            devices = [ "Desktop" "Vostro" "Steamdeck" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
