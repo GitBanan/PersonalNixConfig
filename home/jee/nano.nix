@@ -19,9 +19,14 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./global
+
+    ./optional/ludusavi
+    ./optional/ludusavi/nano.nix
   ];
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
+
+  services.ludusavi.settings.backup.path = "/mnt/hdd_1tb_internal/Sync/Ludusavi/server";
 }
