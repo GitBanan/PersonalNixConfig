@@ -36,6 +36,7 @@ if [[ "$verify_flag" == 'true' ]]; then
 fi
 
 if [[ "$update_flag" == 'true' ]]; then
+    sudo echo "Updating Flakes"
     nix flake update
 fi
 
