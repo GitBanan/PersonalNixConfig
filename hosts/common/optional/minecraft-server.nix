@@ -1,11 +1,14 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   # Nix-Minecraft overlay
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+
+  users.users.minecraft.homeMode = lib.mkForce "775";
 
   services = {
     minecraft-servers = {
