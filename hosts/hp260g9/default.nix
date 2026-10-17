@@ -28,6 +28,8 @@
     ../common/optional/satisfactory-server.nix
     ../common/optional/media-server.nix
     ../common/optional/sync-full.nix
+
+    ../common/optional/cloudflared.nix
   ];
 
   networking = {
