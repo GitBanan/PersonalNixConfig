@@ -3,13 +3,7 @@
   # config,
   ...
 }: {
-  environment.systemPackages = [ pkgs.cloudflared ];
-
-  users.users.cloudflared = {
-    group = "cloudflared";
-    isSystemUser = true;
-  };
-  users.groups.cloudflared = { };
+  environment.systemPackages = [ pkgs.unstable.cloudflared ];
 
   # Config Cloudflare tunnel
   services.cloudflared = {
@@ -26,22 +20,16 @@
           };
         };
       };
+      "5f88497d-bde7-4a80-8c90-b0ea4fa2383b" = {
+        credentialsFile = "/home/jee/.cloudflared/5f88497d-bde7-4a80-8c90-b0ea4fa2383b.json";
+        default = "http_status:404";
+        ingress = {
+          "seerr.frostyhill.top" = { # Seerr
+            service = "http://localhost:5055";
+          };
+        };
+      };
     };
   };
-
-  systemd.services.cloudflared-autorun = {
-    description = "Start cloudflared tunnel";
-    enable = false;
-    wantedBy = [ "multi-user.target" ];
-    # after = [ "network.target" ];
-    after = [ "network-online.target" "systemd-resolved.service" ];
-
-    serviceConfig = {
-      # ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --token=<myToken>";
-      ExecStart = "${pkgs.cloudflared}/bin/cloudflared tunnel --no-autoupdate run --credentials-file=/home/jee/cloudflare.token";
-      Restart = "always";
-      User = "cloudflared";
-      Group = "cloudflared";
-    };
-  };
+  # Create DNS manually with "cloudflared tunnel route dns <your-tunnel> <your-public-domain>"
 }
