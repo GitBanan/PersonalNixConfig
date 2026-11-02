@@ -34,9 +34,11 @@
           online-mode = "false";
           # enforce-secure-profile = "false";
           # max-players = 5;
+          white-list = "false";
 
           gamemode = "survival";
           difficulty = "normal";
+          spawn-protection= "0";
         };
 
         operators = {
@@ -49,6 +51,7 @@
 
       servers.fabric = {
         enable = false;
+        jvmOpts = "-Xmx4G -Xms2G";
 
         # Specify the custom minecraft server package
         package = pkgs.fabricServers.fabric-1_21_8;
@@ -65,9 +68,11 @@
           online-mode = "false";
           # enforce-secure-profile = "false";
           # max-players = 5;
+          white-list = "false";
 
           gamemode = "survival";
           difficulty = "normal";
+          spawn-protection= "0";
         };
 
         symlinks = {

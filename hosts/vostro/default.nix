@@ -12,7 +12,6 @@
   imports = [
     # Import modules from other flakes (such as nixos-hardware):
     inputs.hardware.nixosModules.common-cpu-intel
-    inputs.hardware.nixosModules.common-gpu-intel
     inputs.hardware.nixosModules.common-gpu-amd
     inputs.hardware.nixosModules.common-pc-laptop
     inputs.hardware.nixosModules.common-pc-laptop-ssd
@@ -40,7 +39,7 @@
     ../common/optional/media-tools.nix
     # ../common/optional/mullvad.nix
     ../common/optional/productivity-tools.nix
-    # ../common/optional/python.nix
+    ../common/optional/python.nix
     ../common/optional/sync-light.nix
     ../common/optional/system-tools.nix
   ];

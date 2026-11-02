@@ -23,4 +23,8 @@
     # grayjay
     yt-dlp
   ];
+
+  networking.firewall.allowedTCPPorts = [
+    12315  # Grayjay Sync
+  ];
 }
