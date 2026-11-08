@@ -37,7 +37,6 @@
     ../common/optional/flash-tools.nix
     ../common/optional/flatpak.nix
     ../common/optional/game-tools.nix
-    ../common/optional/hardware-acceleration.nix
     ../common/optional/libre.nix
     ../common/optional/media-tools.nix
     # ../common/optional/mullvad.nix

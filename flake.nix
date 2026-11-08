@@ -158,6 +158,15 @@
           inherit inputs outputs;
         };
       };
+
+      pavilion = lib.nixosSystem {
+        modules = [
+          ./hosts/pavilion
+        ];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
     };
 
     # Standalone home-manager configuration entrypoint
@@ -198,6 +207,14 @@
 
       "jee@vostro" = lib.homeManagerConfiguration {
         modules = [ ./home/jee/vostro.nix ];
+        pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
+      "jee@pavilion" = lib.homeManagerConfiguration {
+        modules = [ ./home/jee/pavilion.nix ];
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;

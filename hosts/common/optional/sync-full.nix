@@ -10,7 +10,7 @@
         folders = {
           "FileShare" = {
             path = "${config.services.syncthing.dataDir}/FileShare";
-            devices = [ "Pixel" "Desktop" "Vostro" "Steamdeck" "Nano" "Hp260g9" ];
+            devices = [ "Pixel" "Desktop" "Vostro" "Pavilion" "Steamdeck" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -20,7 +20,7 @@
           };
           "LinuxBackups" = {
             path = "${config.services.syncthing.dataDir}/LinuxBackups";
-            devices = [ "Desktop" "Vostro" "Steamdeck" "Nano" "Hp260g9" ];
+            devices = [ "Desktop" "Vostro" "Pavilion" "Steamdeck" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -30,17 +30,7 @@
           };
           "Ludusavi Client" = {
             path = "${config.services.syncthing.dataDir}/Ludusavi/client";
-            devices = [ "Desktop" "Vostro" "Steamdeck" "Nano" "Hp260g9" ];
-            versioning = {
-              type = "trashcan";
-              params = {
-                cleanoutDays = "7";
-              };
-            };
-          };
-          "Ludusavi Server" = {
-            path = "${config.services.syncthing.dataDir}/Ludusavi/server";
-            devices = [ "Desktop" "Nano" "Hp260g9" ];
+            devices = [ "Desktop" "Vostro" "Pavilion" "Steamdeck" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -50,7 +40,7 @@
           };
           "Productivity" = {
             path = "${config.services.syncthing.dataDir}/Productivity";
-            devices = [ "Pixel" "Desktop" "Vostro" "Nano" "Hp260g9" ];
+            devices = [ "Pixel" "Desktop" "Vostro" "Pavilion" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
@@ -85,6 +75,16 @@
           "DCIM" = {
             path = "${config.services.syncthing.dataDir}/DCIM";
             devices = [ "Pixel" "Desktop" "Nano" "Hp260g9" ];
+            versioning = {
+              type = "trashcan";
+              params = {
+                cleanoutDays = "7";
+              };
+            };
+          };
+          "Ludusavi Server" = {
+            path = "${config.services.syncthing.dataDir}/Ludusavi/server";
+            devices = [ "Desktop" "Nano" "Hp260g9" ];
             versioning = {
               type = "trashcan";
               params = {
