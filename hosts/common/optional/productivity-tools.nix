@@ -20,4 +20,8 @@
     localsend
     rustdesk-flutter
   ];
+
+  networking.firewall.allowedTCPPorts = [
+    53317  # Localsend Sync
+  ];
 }

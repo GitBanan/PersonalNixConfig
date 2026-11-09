@@ -51,6 +51,9 @@
     hostName = "pavilion";
   };
 
+  # Last version that supports Maxwell to Volta GPUs
+  hardware.nvidia.branch = "legacy_580";
+
   services.syncthing.dataDir = "/home/jee/Sync";  # Defaut and base folder
 
   # environment.systemPackages = with pkgs; [];
